@@ -1,4 +1,8 @@
-spaceman is a simple turn-based, deck building game, similar to Slay the Spire and Monster Train, albeit a much liter version
+## spaceman
+
+### Background/Overview
+
+spaceman is a simple turn-based, deck building game, similar to Slay the Spire and Monster Train, albeit a much liter version.
 
 As these games are not the most mainstream, a brief description of gameplay follows:
 
@@ -6,9 +10,9 @@ As these games are not the most mainstream, a brief description of gameplay foll
 
 The non-player-characters (or NPCs) will display their amount of shields and armor, as well as a preview for what type of action they will dispatch when it becomes the NPC's turn. NPCs actions will be determined by logic, based of game conditions (for example, when shields < 50% it will dispatch a heal action). The computers turn is over when it has completed its action.
 
-Combat is completed when a character has reached 0 armor.
+Combat is completed when a character reaches 0 armor; if it is the player, the game is over. If it is the computer, the player advances to the next battle, and is prompted to chose a new card to add to their deck.
 
-Functionality & MVP
+### Functionality & MVP
 
 "combat" will be turn-based
 
@@ -24,11 +28,20 @@ end of combat
 - players shields are recharged
 - players are prompted to add a new card to their deck
 
--I will use canvas for rendering the game
--I will use open source pixel sprites to populate the game, along with pixelorama to create new sprites of my own
+### Wireframe
+
+![My Wireframe](https://github.com/wpstonebraker/spaceman_game/blob/main/src/assets/Screenshot%20from%202021-02-08%2008-29-29.png "wireframe")
+
+### Technologies/Architecture
+
+- Javascript for game logic
+- Canvas for drawing the game on screen
+- HTML 5 & CSS for effects and design
+- Pixelorama to create sprites (will also use open source models)
 
 game.js - will house the logic for the game
 player.js - will house the logic for the player character
+enemy.js - will house the logic for the non-player character
 levels.js - will house the logic for the different encounters/battles
 cards.js - parent class for individual cards. when clicked, it alerts the user to confirm the action, then invokes the cards action. - individual cards will inherit from cards.js, but output their specific properties
 
