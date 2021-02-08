@@ -30,7 +30,7 @@ end of combat
 
 ### Wireframe
 
-![My Wireframe](https://github.com/wpstonebraker/spaceman_game/blob/main/src/assets/Screenshot%20from%202021-02-08%2008-29-29.png "wireframe")
+![My Wireframe](https://github.com/wpstonebraker/spaceman_game/blob/main/assets/Screenshot%20from%202021-02-08%2008-29-29.png "wireframe")
 
 ### Technologies/Architecture
 
