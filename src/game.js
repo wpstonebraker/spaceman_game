@@ -6,6 +6,7 @@ import Player from "./player";
 import PlayerStatus from "./player_status";
 import EnemyStatus from "./enemy_status";
 import Attack from "./cards/attack";
+import Recharge from "./cards/recharge";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -26,9 +27,10 @@ export default class Game {
     this.enemyStatus = new EnemyStatus(this);
 
     // this.card = new Card(this);
-    this.attack = new Attack(this);
+    // this.attack = new Attack(this);
+    // this.recharge = new Recharge(this);
 
-    new HandleInput(this.attack);
+    new HandleInput(this.recharge);
     this.elements = [
       this.player,
       this.enemy,
@@ -36,12 +38,13 @@ export default class Game {
       this.playerStatus,
       this.enemyStatus,
       // this.card,
-      this.attack,
+      // this.attack,
+      // this.recharge,
     ];
   }
 
   draw(ctx) {
-    // debugger;
+    debugger;
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));
   }

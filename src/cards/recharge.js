@@ -1,13 +1,16 @@
 import Card from "../card";
 
 export default class Recharge extends Card {
-  constructor(game) {
+  constructor(game, position) {
     super(game);
+    debugger;
     this.cost = 1;
-    this.image = document.getElementById("img_player");
+    this.image = document.getElementById("img_recharge");
+    this.position = position;
   }
 
   draw(ctx) {
+    debugger;
     ctx.drawImage(
       this.image,
       this.position.x,
