@@ -1,4 +1,4 @@
-export default class Status {
+export default class PlayerStatus {
   constructor(game) {
     this.height = 300;
     this.width = game.gameWidth * 0.25;

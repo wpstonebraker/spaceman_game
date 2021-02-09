@@ -1,3 +1,6 @@
+import Attack from "./cards/attack";
+import Recharge from "./cards/recharge";
+
 export default class Hand {
   constructor(game) {
     this.height = 300;
@@ -6,8 +9,15 @@ export default class Hand {
       x: 20,
       y: game.gameHeight - this.height - 20,
     };
+    const STARTING_CARDS = [Attack, Attack, Attack, Attack, Recharge];
   }
 
+  init() {
+    cards = [];
+    while (cards.length < 3) {
+      cards.push(STARTING_CARDS[~~(Math.random() * STARTING_CARDS.length + 1)]);
+    }
+  }
   draw(ctx) {
     // debugger;
     ctx.fillStyle = "red";

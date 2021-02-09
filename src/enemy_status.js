@@ -13,21 +13,21 @@ export default class EnemyStatus {
     // ctx.fillStyle = "blue";
     // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     ctx.font = "20px Georgia";
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
     ctx.fillText(
       `Shields: ${this.game.enemy.shields}`,
-      this.enemy.position.x + 10,
-      this.enemy.position.y + 30
+      this.game.enemy.position.x + 220,
+      this.game.enemy.position.y + 30
     );
     ctx.fillText(
       `Armor: ${this.game.enemy.armor}`,
-      this.enemy.position.x + 10,
-      this.enemy.position.y + 60
+      this.game.enemy.position.x + 220,
+      this.game.enemy.position.y + 60
     );
     ctx.fillText(
       `Energy: ${this.game.enemy.energy}`,
-      this.enemy.position.x + 10,
-      this.enemy.position.y + 90
+      this.game.enemy.position.x + 220,
+      this.game.enemy.position.y + 90
     );
   }
 }

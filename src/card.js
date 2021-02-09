@@ -1,7 +1,7 @@
 export default class Card {
   constructor(game) {
-    this.height = 40;
-    this.width = 40;
+    this.height = 200;
+    this.width = 100;
     this.position = {
       x: game.hand.position.x + 10,
       y: game.hand.position.y + 10,
@@ -15,7 +15,6 @@ export default class Card {
   }
 
   action() {
-    debugger;
     this.game.player.shields -= 10;
   }
 }

@@ -3,34 +3,40 @@ import Enemy from "./enemy";
 import Hand from "./hand";
 import HandleInput from "./input";
 import Player from "./player";
-import Status from "./player_status";
+import PlayerStatus from "./player_status";
+import EnemyStatus from "./enemy_status";
+import Attack from "./cards/attack";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.background = document.getElementById("img_background");
+    this.humanPlayer = true;
   }
 
   start() {
-    // debugger;
     this.player = new Player(this);
-    // debugger;
+
     this.enemy = new Enemy(this);
-    // debugger;
+
     this.hand = new Hand(this);
-    // debugger;
-    this.status = new Status(this);
-    // debugger;
-    this.card = new Card(this);
-    // debugger;
-    new HandleInput(this.card);
+
+    this.playerStatus = new PlayerStatus(this);
+    this.enemyStatus = new EnemyStatus(this);
+
+    // this.card = new Card(this);
+    this.attack = new Attack(this);
+
+    new HandleInput(this.attack);
     this.elements = [
       this.player,
       this.enemy,
       this.hand,
-      this.status,
-      this.card,
+      this.playerStatus,
+      this.enemyStatus,
+      // this.card,
+      this.attack,
     ];
   }
 
@@ -38,16 +44,5 @@ export default class Game {
     // debugger;
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));
-    // debugger;
-    // this.player.draw(ctx);
-    // // debugger;
-    // this.enemy.draw(ctx);
-    // // debugger;
-    // this.hand.draw(ctx);
-    // // debugger;
-    // this.status.draw(ctx);
-    // // debugger;
-    // this.card.draw(ctx);
-    // debugger;
   }
 }
