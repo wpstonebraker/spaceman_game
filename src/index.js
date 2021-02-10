@@ -8,23 +8,28 @@ import "./styles/index.scss";
 //   debugger;
 // });
 
-let canvas = document.getElementById("gameScreen");
+document.addEventListener("DOMContentLoaded", () => {
+  let canvas = document.getElementById("game-screen");
 
-let ctx = canvas.getContext("2d");
+  let ctx = canvas.getContext("2d");
 
-const GAME_WIDTH = 1400;
-const GAME_HEIGHT = 800;
+  const GAME_WIDTH = 1400;
+  const GAME_HEIGHT = 500;
 
-let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
+  let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game.start();
 
-// ctx.clearRect(0, 0, 1400, 800);
+  document.getElementById("end-turn-button").addEventListener("click", () => {
+    game.hand.endTurn();
+  });
+  // ctx.clearRect(0, 0, 1400, 800);
 
-function gameLoop() {
-  ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
+  function gameLoop() {
+    ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
 
-  game.draw(ctx);
+    game.draw(ctx);
+    requestAnimationFrame(gameLoop);
+  }
+
   requestAnimationFrame(gameLoop);
-}
-
-requestAnimationFrame(gameLoop);
+});

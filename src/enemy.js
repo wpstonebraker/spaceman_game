@@ -6,6 +6,8 @@ export default class Enemy {
       y: 100,
     };
 
+    this.game = game;
+
     this.width = 256;
     this.height = 256;
     this.shields = 50;
@@ -22,5 +24,29 @@ export default class Enemy {
       this.width,
       this.height
     );
+  }
+
+  action() {
+    debugger;
+    if (this.shields < 25) {
+      this.heal();
+    } else if (this.game.player.shields > 0) {
+      this.attackLasers();
+    } else {
+      this.attackMissles();
+    }
+  }
+
+  heal() {
+    this.shields += 5;
+  }
+
+  attackLasers() {
+    this.game.player.shields -= this.lasers;
+    this.game.playerStatus.render();
+  }
+
+  attackMissles() {
+    this.game.player.armor -= this.missles;
   }
 }

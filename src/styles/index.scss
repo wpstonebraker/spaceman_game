@@ -1,0 +1,38 @@
+#main-outer {
+  display: flex;
+}
+
+#main-inner {
+  display: block;
+  margin: auto;
+}
+
+#game-screen {
+  border: 1px solid black;
+}
+
+#img_background,
+#img_player,
+#img_npc1,
+#img_attack,
+#img_recharge {
+  display: none;
+}
+
+#game-controls {
+  border: 1px solid red;
+  height: 400px;
+  width: 1400px;
+  display: flex;
+  margin-top: 20px;
+}
+
+#player-hand {
+  width: 1000px;
+  border: 1px solid red;
+}
+
+#player-status {
+  width: 300px;
+  border: 1px solid red;
+}

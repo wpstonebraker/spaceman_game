@@ -4,42 +4,73 @@ import Recharge from "./cards/recharge";
 
 export default class Hand {
   constructor(game) {
-    this.height = 300;
-    this.width = game.gameWidth * 0.7;
-    this.position = {
-      x: 20,
-      y: game.gameHeight - this.height - 20,
-    };
     this.game = game;
-    debugger;
-    // const STARTING_CARDS = [Attack, Attack, Attack, Attack, Recharge];
-    this.cards = [];
-    this.init();
+    const STARTING_CARDS = [
+      new Recharge(this.game),
+      new Recharge(this.game),
+      new Recharge(this.game),
+      new Attack(this.game),
+      new Attack(this.game),
+      new Attack(this.game),
+      new Attack(this.game),
+    ];
+    this.deck = STARTING_CARDS.slice();
+    this.playerCards = [];
+    this.currentHand = [];
+    this.discardPile = [];
+    this.startTurn();
   }
 
-  init() {
+  // takes the players complete deck and SHUFFLES it into
+  // playerCards
+  resetDeck() {
+    while (this.deck.length) {
+      const rando = ~~(Math.random() * this.deck.length);
+      this.playerCards.push(...this.deck.splice(rando, rando + 1));
+    }
+  }
+
+  //
+  startTurn() {
     debugger;
-    // while (this.cards.length < 3) {
-    //   this.cards.push(
-    //     STARTING_CARDS[~~(Math.random() * STARTING_CARDS.length + 1)]
-    //   );
-    // }
-    // cards.forEach((card, i) => {
-    //   const offset = 20 + i * this.game.card.width;
-    //   card.draw(this.game, { x: offset, y: game.hand.position.y + 10 });
-    // });
-    for (let i = 1; i < 4; i++) {
-      const offset = 20 + i * 200;
-      this.cards.push(new Recharge(this.game, { x: offset, y: 300 }));
+    this.game.playerTurn = true;
+    for (let i = 0; i < 5; i++) {
+      if (!this.playerCards.length) this.resetDeck();
+      this.currentHand.push(this.playerCards.shift());
     }
     debugger;
+    this.render();
   }
-  draw(ctx) {
+
+  endTurn() {
     debugger;
-    // debugger;
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-    ctx.fillRect(this.position.x, this.position.y, 300, 300);
-    this.cards.forEach((card) => card.draw(ctx));
+    this.game.playerTurn = false;
+    // this.discardPile += this.currentHand;
+    this.discardHand();
+    this.game.computerTurn();
+  }
+
+  discardHand() {
+    while (this.currentHand.length) {
+      this.discardPile.push(this.currentHand.pop());
+    }
+  }
+
+  render() {
+    debugger;
+    this.currentHand.forEach((card, i) => {
+      const cardImg = document.createElement("img");
+      cardImg.src = card.image;
+      const listItem = document.createElement("li").appendChild(cardImg);
+      debugger;
+      listItem.addEventListener("click", () => {
+        debugger;
+        if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
+          card.action();
+          this.discardPile.push(card);
+        }
+      });
+      document.getElementById("player-hand").appendChild(listItem);
+    });
   }
 }

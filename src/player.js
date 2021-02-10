@@ -11,7 +11,7 @@ export default class Player {
     this.height = 256;
     this.shields = 100;
     this.armor = 100;
-    this.energy = 3;
+    this.energy = 10;
     this.lasers = 10;
     this.missles = 10;
   }

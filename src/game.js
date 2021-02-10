@@ -13,7 +13,7 @@ export default class Game {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.background = document.getElementById("img_background");
-    this.humanPlayer = true;
+    this.playerTurn = true;
   }
 
   start() {
@@ -26,25 +26,18 @@ export default class Game {
     this.playerStatus = new PlayerStatus(this);
     this.enemyStatus = new EnemyStatus(this);
 
-    // this.card = new Card(this);
-    // this.attack = new Attack(this);
-    // this.recharge = new Recharge(this);
+    this.elements = [this.player, this.enemy, this.enemyStatus];
+  }
 
-    new HandleInput(this.recharge);
-    this.elements = [
-      this.player,
-      this.enemy,
-      this.hand,
-      this.playerStatus,
-      this.enemyStatus,
-      // this.card,
-      // this.attack,
-      // this.recharge,
-    ];
+  computerTurn() {
+    debugger;
+    if (!this.playerTurn) {
+      this.enemy.action();
+      this.hand.startTurn();
+    }
   }
 
   draw(ctx) {
-    debugger;
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));
   }
