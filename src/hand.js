@@ -13,10 +13,12 @@ export default class Hand {
     this.game = game;
     debugger;
     // const STARTING_CARDS = [Attack, Attack, Attack, Attack, Recharge];
-    this.cards = [new Recharge(this.game, { x: 300, y: 300 })];
+    this.cards = [];
+    this.init();
   }
 
   init() {
+    debugger;
     // while (this.cards.length < 3) {
     //   this.cards.push(
     //     STARTING_CARDS[~~(Math.random() * STARTING_CARDS.length + 1)]
@@ -26,6 +28,11 @@ export default class Hand {
     //   const offset = 20 + i * this.game.card.width;
     //   card.draw(this.game, { x: offset, y: game.hand.position.y + 10 });
     // });
+    for (let i = 1; i < 4; i++) {
+      const offset = 20 + i * 200;
+      this.cards.push(new Recharge(this.game, { x: offset, y: 300 }));
+    }
+    debugger;
   }
   draw(ctx) {
     debugger;
