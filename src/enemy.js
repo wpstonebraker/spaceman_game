@@ -6,6 +6,8 @@ export default class Enemy {
       y: 100,
     };
 
+    this.speed = 4;
+
     this.game = game;
 
     this.width = 256;

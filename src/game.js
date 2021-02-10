@@ -37,6 +37,10 @@ export default class Game {
     }
   }
 
+  update(dt) {
+    // this.enemy.update(dt)
+  }
+
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));

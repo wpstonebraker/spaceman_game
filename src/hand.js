@@ -15,6 +15,7 @@ export default class Hand {
       new Attack(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
+    this.cardPile = this.deck.slice();
     this.playerCards = [];
     this.currentHand = [];
     this.discardPile = [];
@@ -24,9 +25,10 @@ export default class Hand {
   // takes the players complete deck and SHUFFLES it into
   // playerCards
   resetDeck() {
-    while (this.deck.length) {
-      const rando = ~~(Math.random() * this.deck.length);
-      this.playerCards.push(...this.deck.splice(rando, rando + 1));
+    this.cardPile = this.deck.slice();
+    while (this.cardPile.length) {
+      const rando = ~~(Math.random() * this.cardPile.length);
+      this.playerCards.push(...this.cardPile.splice(rando, rando + 1));
     }
   }
 
@@ -44,32 +46,50 @@ export default class Hand {
 
   endTurn() {
     debugger;
+
+    // end the players turn
     this.game.playerTurn = false;
-    // this.discardPile += this.currentHand;
+
+    // discard the players current hand
     this.discardHand();
+
+    // have the computer play its turn
     this.game.computerTurn();
   }
 
   discardHand() {
+    // take all the cards and put them in the discard pile
     while (this.currentHand.length) {
       this.discardPile.push(this.currentHand.pop());
     }
   }
 
   render() {
-    debugger;
+    // clear the hand before each re render
+    document.getElementById("player-hand").innerHTML = "";
+
+    // iterate through the current hand
     this.currentHand.forEach((card, i) => {
+      // create an img element and set it to the cards image
       const cardImg = document.createElement("img");
       cardImg.src = card.image;
+
+      // create an li and attach the img to it
       const listItem = document.createElement("li").appendChild(cardImg);
-      debugger;
+
+      // add a click listener to the li
+      // if its the players turn, and the player has enough energy to play the card
+      // play the card, add the card to the discard pile, delete the card from the hand, and re render
       listItem.addEventListener("click", () => {
-        debugger;
         if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
           card.action();
           this.discardPile.push(card);
+          delete this.currentHand[i];
+          this.render();
         }
       });
+
+      //
       document.getElementById("player-hand").appendChild(listItem);
     });
   }

@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
 
     game.draw(ctx);
+    // game.update(dt);
     requestAnimationFrame(gameLoop);
   }
 
