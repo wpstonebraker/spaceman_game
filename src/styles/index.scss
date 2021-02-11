@@ -25,6 +25,7 @@
 
 #game-screen {
   border: 1px solid black;
+  z-index: -1;
 }
 
 #img_background,
@@ -33,6 +34,18 @@
 #img_attack,
 #img_recharge {
   display: none;
+}
+
+#dash-outer {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+#dash-inner {
+  display: flex;
+  margin: auto;
 }
 
 #game-controls {
@@ -45,17 +58,24 @@
 
 #text-panel {
   display: flex;
+  justify-content: space-around;
+
+  div {
+    border: 3px solid black;
+    background-color: #282828;
+  }
 }
 
 #card-description {
   width: 400px;
   height: 50px;
-  border: 1px solid blue;
+  font-size: 20px;
+  color: #6f6;
 }
 #card-errors {
   width: 400px;
   height: 50px;
-  border: 1px solid red;
+  color: #ffbb00;
 }
 
 #player-hand {
@@ -65,5 +85,35 @@
 
 #player-status {
   width: 300px;
-  border: 1px solid red;
+  color: #6f6;
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
