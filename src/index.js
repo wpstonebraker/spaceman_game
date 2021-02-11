@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function gameLoop(timestamp) {
     let dt = timestamp - lastTime;
     lastTime = timestamp;
-    ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
+    // ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
 
     game.update(dt);
     game.draw(ctx);

@@ -15,6 +15,7 @@ export default class Player {
     this.energy = this.maxEnergy;
     this.lasers = 10;
     this.missles = 10;
+    this.laserPoint1 = 250;
   }
 
   draw(ctx) {

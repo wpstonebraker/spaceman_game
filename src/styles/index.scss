@@ -8,14 +8,19 @@
   display: flex;
 }
 
+#main-inner {
+  width: 1400px;
+}
+
 #cockpit-div {
   display: flex;
+  width: 100%;
 }
 
 #cockpit {
   display: flex;
   position: absolute;
-  left: 126px;
+  margin: auto;
 }
 
 #main-inner {
@@ -40,20 +45,13 @@
   margin-top: 20px;
   position: relative;
   z-index: 2;
-  width: 100%;
+  width: 1400px;
 }
 
 #dash-inner {
   display: flex;
   margin: auto;
-}
-
-#game-controls {
-  border: 1px solid red;
-  height: 400px;
-  width: 1400px;
-  display: flex;
-  margin-top: 20px;
+  width: 100%;
 }
 
 #text-panel {
@@ -68,52 +66,39 @@
 
 #card-description {
   width: 400px;
-  height: 50px;
   font-size: 20px;
   color: #6f6;
 }
 #card-errors {
   width: 400px;
-  height: 50px;
   color: #ffbb00;
 }
 
-#player-hand {
-  width: 1000px;
-  border: 1px solid red;
-}
-
 #player-status {
-  width: 300px;
+  width: 150px;
   color: #6f6;
 }
 
-.typewriter {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+#enemy-status {
+  width: 150px;
+  color: #6f6;
 }
 
-/* The typing effect */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+#end-turn-button {
+  background-color: red;
+  border: 3px solid black;
+  border-radius: 50%;
+  height: 50px;
 }
 
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
+#game-controls {
+  height: 400px;
+  width: 1400px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+#player-hand {
+  width: 50%;
 }

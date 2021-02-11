@@ -26,7 +26,7 @@ export default class Game {
 
     this.enemyStatus = new EnemyStatus(this);
 
-    this.elements = [this.player, this.enemy, this.enemyStatus];
+    this.elements = [this.player, this.enemy];
   }
 
   computerTurn() {

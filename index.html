@@ -32,17 +32,15 @@
       <img id="img_recharge" src="assets/recharge.png" />
     </div>
     <div id="main-outer">
-      <div id="cockpit-div">
-        <img src="assets/placeholder_dash.png" alt="" id="cockpit" />
-      </div>
       <div id="main-inner">
-        <canvas id="game-screen" width="1400" height="420"></canvas>
+        <div id="cockpit-div">
+          <img src="assets/placeholder_dash.png" alt="" id="cockpit" />
+        </div>
+        <canvas id="game-screen" width="1395" height="420"></canvas>
         <div id="dash-outer">
           <div id="dash-inner">
             <div id="dash-box">
               <div id="text-panel">
-                <div id="card-description"></div>
-                <div id="card-errors"></div>
                 <div id="player-status">
                   <li id="player-shields">
                     Shields: <span id="player-shields-num"></span>
@@ -57,10 +55,23 @@
                     Laser Power: <span id="player-lasers-num"></span>
                   </li>
                 </div>
+                <div id="card-description"></div>
+                <div id="card-errors"></div>
+                <div id="enemy-status">
+                  <li id="enemy-shields">
+                    Shields: <span id="enemy-shields-num"></span>
+                  </li>
+                  <li id="enemy-armor">
+                    Armor: <span id="enemy-armor-num"></span>
+                  </li>
+                </div>
               </div>
               <div id="game-controls">
                 <!-- <img src="assets/cockpitdash.png" alt="" /> -->
                 <ul id="player-hand"></ul>
+                <div id="player-deck">
+                  <img src="assets/deck.png" alt="" />
+                </div>
                 <div id="end-turn-button">End Turn</div>
               </div>
             </div>

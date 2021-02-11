@@ -110,6 +110,7 @@ export default class Hand {
         // if a player does
         if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
           card.action();
+          requestAnimationFrame(card.animate);
           this.discardPile.push(card);
           delete this.currentHand[i];
           this.render();

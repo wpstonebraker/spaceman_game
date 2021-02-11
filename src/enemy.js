@@ -16,6 +16,7 @@ export default class Enemy {
     this.armor = 100;
     this.lasers = 20;
     this.missles = 20;
+    this.receiveAttack = this.position.x;
   }
 
   draw(ctx) {
@@ -29,7 +30,6 @@ export default class Enemy {
   }
 
   update(dt) {
-    debugger;
     if (this.position.y < 120) {
       this.position.y += this.speed;
     } else {
@@ -50,7 +50,6 @@ export default class Enemy {
   }
 
   action() {
-    debugger;
     if (this.shields < 25) {
       this.heal();
     } else if (this.game.player.shields > 0) {
