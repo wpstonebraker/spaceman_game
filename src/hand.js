@@ -48,7 +48,6 @@ export default class Hand {
 
   //
   startTurn() {
-    debugger;
     this.game.playerTurn = true;
     this.game.player.energy = this.game.player.maxEnergy;
     this.game.playerStatus.render();
@@ -56,13 +55,10 @@ export default class Hand {
       if (!this.playerCards.length) this.resetDeck();
       this.currentHand.push(this.playerCards.shift());
     }
-    debugger;
     this.render();
   }
 
   endTurn() {
-    debugger;
-
     // end the players turn
     this.game.playerTurn = false;
 
@@ -110,7 +106,6 @@ export default class Hand {
         // if a player does
         if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
           card.action();
-          requestAnimationFrame(card.animate);
           this.discardPile.push(card);
           delete this.currentHand[i];
           this.render();

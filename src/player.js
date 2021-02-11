@@ -16,6 +16,7 @@ export default class Player {
     this.lasers = 10;
     this.missles = 10;
     this.laserPoint1 = 250;
+    this.speed = 0.1;
   }
 
   draw(ctx) {
@@ -26,5 +27,20 @@ export default class Player {
       this.width,
       this.height
     );
+  }
+
+  update(dt) {
+    if (this.position.y < 220) {
+      this.position.y += this.speed;
+    } else {
+      this.speed = -this.speed;
+      this.position.y += this.speed;
+    }
+    if (this.position.y > 180) {
+      this.position.y += this.speed;
+    } else {
+      this.speed = -this.speed;
+      this.position.y += this.speed;
+    }
   }
 }

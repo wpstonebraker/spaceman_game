@@ -1,4 +1,5 @@
 import Card from "../card";
+import Projectile from "../projectile";
 
 export default class LaserAttack extends Card {
   constructor(game) {
@@ -16,7 +17,8 @@ export default class LaserAttack extends Card {
       x: this.game.player.laserPoint1,
       y: this.game.player.laserPoint1,
     };
-    this.animate = this.animate.bind(this);
+    this.sprite = document.getElementById("img_laser");
+    this.game = game;
   }
 
   action() {
@@ -25,33 +27,15 @@ export default class LaserAttack extends Card {
     else this.game.enemy.armor -= this.game.player.lasers / 2;
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
-  }
-
-  draw() {
-    let canvas = document.getElementById("game-screen");
-
-    let ctx = canvas.getContext("2d");
-    if (this.position.x < this.game.enemy.receiveAttack) {
-      ctx.fillStyle = "rgba(255, 0, 0)";
-    } else {
-      ctx.fillStyle = "rgba(255, 0, 0, 0.0)";
-    }
-    ctx.fillRect(this.position.x, this.position.y, 20, 3);
-  }
-
-  update(dt) {
-    // let dt = timestamp - lastTime;
-    // lastTime = timestamp;
-    this.position.x += this.speed;
-  }
-
-  animate(timestamp) {
-    let dt = timestamp - this.lastTime;
-    this.lastTime = timestamp;
-    // ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
-
-    this.update(dt);
-    this.draw();
-    requestAnimationFrame(this.animate);
+    this.game.elements.push(
+      new Projectile(
+        this.position.x,
+        this.position.y,
+        this.sprite,
+        20,
+        3,
+        this.game
+      )
+    );
   }
 }
