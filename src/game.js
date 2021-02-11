@@ -41,6 +41,12 @@ export default class Game {
     this.enemy.update(dt);
   }
 
+  isOver() {
+    if (this.enemy.armor === 0) {
+      this.enemy.image = "";
+    }
+  }
+
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));
