@@ -5,7 +5,7 @@ import HandleInput from "./input";
 import Player from "./player";
 import PlayerStatus from "./player_status";
 import EnemyStatus from "./enemy_status";
-import Attack from "./cards/attack";
+import LaserAttack from "./cards/laserAtk";
 import Recharge from "./cards/recharge";
 
 export default class Game {
@@ -20,10 +20,10 @@ export default class Game {
     this.player = new Player(this);
 
     this.enemy = new Enemy(this);
+    this.playerStatus = new PlayerStatus(this);
 
     this.hand = new Hand(this);
 
-    this.playerStatus = new PlayerStatus(this);
     this.enemyStatus = new EnemyStatus(this);
 
     this.elements = [this.player, this.enemy, this.enemyStatus];
@@ -38,7 +38,7 @@ export default class Game {
   }
 
   update(dt) {
-    // this.enemy.update(dt)
+    this.enemy.update(dt);
   }
 
   draw(ctx) {

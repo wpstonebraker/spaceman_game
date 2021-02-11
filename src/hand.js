@@ -1,5 +1,7 @@
 import Card from "./card";
-import Attack from "./cards/attack";
+import DrainShield from "./cards/drainShield";
+import LaserAttack from "./cards/laserAtk";
+import MissleAttack from "./cards/missleAtk";
 import Recharge from "./cards/recharge";
 
 export default class Hand {
@@ -8,11 +10,15 @@ export default class Hand {
     const STARTING_CARDS = [
       new Recharge(this.game),
       new Recharge(this.game),
-      new Recharge(this.game),
-      new Attack(this.game),
-      new Attack(this.game),
-      new Attack(this.game),
-      new Attack(this.game),
+
+      new LaserAttack(this.game),
+      new LaserAttack(this.game),
+
+      new MissleAttack(this.game),
+      new MissleAttack(this.game),
+
+      new DrainShield(this.game),
+      new DrainShield(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
     this.cardPile = this.deck.slice();
@@ -36,6 +42,8 @@ export default class Hand {
   startTurn() {
     debugger;
     this.game.playerTurn = true;
+    this.game.player.energy = this.game.player.maxEnergy;
+    this.game.playerStatus.render();
     for (let i = 0; i < 5; i++) {
       if (!this.playerCards.length) this.resetDeck();
       this.currentHand.push(this.playerCards.shift());
@@ -87,6 +95,14 @@ export default class Hand {
           delete this.currentHand[i];
           this.render();
         }
+      });
+      listItem.addEventListener("mouseover", () => {
+        document.getElementById(
+          "card-description"
+        ).innerText = `${card.description}`;
+      });
+      listItem.addEventListener("mouseout", () => {
+        document.getElementById("card-description").innerText = ``;
       });
 
       //

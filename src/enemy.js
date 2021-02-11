@@ -6,7 +6,7 @@ export default class Enemy {
       y: 100,
     };
 
-    this.speed = 4;
+    this.speed = 0.2;
 
     this.game = game;
 
@@ -14,8 +14,8 @@ export default class Enemy {
     this.height = 256;
     this.shields = 50;
     this.armor = 100;
-    this.lasers = 5;
-    this.missles = 10;
+    this.lasers = 20;
+    this.missles = 20;
   }
 
   draw(ctx) {
@@ -26,6 +26,27 @@ export default class Enemy {
       this.width,
       this.height
     );
+  }
+
+  update(dt) {
+    debugger;
+    if (this.position.y < 120) {
+      this.position.y += this.speed;
+    } else {
+      this.speed = -this.speed;
+      this.position.y += this.speed;
+    }
+    if (this.position.y > 80) {
+      this.position.y += this.speed;
+    } else {
+      this.speed = -this.speed;
+      this.position.y += this.speed;
+    }
+    // if (this.position.y > 100 && this.position.y < 130) {
+    //   this.position.y -= this.speed;
+    // } else {
+    //   this.position.y -= this.speed;
+    // }
   }
 
   action() {
@@ -50,5 +71,6 @@ export default class Enemy {
 
   attackMissles() {
     this.game.player.armor -= this.missles;
+    this.game.playerStatus.render();
   }
 }

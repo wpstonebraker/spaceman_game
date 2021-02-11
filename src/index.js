@@ -24,11 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   // ctx.clearRect(0, 0, 1400, 800);
 
-  function gameLoop() {
+  let lastTime = 0;
+
+  function gameLoop(timestamp) {
+    let dt = timestamp - lastTime;
+    lastTime = timestamp;
     ctx.clearRect(0, 0, GAME_HEIGHT, GAME_WIDTH);
 
+    game.update(dt);
     game.draw(ctx);
-    // game.update(dt);
     requestAnimationFrame(gameLoop);
   }
 

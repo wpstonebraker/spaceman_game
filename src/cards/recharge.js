@@ -3,8 +3,9 @@ import Card from "../card";
 export default class Recharge extends Card {
   constructor(game) {
     super(game);
-    this.cost = 2;
+    this.cost = 1;
     this.image = "assets/recharge.png";
+    this.description = `Charge your shields by 10`;
   }
 
   action() {
