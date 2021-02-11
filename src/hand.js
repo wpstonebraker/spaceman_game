@@ -2,7 +2,9 @@ import Card from "./card";
 import DrainShield from "./cards/drainShield";
 import LaserAttack from "./cards/laserAtk";
 import MissleAttack from "./cards/missleAtk";
+import Overcharge from "./cards/overcharge";
 import Recharge from "./cards/recharge";
+import SyphonEnergy from "./cards/syphonEnergy";
 
 export default class Hand {
   constructor(game) {
@@ -19,6 +21,12 @@ export default class Hand {
 
       new DrainShield(this.game),
       new DrainShield(this.game),
+
+      new Overcharge(this.game),
+      new Overcharge(this.game),
+
+      new SyphonEnergy(this.game),
+      new SyphonEnergy(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
     this.cardPile = this.deck.slice();

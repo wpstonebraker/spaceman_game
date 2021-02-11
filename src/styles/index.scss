@@ -1,9 +1,8 @@
-@import 'reset.css';
+@import "reset.css";
 
 * {
   font-family: "VT323";
 }
-
 
 #main-outer {
   display: flex;
@@ -34,10 +33,19 @@
   margin-top: 20px;
 }
 
+#text-panel {
+  display: flex;
+}
+
 #card-description {
   width: 400px;
   height: 50px;
   border: 1px solid blue;
+}
+#card-errors {
+  width: 400px;
+  height: 50px;
+  border: 1px solid red;
 }
 
 #player-hand {

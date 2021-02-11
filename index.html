@@ -34,7 +34,10 @@
     <div id="main-outer">
       <div id="main-inner">
         <canvas id="game-screen" width="1400" height="500"></canvas>
-        <div id="card-description"></div>
+        <div id="text-panel">
+          <div id="card-description"></div>
+          <div id="card-errors"></div>
+        </div>
         <div id="game-controls">
           <!-- <img src="assets/cockpitdash.png" alt="" /> -->
           <ul id="player-hand"></ul>
@@ -48,6 +51,9 @@
             </li>
             <li id="player-energy">
               Energy: <span id="player-energy-num"></span>
+            </li>
+            <li id="player-lasers">
+              Laser Power: <span id="player-lasers-num"></span>
             </li>
           </ul>
         </div>
