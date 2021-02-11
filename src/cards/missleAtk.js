@@ -1,4 +1,5 @@
 import Card from "../card";
+import Projectile from "../projectile";
 
 export default class MissleAttack extends Card {
   constructor(game) {
@@ -10,6 +11,12 @@ export default class MissleAttack extends Card {
     } damage vs Shields and half damage (${
       this.game.player.missles / 2
     }) vs Armor`;
+    this.position = {
+      x: this.game.player.laserPoint1,
+      y: this.game.player.laserPoint1,
+    };
+    this.sprite = document.getElementById("img_missle");
+    this.game = game;
   }
 
   action() {
@@ -18,5 +25,15 @@ export default class MissleAttack extends Card {
     else this.game.enemy.armor -= this.game.player.missles;
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
+    this.game.elements.push(
+      new Projectile(
+        this.position.x,
+        this.position.y,
+        this.sprite,
+        20,
+        3,
+        this.game
+      )
+    );
   }
 }
