@@ -8,6 +8,16 @@
   display: flex;
 }
 
+#cockpit-div {
+  display: flex;
+}
+
+#cockpit {
+  display: flex;
+  position: absolute;
+  left: 126px;
+}
+
 #main-inner {
   display: block;
   margin: auto;

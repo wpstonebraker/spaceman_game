@@ -3,12 +3,12 @@ export default class Player {
     this.image = document.getElementById("img_player");
     this.gameHeight = game.gameHeight;
     this.position = {
-      x: 100,
+      x: 200,
       //   y: game.gameHeight / 2 - this.height / 2,
-      y: 100,
+      y: 200,
     };
-    this.width = 256;
-    this.height = 256;
+    this.width = 128;
+    this.height = 128;
     this.shields = 100;
     this.armor = 100;
     this.maxEnergy = 3;

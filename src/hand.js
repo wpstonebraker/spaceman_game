@@ -97,6 +97,17 @@ export default class Hand {
       // if its the players turn, and the player has enough energy to play the card
       // play the card, add the card to the discard pile, delete the card from the hand, and re render
       listItem.addEventListener("click", () => {
+        // if a player doesnt have the energy to play the card
+        // display error message in error box
+        if (this.game.player.energy - card.cost < 0) {
+          document.getElementById("card-errors").innerText =
+            "Not enough energy";
+          setInterval(() => {
+            document.getElementById("card-errors").innerText = "";
+          }, 5000);
+        }
+
+        // if a player does
         if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
           card.action();
           this.discardPile.push(card);
