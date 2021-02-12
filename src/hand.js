@@ -17,9 +17,9 @@ export default class Hand {
       new LaserAttack(this.game),
       new LaserAttack(this.game),
 
-      // new MissleAttack(this.game),
-      // new MissleAttack(this.game),
-      // new MissleAttack(this.game),
+      new MissleAttack(this.game),
+      new MissleAttack(this.game),
+      new MissleAttack(this.game),
 
       // new DrainShield(this.game),
       // new DrainShield(this.game),
