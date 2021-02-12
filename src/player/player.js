@@ -7,8 +7,8 @@ export default class Player {
       //   y: game.gameHeight / 2 - this.height / 2,
       y: 200,
     };
-    this.width = 80;
-    this.height = 80;
+    this.width = 100;
+    this.height = 100;
     this.shields = 100;
     this.armor = 100;
     this.maxEnergy = 3;

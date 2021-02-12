@@ -24,10 +24,10 @@ export default class Shields {
       fY * this.height,
       this.width,
       this.height,
-      this.game.player.position.x - 50,
-      this.game.player.position.y - 50,
-      200,
-      200
+      this.game.player.position.x - 16,
+      this.game.player.position.y - 16,
+      130,
+      130
     );
   }
 

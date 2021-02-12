@@ -126,6 +126,21 @@ export default class Enemy {
           this.armor -= dmg;
         }
         break;
+      case "overcharge":
+        if (this.shields > this.game.player.lasers) {
+          dmg = this.game.player.lasers + 20;
+          this.shields -= dmg;
+        } else if (
+          this.shields !== 0 &&
+          this.shields <= this.game.player.lasers
+        ) {
+          dmg = this.shields;
+          this.shields = 0;
+        } else if (this.shields === 0) {
+          dmg = (this.game.player.lasers + 20) / 2;
+          this.armor -= dmg;
+        }
+        break;
       case "missle":
         if (this.shields > this.game.player.missles) {
           dmg = this.game.player.missles / 2;
@@ -140,6 +155,7 @@ export default class Enemy {
           dmg = this.game.player.missles;
           this.armor -= dmg;
         }
+
       default:
         break;
     }
