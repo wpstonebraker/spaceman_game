@@ -1,0 +1,16 @@
+.card {
+  animation-name: drawCard;
+  animation-duration: 3s;
+}
+
+@keyframes drawCard {
+  0% {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+
+  100% {
+    opactiy: 1;
+    transform: translate(0);
+  }
+}

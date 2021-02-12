@@ -85,6 +85,7 @@ export default class Hand {
       // create an img element and set it to the cards image
       const cardImg = document.createElement("img");
       cardImg.src = card.image;
+      cardImg.classList.add("card");
 
       // create an li and attach the img to it
       const listItem = document.createElement("li").appendChild(cardImg);

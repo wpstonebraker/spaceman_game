@@ -1,7 +1,6 @@
 import Card from "./card";
 import Enemy from "./enemy";
 import Hand from "./hand";
-import HandleInput from "./input";
 import Player from "./player";
 import PlayerStatus from "./player_status";
 import EnemyStatus from "./enemy_status";
