@@ -41,39 +41,48 @@
         <div id="dash-outer">
           <div id="dash-inner">
             <div id="dash-box">
-              <div id="text-panel">
+              <div id="left-panel">
                 <div id="player-status">
-                  <li id="player-shields">
+                  <div id="player-shields" class="dash-display">
                     Shields: <span id="player-shields-num"></span>
-                  </li>
-                  <li id="player-armor">
+                  </div>
+                  <div id="player-armor" class="dash-display">
                     Armor: <span id="player-armor-num"></span>
-                  </li>
-                  <li id="player-energy">
+                  </div>
+                  <div id="player-energy" class="dash-display">
                     Energy: <span id="player-energy-num"></span>
-                  </li>
-                  <li id="player-lasers">
+                  </div>
+                  <div id="player-lasers" class="dash-display">
                     Laser Power: <span id="player-lasers-num"></span>
-                  </li>
-                </div>
-                <div id="card-description"></div>
-                <div id="card-errors"></div>
-                <div id="enemy-status">
-                  <li id="enemy-shields">
-                    Shields: <span id="enemy-shields-num"></span>
-                  </li>
-                  <li id="enemy-armor">
-                    Armor: <span id="enemy-armor-num"></span>
-                  </li>
+                  </div>
                 </div>
               </div>
-              <div id="game-controls">
-                <!-- <img src="assets/cockpitdash.png" alt="" /> -->
-                <ul id="player-hand"></ul>
-                <div id="player-deck">
-                  <img src="assets/deck.png" alt="" />
+
+              <div id="center-panel">
+                <div class="top-row">
+                  <div id="card-description" class="dash-display"></div>
+                  <div id="end-turn-button">End Turn</div>
+                  <div id="card-errors" class="dash-display"></div>
                 </div>
-                <div id="end-turn-button">End Turn</div>
+                <div class="bottom-row">
+                  <div id="game-controls">
+                    <!-- <img src="assets/cockpitdash.png" alt="" /> -->
+                    <ul id="player-hand"></ul>
+                    <div id="player-deck">
+                      <img src="assets/deck.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="right-panel">
+                <div id="enemy-status">
+                  <div id="enemy-shields" class="dash-display">
+                    Shields: <span id="enemy-shields-num"></span>
+                  </div>
+                  <div id="enemy-armor" class="dash-display">
+                    Armor: <span id="enemy-armor-num"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

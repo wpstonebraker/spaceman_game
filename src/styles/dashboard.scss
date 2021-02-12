@@ -1,0 +1,87 @@
+#dash-outer {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+  width: 1400px;
+}
+
+#dash-inner {
+  display: flex;
+  margin: auto;
+  width: 100%;
+}
+
+#dash-box {
+  display: flex;
+  margin: auto;
+}
+
+#text-panel {
+  display: flex;
+  justify-content: space-around;
+
+  div {
+    border: 3px solid black;
+    background-color: #282828;
+  }
+}
+
+#left-panel {
+  border: 1px solid red;
+  color: #6f6;
+  width: 15%;
+  div {
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+#center-panel {
+  width: 1000px;
+  border: 1px solid blue;
+}
+
+#card-description {
+  width: 300px;
+  height: 80px;
+  font-size: 25px;
+  color: #6f6;
+}
+#card-errors {
+  width: 300px;
+  height: 80px;
+  font-size: 30px;
+  color: #ffbb00;
+}
+
+#end-turn-button {
+  background-color: red;
+  border: 3px solid black;
+  border-radius: 50%;
+  height: 50px;
+}
+
+#game-controls {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+#player-hand {
+  width: 70%;
+}
+
+#right-panel {
+  border: 1px solid red;
+}
+
+#enemy-status {
+  width: 150px;
+  color: #6f6;
+}
+
+.dash-display {
+  border: 3px solid black;
+  background-color: #282828;
+}

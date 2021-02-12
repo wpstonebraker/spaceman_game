@@ -81,6 +81,7 @@ export default class Hand {
     document.getElementById("player-hand").innerHTML = "";
 
     // iterate through the current hand
+  
     this.currentHand.forEach((card, i) => {
       // create an img element and set it to the cards image
       const cardImg = document.createElement("img");
@@ -88,6 +89,7 @@ export default class Hand {
       cardImg.classList.add("card");
 
       // create an li and attach the img to it
+      
       const listItem = document.createElement("li").appendChild(cardImg);
 
       // add a click listener to the li
@@ -114,14 +116,13 @@ export default class Hand {
       });
       listItem.addEventListener("mouseover", () => {
         document.getElementById(
-          "card-description"
+          "card-description" 
         ).innerText = `${card.description}`;
       });
       listItem.addEventListener("mouseout", () => {
         document.getElementById("card-description").innerText = ``;
       });
-
-      //
+      
       document.getElementById("player-hand").appendChild(listItem);
     });
   }
