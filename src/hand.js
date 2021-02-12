@@ -19,14 +19,14 @@ export default class Hand {
       new MissleAttack(this.game),
       new MissleAttack(this.game),
 
-      new DrainShield(this.game),
-      new DrainShield(this.game),
+      // new DrainShield(this.game),
+      // new DrainShield(this.game),
 
-      new Overcharge(this.game),
-      new Overcharge(this.game),
+      // new Overcharge(this.game),
+      // new Overcharge(this.game),
 
-      new SyphonEnergy(this.game),
-      new SyphonEnergy(this.game),
+      // new SyphonEnergy(this.game),
+      // new SyphonEnergy(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
     this.cardPile = this.deck.slice();
@@ -112,7 +112,15 @@ export default class Hand {
         }
 
         // if a player does
-        if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
+        if (
+          this.game.playerTurn &&
+          this.game.player.energy - card.cost >= 0 &&
+          this.disabled === false
+        ) {
+          this.disabled = true;
+          setTimeout(() => {
+            this.disabled = false;
+          }, 2000);
           card.action();
           this.discardPile.push(card);
           document.getElementById(`card-${i}`).classList.add("playCard");

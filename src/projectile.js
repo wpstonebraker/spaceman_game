@@ -1,12 +1,12 @@
 import Explosion from "./explosion";
 
 export default class Projectile {
-  constructor(x, y, sprite, width, height, game) {
+  constructor(x, y, sprite, width, height, speed, game) {
     this.position = {
       x: x,
       y: y,
     };
-    this.speed = 7;
+    this.speed = speed;
     this.sprite = sprite;
     this.width = width;
     this.height = height;

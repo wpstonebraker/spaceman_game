@@ -34,6 +34,7 @@ export default class LaserAttack extends Card {
         this.sprite,
         20,
         3,
+        7,
         this.game
       )
     );

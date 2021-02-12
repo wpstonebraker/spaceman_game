@@ -7,8 +7,8 @@ export default class Player {
       //   y: game.gameHeight / 2 - this.height / 2,
       y: 200,
     };
-    this.width = 128;
-    this.height = 128;
+    this.width = 80;
+    this.height = 80;
     this.shields = 100;
     this.armor = 100;
     this.maxEnergy = 3;
@@ -16,6 +16,8 @@ export default class Player {
     this.lasers = 10;
     this.missles = 10;
     this.laserPoint1 = 250;
+    // this.shieldX = this.position.x;
+    // this.shieldY = this.position.y;
     this.speed = 0.1;
   }
 

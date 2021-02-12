@@ -1,30 +1,33 @@
-export default class Explosion {
+export default class Shields {
   constructor(x, y, game) {
-    this.image = document.getElementById("img_explosion");
+    this.image = document.getElementById("img_shields");
     this.position = {
       x: x,
       y: y,
     };
-    this.width = 96;
-    this.height = 96;
+    this.width = 256;
+    this.height = 256;
     this.loop = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     this.loopIndex = 0;
     this.frames = 0;
     this.game = game;
-    debugger;
   }
 
+  // give it the image
+  // fX (nth frame x cord starts here (top left))
+  // fX (nth frame y cord starts here (top left))
   drawFrame(fX, fY, ctx) {
+    debugger;
     ctx.drawImage(
       this.image,
       fX * this.width,
       fY * this.height,
       this.width,
       this.height,
-      this.position.x - 50,
-      this.position.y - 50,
-      100,
-      100
+      this.game.player.position.x - 50,
+      this.game.player.position.y - 50,
+      200,
+      200
     );
   }
 

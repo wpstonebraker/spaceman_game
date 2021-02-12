@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "information.scss";
 @import "animations.scss";
 @import "dashboard.scss";
 @import "util.scss";
@@ -46,6 +47,8 @@
 #img_npc1,
 #img_laser,
 #img_missle,
-#img_explosion {
+#img_explosion,
+#img_shields,
+#img_npc1a1 {
   display: none;
 }

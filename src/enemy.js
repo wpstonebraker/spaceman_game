@@ -1,3 +1,5 @@
+import Projectile from "./projectile";
+
 export default class Enemy {
   constructor(game) {
     this.image = document.getElementById("img_npc1");
@@ -5,6 +7,8 @@ export default class Enemy {
       x: 1000,
       y: 100,
     };
+
+    this.sprite = document.getElementById("img_npc1a1");
 
     this.speed = 0.2;
 
@@ -65,6 +69,17 @@ export default class Enemy {
 
   attackLasers() {
     this.game.player.shields -= this.lasers;
+    this.game.elements.push(
+      new Projectile(
+        this.position.x,
+        this.position.y,
+        this.sprite,
+        32,
+        16,
+        -7,
+        this.game
+      )
+    );
     this.game.playerStatus.render();
   }
 

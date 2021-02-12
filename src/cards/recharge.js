@@ -1,4 +1,5 @@
 import Card from "../card";
+import Shields from "../shields";
 
 export default class Recharge extends Card {
   constructor(game) {
@@ -6,11 +7,19 @@ export default class Recharge extends Card {
     this.cost = 1;
     this.image = "assets/recharge.png";
     this.description = `Charge your shields by 5`;
+    this.game = game;
   }
 
   action() {
     this.game.player.shields += 5;
     this.game.player.energy -= this.cost;
+    this.game.elements.push(
+      new Shields(
+        this.game.player.position.x - 50,
+        this.game.player.position.y - 50,
+        this.game
+      )
+    );
     this.game.playerStatus.render();
   }
 }
