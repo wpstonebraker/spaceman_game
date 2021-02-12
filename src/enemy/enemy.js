@@ -66,7 +66,7 @@ export default class Enemy {
 
   heal() {
     document.getElementById("enemy-display").innerText =
-      "Starship X-22 boosts shields by 15";
+      "Enemy boosts shields by 15";
     setTimeout(() => {
       document.getElementById("enemy-display").innerText = "";
     }, 3000);
@@ -84,7 +84,7 @@ export default class Enemy {
   attackLasers() {
     document.getElementById(
       "enemy-display"
-    ).innerText = `Starship X-22 attacks for ${this.lasers} damage`;
+    ).innerText = `Enemy attacks for ${this.lasers} damage`;
     setTimeout(() => {
       document.getElementById("enemy-display").innerText = "";
     }, 3000);

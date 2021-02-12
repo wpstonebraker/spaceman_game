@@ -27,7 +27,7 @@ export default class Hand {
       new Overcharge(this.game),
       new Overcharge(this.game),
 
-      // new SyphonEnergy(this.game),
+      new SyphonEnergy(this.game),
       // new SyphonEnergy(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
