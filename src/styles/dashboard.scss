@@ -27,19 +27,27 @@
 }
 
 #left-panel {
-  border: 1px solid red;
   color: #6f6;
   width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   div {
-    height: 30px;
+    border-radius: 5px;
+    height: 100px;
     display: flex;
     flex-direction: column;
   }
 }
 
+#player-lasers-num,
+#player-missles-num {
+  margin: 3px;
+  font-size: 75px;
+}
+
 #center-panel {
   width: 1000px;
-  border: 1px solid blue;
 }
 
 #card-description {
@@ -59,7 +67,8 @@
   background-color: red;
   border: 3px solid black;
   border-radius: 50%;
-  height: 50px;
+  height: 65px;
+  width: 65px;
 }
 
 #game-controls {
@@ -73,7 +82,6 @@
 }
 
 #right-panel {
-  border: 1px solid red;
 }
 
 #enemy-status {

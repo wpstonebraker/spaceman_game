@@ -81,7 +81,7 @@ export default class Hand {
     document.getElementById("player-hand").innerHTML = "";
 
     // iterate through the current hand
-  
+
     this.currentHand.forEach((card, i) => {
       // create an img element and set it to the cards image
       const cardImg = document.createElement("img");
@@ -89,9 +89,9 @@ export default class Hand {
       cardImg.classList.add("card");
 
       // create an li and attach the img to it
-      
-      const listItem = document.createElement("li").appendChild(cardImg);
 
+      const listItem = document.createElement("li").appendChild(cardImg);
+      listItem.id = `card-${i}`;
       // add a click listener to the li
       // if its the players turn, and the player has enough energy to play the card
       // play the card, add the card to the discard pile, delete the card from the hand, and re render
@@ -110,19 +110,20 @@ export default class Hand {
         if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
           card.action();
           this.discardPile.push(card);
-          delete this.currentHand[i];
-          this.render();
+          document.getElementById(`card-${i}`).remove();
+          // delete this.currentHand[i];
+          // this.render();
         }
       });
       listItem.addEventListener("mouseover", () => {
         document.getElementById(
-          "card-description" 
+          "card-description"
         ).innerText = `${card.description}`;
       });
       listItem.addEventListener("mouseout", () => {
         document.getElementById("card-description").innerText = ``;
       });
-      
+
       document.getElementById("player-hand").appendChild(listItem);
     });
   }

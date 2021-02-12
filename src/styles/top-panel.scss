@@ -1,0 +1,35 @@
+#top-panel {
+  position: absolute;
+  width: 1000px;
+  display: flex;
+  margin-left: 200px;
+  justify-content: space-between;
+  background-color: transparent;
+
+  div {
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: #6f6;
+    margin: auto;
+
+    font-size: 20px;
+  }
+}
+
+.status-display {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#player-shields-num,
+#player-energy-num,
+#player-armor-num {
+  margin: 5px;
+  font-size: 50px;
+}

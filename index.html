@@ -26,7 +26,7 @@
   <body>
     <div id="canvas-images">
       <img id="img_background" src="assets/background.png" />
-      <img id="img_player" src="assets/johnship.png" />
+      <img id="img_player" src="assets/johnship2.png" />
       <img id="img_npc1" src="assets/badguy1.png" />
       <img id="img_laser" src="assets/laser.png" />
       <img id="img_missle" src="assets/missle.png" />
@@ -36,32 +36,47 @@
       <div id="main-inner">
         <div id="cockpit-div">
           <img src="assets/placeholder_dash.png" alt="" id="cockpit" />
+          <div id="top-panel">
+            <div id="player-shields" class="dash-display">
+              <p class="status-display">
+                Shields: <span id="player-shields-num"></span>
+              </p>
+            </div>
+            <div id="player-energy" class="dash-display">
+              <p class="status-display">
+                Energy: <span id="player-energy-num"></span>
+              </p>
+            </div>
+            <div id="player-armor" class="dash-display">
+              <p class="status-display">
+                Armor: <span id="player-armor-num"></span>
+              </p>
+            </div>
+          </div>
         </div>
         <canvas id="game-screen" width="1395" height="420"></canvas>
         <div id="dash-outer">
           <div id="dash-inner">
             <div id="dash-box">
               <div id="left-panel">
-                <div id="player-status">
-                  <div id="player-shields" class="dash-display">
-                    Shields: <span id="player-shields-num"></span>
-                  </div>
-                  <div id="player-armor" class="dash-display">
-                    Armor: <span id="player-armor-num"></span>
-                  </div>
-                  <div id="player-energy" class="dash-display">
-                    Energy: <span id="player-energy-num"></span>
-                  </div>
-                  <div id="player-lasers" class="dash-display">
-                    Laser Power: <span id="player-lasers-num"></span>
-                  </div>
+                <!-- <div id="player-status"> -->
+                <div id="player-lasers" class="dash-display">
+                  Laser Power:
+                  <span id="player-lasers-num" class="status-display"></span>
                 </div>
+                <div id="player-energy" class="dash-display">
+                  Missle Power:
+                  <span id="player-missles-num" class="status-display"></span>
+                </div>
+                <!-- </div> -->
               </div>
 
               <div id="center-panel">
                 <div class="top-row">
                   <div id="card-description" class="dash-display"></div>
-                  <div id="end-turn-button">End Turn</div>
+                  <div id="end-turn-button" class="status-display">
+                    End Turn
+                  </div>
                   <div id="card-errors" class="dash-display"></div>
                 </div>
                 <div class="bottom-row">

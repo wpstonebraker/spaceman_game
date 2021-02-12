@@ -12,6 +12,7 @@ export default class PlayerStatus {
     this.renderArmor();
     this.renderEnergy();
     this.renderLasers();
+    this.renderMissles();
   }
 
   renderShields() {
@@ -39,6 +40,11 @@ export default class PlayerStatus {
   renderLasers() {
     this.lasers = this.game.player.lasers;
     document.getElementById("player-lasers-num").innerText = `${this.lasers}`;
+  }
+
+  renderMissles() {
+    this.missles = this.game.player.missles;
+    document.getElementById("player-missles-num").innerText = `${this.missles}`;
   }
 
   // draw(ctx) {

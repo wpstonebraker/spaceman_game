@@ -2,9 +2,14 @@
 @import "animations.scss";
 @import "dashboard.scss";
 @import "util.scss";
+@import "top-panel.scss";
 
 * {
   font-family: "VT323";
+}
+
+#game-screen {
+  position: relative;
 }
 
 #main-outer {
