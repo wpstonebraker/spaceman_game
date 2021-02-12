@@ -10,8 +10,8 @@ export default class Hand {
   constructor(game) {
     this.game = game;
     const STARTING_CARDS = [
-      new Recharge(this.game),
-      new Recharge(this.game),
+      // new Recharge(this.game),
+      // new Recharge(this.game),
 
       new LaserAttack(this.game),
       new LaserAttack(this.game),
@@ -21,13 +21,13 @@ export default class Hand {
       new MissleAttack(this.game),
       new MissleAttack(this.game),
 
-      new DrainShield(this.game),
+      // new DrainShield(this.game),
       // new DrainShield(this.game),
 
-      new Overcharge(this.game),
+      // new Overcharge(this.game),
       // new Overcharge(this.game),
 
-      new SyphonEnergy(this.game),
+      // new SyphonEnergy(this.game),
       // new SyphonEnergy(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
@@ -123,7 +123,7 @@ export default class Hand {
           this.disabled = true;
           setTimeout(() => {
             this.disabled = false;
-          }, 2000);
+          }, 2500);
           card.action();
           this.discardPile.push(card);
           document.getElementById(`card-${i}`).classList.add("playCard");

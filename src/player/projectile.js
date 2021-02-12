@@ -1,7 +1,7 @@
 import Explosion from "../util/explosion";
 
 export default class Projectile {
-  constructor(x, y, sprite, width, height, speed, game) {
+  constructor(x, y, sprite, width, height, speed, game, atkType) {
     this.position = {
       x: x,
       y: y,
@@ -11,6 +11,7 @@ export default class Projectile {
     this.width = width;
     this.height = height;
     this.game = game;
+    this.atkType = atkType;
   }
 
   draw(ctx) {
@@ -28,6 +29,7 @@ export default class Projectile {
       this.game.elements.push(
         new Explosion(this.position.x, this.position.y, this.game)
       );
+      this.game.enemy.receiveDamage(this.atkType);
     }
   }
 

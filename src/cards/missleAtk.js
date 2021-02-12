@@ -17,12 +17,10 @@ export default class MissleAttack extends Card {
     };
     this.sprite = document.getElementById("img_missle");
     this.game = game;
+    this.atkType = "missle";
   }
 
   action() {
-    if (this.game.enemy.shields > 0)
-      this.game.enemy.shields -= this.game.player.missles / 2;
-    else this.game.enemy.armor -= this.game.player.missles;
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
     this.game.elements.push(
@@ -33,7 +31,8 @@ export default class MissleAttack extends Card {
         20,
         20,
         7,
-        this.game
+        this.game,
+        this.atkType
       )
     );
   }

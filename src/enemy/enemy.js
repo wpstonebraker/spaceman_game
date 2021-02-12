@@ -78,6 +78,7 @@ export default class Enemy {
         this.game
       )
     );
+    this.game.enemyStatus.render();
   }
 
   attackLasers() {
@@ -105,5 +106,48 @@ export default class Enemy {
   attackMissles() {
     this.game.player.armor -= this.missles;
     this.game.playerStatus.render();
+  }
+
+  receiveDamage(atkType) {
+    let dmg;
+    switch (atkType) {
+      case "laser":
+        if (this.shields > this.game.player.lasers) {
+          dmg = this.game.player.lasers;
+          this.shields -= dmg;
+        } else if (
+          this.shields !== 0 &&
+          this.shields <= this.game.player.lasers
+        ) {
+          dmg = this.shields;
+          this.shields = 0;
+        } else if (this.shields === 0) {
+          dmg = this.game.player.lasers / 2;
+          this.armor -= dmg;
+        }
+        break;
+      case "missle":
+        if (this.shields > this.game.player.missles) {
+          dmg = this.game.player.missles / 2;
+          this.shields -= dmg;
+        } else if (
+          this.shields !== 0 &&
+          this.shields <= this.game.player.missles
+        ) {
+          dmg = this.shields;
+          this.shields = 0;
+        } else if (this.shields === 0) {
+          dmg = this.game.player.missles;
+          this.armor -= dmg;
+        }
+      default:
+        break;
+    }
+
+    document.getElementById(
+      "enemy-display"
+    ).innerText = `Enemy receives ${dmg} damage!`;
+
+    this.game.enemyStatus.render();
   }
 }

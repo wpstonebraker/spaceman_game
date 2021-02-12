@@ -19,12 +19,10 @@ export default class LaserAttack extends Card {
     };
     this.sprite = document.getElementById("img_laser");
     this.game = game;
+    this.atkType = "laser";
   }
 
   action() {
-    if (this.game.enemy.shields > 0)
-      this.game.enemy.shields -= this.game.player.lasers;
-    else this.game.enemy.armor -= this.game.player.lasers / 2;
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
     this.game.elements.push(
@@ -35,7 +33,8 @@ export default class LaserAttack extends Card {
         20,
         3,
         7,
-        this.game
+        this.game,
+        this.atkType
       )
     );
   }
