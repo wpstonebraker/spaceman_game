@@ -1,5 +1,5 @@
-import Card from "../card";
-import Projectile from "../projectile";
+import Card from "./card";
+import Projectile from "../player/projectile";
 
 export default class MissleAttack extends Card {
   constructor(game) {

@@ -1,12 +1,9 @@
-import Card from "./card";
-import Enemy from "./enemy";
+import Card from "./cards/card";
+import Enemy from "./enemy/enemy";
 import Hand from "./hand";
-import Player from "./player";
-import PlayerStatus from "./player_status";
-import EnemyStatus from "./enemy_status";
-import LaserAttack from "./cards/laserAtk";
-import Recharge from "./cards/recharge";
-import Projectile from "./projectile";
+import Player from "./player/player";
+import PlayerStatus from "./player/player_status";
+import EnemyStatus from "./enemy/enemy_status";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -15,9 +12,6 @@ export default class Game {
     this.background = document.getElementById("img_background");
     this.playerTurn = true;
     this.projectiles = [];
-    // this.projectiles = [
-    //   new Projectile(200, 200, document.getElementById("img_laser"), 20, 3),
-    // ];
   }
 
   start() {

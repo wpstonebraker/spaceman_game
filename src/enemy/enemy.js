@@ -1,6 +1,5 @@
 import EnemyProjectile from "./enemyProjectile";
 import EnemyShields from "./enemyShields";
-import Projectile from "./projectile";
 
 export default class Enemy {
   constructor(game) {
@@ -20,7 +19,7 @@ export default class Enemy {
     this.height = 256;
     this.shields = 50;
     this.armor = 100;
-    this.lasers = 20;
+    this.lasers = 40;
     this.missles = 20;
     this.receiveAttack = this.position.x;
   }

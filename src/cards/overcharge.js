@@ -1,4 +1,4 @@
-import Card from "../card";
+import Card from "./card";
 
 export default class Overcharge extends Card {
   constructor(game) {

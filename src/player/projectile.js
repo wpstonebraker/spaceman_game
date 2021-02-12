@@ -1,4 +1,4 @@
-import Explosion from "./explosion";
+import Explosion from "../util/explosion";
 
 export default class Projectile {
   constructor(x, y, sprite, width, height, speed, game) {

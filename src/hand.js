@@ -1,4 +1,4 @@
-import Card from "./card";
+import Card from "./cards/card";
 import DrainShield from "./cards/drainShield";
 import LaserAttack from "./cards/laserAtk";
 import MissleAttack from "./cards/missleAtk";
