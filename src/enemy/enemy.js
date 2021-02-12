@@ -55,7 +55,7 @@ export default class Enemy {
   }
 
   action() {
-    if (this.shields < 25) {
+    if (this.shields === 0) {
       this.heal();
     } else if (this.game.player.shields > 0) {
       this.attackLasers();
@@ -127,12 +127,12 @@ export default class Enemy {
         }
         break;
       case "overcharge":
-        if (this.shields > this.game.player.lasers) {
+        if (this.shields > this.game.player.lasers + 20) {
           dmg = this.game.player.lasers + 20;
           this.shields -= dmg;
         } else if (
           this.shields !== 0 &&
-          this.shields <= this.game.player.lasers
+          this.shields <= this.game.player.lasers + 20
         ) {
           dmg = this.shields;
           this.shields = 0;
