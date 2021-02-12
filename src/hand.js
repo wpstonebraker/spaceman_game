@@ -34,6 +34,7 @@ export default class Hand {
     this.currentHand = [];
     this.discardPile = [];
     this.startTurn();
+    this.disabled = false;
   }
 
   // takes the players complete deck and SHUFFLES it into
@@ -98,19 +99,27 @@ export default class Hand {
       listItem.addEventListener("click", () => {
         // if a player doesnt have the energy to play the card
         // display error message in error box
+        // if (this.game.player.energy - card.cost < 0) {
+        //   document.getElementById("card-errors").innerText =
+        //     "Not enough energy";
+        //   setInterval(() => {
+        //     document.getElementById("card-errors").innerText = "";
+        //   }, 5000);
+        // }
         if (this.game.player.energy - card.cost < 0) {
-          document.getElementById("card-errors").innerText =
+          document.getElementById("card-description").innerText =
             "Not enough energy";
-          setInterval(() => {
-            document.getElementById("card-errors").innerText = "";
-          }, 5000);
         }
 
         // if a player does
         if (this.game.playerTurn && this.game.player.energy - card.cost >= 0) {
           card.action();
           this.discardPile.push(card);
-          document.getElementById(`card-${i}`).remove();
+          document.getElementById(`card-${i}`).classList.add("playCard");
+
+          setTimeout(() => {
+            document.getElementById(`card-${i}`).remove();
+          }, 1500);
           // delete this.currentHand[i];
           // this.render();
         }

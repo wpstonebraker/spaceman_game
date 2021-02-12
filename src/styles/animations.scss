@@ -3,6 +3,11 @@
   animation-duration: 2s;
 }
 
+.playCard {
+  animation-name: playCard;
+  animation-duration: 1.5s;
+}
+
 @keyframes drawCard {
   0% {
     opacity: 0;
@@ -16,5 +21,16 @@
   100% {
     opactiy: 1;
     transform: translate(0);
+  }
+}
+
+@keyframes playCard {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-150px);
   }
 }
