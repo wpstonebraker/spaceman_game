@@ -1,3 +1,5 @@
+import EnemyProjectile from "./enemyProjectile";
+import EnemyShields from "./enemyShields";
 import Projectile from "./projectile";
 
 export default class Enemy {
@@ -64,15 +66,33 @@ export default class Enemy {
   }
 
   heal() {
-    this.shields += 5;
+    document.getElementById("enemy-display").innerText =
+      "Starship X-22 boosts shields by 15";
+    setTimeout(() => {
+      document.getElementById("enemy-display").innerText = "";
+    }, 3000);
+    this.shields += 15;
+    this.game.elements.push(
+      new EnemyShields(
+        this.game.enemy.position.x - 50,
+        this.game.enemy.position.y - 50,
+        this.game
+      )
+    );
   }
 
   attackLasers() {
+    document.getElementById(
+      "enemy-display"
+    ).innerText = `Starship X-22 attacks for ${this.lasers} damage`;
+    setTimeout(() => {
+      document.getElementById("enemy-display").innerText = "";
+    }, 3000);
     this.game.player.shields -= this.lasers;
     this.game.elements.push(
-      new Projectile(
+      new EnemyProjectile(
         this.position.x,
-        this.position.y,
+        this.position.y + 120,
         this.sprite,
         32,
         16,

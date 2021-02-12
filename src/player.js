@@ -16,6 +16,7 @@ export default class Player {
     this.lasers = 10;
     this.missles = 10;
     this.laserPoint1 = 250;
+    this.receiveAttack = 250;
     // this.shieldX = this.position.x;
     // this.shieldY = this.position.y;
     this.speed = 0.1;
