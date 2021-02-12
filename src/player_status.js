@@ -5,7 +5,6 @@ export default class PlayerStatus {
     this.energy = game.player.energy;
     this.stats = [this.shields, this.armor, this.energy];
     this.render();
-    debugger;
   }
 
   render() {

@@ -31,7 +31,7 @@ export default class MissleAttack extends Card {
         this.position.y,
         this.sprite,
         20,
-        3,
+        20,
         this.game
       )
     );

@@ -1,8 +1,4 @@
-// export default class Projectile {
-//   constructor(x, y, velocity) {
-//     (this.x = x), (this.y = y), (this.velocity = velocity);
-//   }
-// }
+import Explosion from "./explosion";
 
 export default class Projectile {
   constructor(x, y, sprite, width, height, game) {
@@ -10,7 +6,7 @@ export default class Projectile {
       x: x,
       y: y,
     };
-    this.speed = 5;
+    this.speed = 7;
     this.sprite = sprite;
     this.width = width;
     this.height = height;
@@ -18,7 +14,6 @@ export default class Projectile {
   }
 
   draw(ctx) {
-    debugger;
     ctx.drawImage(
       this.sprite,
       this.position.x,
@@ -28,18 +23,15 @@ export default class Projectile {
     );
 
     if (this.position.x > this.game.enemy.receiveAttack) {
+      this.game.enemyStatus.render();
       this.game.elements.pop();
+      this.game.elements.push(
+        new Explosion(this.position.x, this.position.y, this.game)
+      );
     }
   }
 
   update(dt) {
-    debugger;
     this.position.x += this.speed;
   }
 }
-
-// if (this.position.x < this.game.enemy.receiveAttack) {
-
-// this.game.elements.push(
-//   new Projectile(this.position.x, this.position.y, this.sprite, 20, 3)
-// );

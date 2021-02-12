@@ -43,7 +43,6 @@ export default class Game {
 
   update(dt) {
     // this.enemy.update(dt);
-    debugger;
     this.elements.forEach((element) => element.update(dt));
   }
 
@@ -54,7 +53,6 @@ export default class Game {
   }
 
   draw(ctx) {
-    debugger;
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));
   }
