@@ -47,8 +47,21 @@ export default class Game {
 
   isOver() {
     if (this.enemy.armor === 0) {
-      this.enemy.image = "";
+      // const endScreen = document.createElement("div");
+      // endScreen.classList.add("end-screen");
+      // endScreen.innerText = "YOU WON!";
+      // document.getElementById("end-turn-button").appendChild(endScreen);
+      // this.enemy.image = "";
+      // document.getElementById("card-description").innerText = "YOU WIN!";
+      document.getElementById("enemy-display").innerText =
+        "ENEMY DESTROYED! YOU WIN!";
+      return true;
+    } else if (this.player.armor === 0) {
+      document.getElementById("enemy-display").innerText =
+        "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
+      return true;
     }
+    return false;
   }
 
   draw(ctx) {

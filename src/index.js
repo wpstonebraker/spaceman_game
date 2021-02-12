@@ -29,8 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     game.update(dt);
     game.draw(ctx);
-    requestAnimationFrame(gameLoop);
-    game.isOver();
+    if (!game.isOver()) {
+      requestAnimationFrame(gameLoop);
+    }
+    // game.isOver();
   }
 
   requestAnimationFrame(gameLoop);

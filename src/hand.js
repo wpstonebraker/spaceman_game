@@ -15,17 +15,19 @@ export default class Hand {
 
       new LaserAttack(this.game),
       new LaserAttack(this.game),
+      new LaserAttack(this.game),
 
       new MissleAttack(this.game),
       new MissleAttack(this.game),
+      new MissleAttack(this.game),
 
+      new DrainShield(this.game),
       // new DrainShield(this.game),
-      // new DrainShield(this.game),
 
-      // new Overcharge(this.game),
+      new Overcharge(this.game),
       // new Overcharge(this.game),
 
-      // new SyphonEnergy(this.game),
+      new SyphonEnergy(this.game),
       // new SyphonEnergy(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
@@ -49,6 +51,7 @@ export default class Hand {
 
   //
   startTurn() {
+    debugger;
     this.game.playerTurn = true;
     this.game.player.energy = this.game.player.maxEnergy;
     this.game.playerStatus.render();
