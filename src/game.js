@@ -30,7 +30,6 @@ export default class Game {
   computerTurn() {
     if (!this.playerTurn) {
       this.enemy.action();
-      this.hand.startTurn();
     }
   }
 
@@ -40,7 +39,7 @@ export default class Game {
   }
 
   isOver() {
-    if (this.enemy.armor === 0) {
+    if (this.enemy.armor <= 0) {
       // const endScreen = document.createElement("div");
       // endScreen.classList.add("end-screen");
       // endScreen.innerText = "YOU WON!";
@@ -49,10 +48,12 @@ export default class Game {
       // document.getElementById("card-description").innerText = "YOU WIN!";
       document.getElementById("enemy-display").innerText =
         "ENEMY DESTROYED! YOU WIN!";
+      this.hand.disabled = true;
       return true;
-    } else if (this.player.armor === 0) {
+    } else if (this.player.armor <= 0) {
       document.getElementById("enemy-display").innerText =
         "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
+      this.hand.disabled = true;
       return true;
     }
     return false;

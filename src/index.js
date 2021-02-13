@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
   game.start();
 
   document.getElementById("end-turn-button").addEventListener("click", () => {
-    game.hand.endTurn();
+    if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
+    // if (!game.hand.disabled) game.hand.endTurn();
   });
 
   function gameLoop(timestamp) {

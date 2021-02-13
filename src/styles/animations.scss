@@ -1,11 +1,16 @@
 .card {
   animation-name: drawCard;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
 }
 
 .playCard {
   animation-name: playCard;
   animation-duration: 1.5s;
+}
+
+.discardCard {
+  animation-name: discardCard;
+  animation-duration: 3s;
 }
 
 @keyframes drawCard {
@@ -32,5 +37,19 @@
   100% {
     opacity: 0;
     transform: translateY(-150px);
+  }
+}
+
+@keyframes discardCard {
+  0% {
+    opacity: 1;
+  }
+
+  10% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

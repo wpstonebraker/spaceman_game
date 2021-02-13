@@ -9,7 +9,8 @@ export default class Enemy {
       y: 100,
     };
 
-    this.sprite = document.getElementById("img_npc1a1");
+    this.laserSprite = document.getElementById("img_npc1a1");
+    this.missleSprite = document.getElementById("img_npc1a2");
 
     this.speed = 0.2;
 
@@ -18,9 +19,10 @@ export default class Enemy {
     this.width = 256;
     this.height = 256;
     this.shields = 50;
+    this.shieldCharge = 2;
     this.armor = 100;
     this.lasers = 40;
-    this.missles = 20;
+    this.missles = 40;
     this.receiveAttack = this.position.x;
   }
 
@@ -55,22 +57,39 @@ export default class Enemy {
   }
 
   action() {
-    if (this.shields === 0) {
+    debugger;
+    if (this.shields === 0 && this.shieldCharge > 0) {
       this.heal();
+    } else if (this.shieldCharge === 0) {
+      this.rechargeShields();
     } else if (this.game.player.shields > 0) {
       this.attackLasers();
     } else {
       this.attackMissles();
     }
+
+    setTimeout(() => {
+      this.game.hand.startTurn();
+    }, 2500);
   }
 
-  heal() {
+  rechargeShields() {
+    this.shieldCharge = 2;
     document.getElementById("enemy-display").innerText =
-      "Enemy boosts shields by 15";
+      "Recharging shield core...";
     setTimeout(() => {
       document.getElementById("enemy-display").innerText = "";
     }, 3000);
-    this.shields += 15;
+  }
+
+  heal() {
+    this.shieldCharge--;
+    document.getElementById("enemy-display").innerText =
+      "Enemy boosts shields by 20";
+    setTimeout(() => {
+      document.getElementById("enemy-display").innerText = "";
+    }, 3000);
+    this.shields += 20;
     this.game.elements.push(
       new EnemyShields(
         this.game.enemy.position.x - 50,
@@ -84,28 +103,43 @@ export default class Enemy {
   attackLasers() {
     document.getElementById(
       "enemy-display"
-    ).innerText = `Enemy attacks for ${this.lasers} damage`;
+    ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
     setTimeout(() => {
       document.getElementById("enemy-display").innerText = "";
     }, 3000);
-    this.game.player.shields -= this.lasers;
     this.game.elements.push(
       new EnemyProjectile(
         this.position.x,
         this.position.y + 120,
-        this.sprite,
+        this.laserSprite,
         32,
         16,
         -7,
-        this.game
+        this.game,
+        "laser"
       )
     );
-    this.game.playerStatus.render();
   }
 
   attackMissles() {
-    this.game.player.armor -= this.missles;
-    this.game.playerStatus.render();
+    document.getElementById(
+      "enemy-display"
+    ).innerText = `Enemy attacks for ${this.missles} projectile damage`;
+    setTimeout(() => {
+      document.getElementById("enemy-display").innerText = "";
+    }, 3000);
+    this.game.elements.push(
+      new EnemyProjectile(
+        this.position.x,
+        this.position.y + 120,
+        this.missleSprite,
+        50,
+        50,
+        -7,
+        this.game,
+        "missle"
+      )
+    );
   }
 
   receiveDamage(atkType) {

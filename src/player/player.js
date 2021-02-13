@@ -20,6 +20,45 @@ export default class Player {
     // this.shieldX = this.position.x;
     // this.shieldY = this.position.y;
     this.speed = 0.1;
+
+    this.game = game;
+  }
+
+  receiveDamage(atkType) {
+    let dmg;
+    switch (atkType) {
+      case "laser":
+        if (this.shields > this.game.enemy.lasers) {
+          dmg = this.game.enemy.lasers;
+          this.shields -= dmg;
+        } else if (
+          this.shields !== 0 &&
+          this.shields <= this.game.enemy.lasers
+        ) {
+          dmg = this.shields;
+          this.shields = 0;
+        } else if (this.shields === 0) {
+          dmg = this.game.enemy.lasers / 2;
+          this.armor -= dmg;
+        }
+        break;
+      case "missle":
+        if (this.shields > this.game.enemy.missles) {
+          dmg = this.game.enemy.missles / 2;
+          this.shields -= dmg;
+        } else if (
+          this.shields !== 0 &&
+          this.shields <= this.game.enemy.missles
+        ) {
+          dmg = this.shields;
+          this.shields = 0;
+        } else if (this.shields === 0) {
+          dmg = this.game.enemy.missles;
+          this.armor -= dmg;
+        }
+      default:
+        break;
+    }
   }
 
   draw(ctx) {

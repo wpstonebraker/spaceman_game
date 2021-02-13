@@ -53,6 +53,7 @@ export default class Hand {
   startTurn() {
     debugger;
     this.game.playerTurn = true;
+    this.disabled = false;
     this.game.player.energy = this.game.player.maxEnergy;
     this.game.playerStatus.render();
     for (let i = 0; i < 5; i++) {
@@ -63,6 +64,15 @@ export default class Hand {
   }
 
   endTurn() {
+    let discards = document.getElementById("player-hand").childNodes;
+    debugger;
+    // for (card of discards) {
+    //   card.classList.add("discardCard");
+    // }
+    discards.forEach((card) => {
+      card.classList.add("discardCard");
+    });
+
     // end the players turn
     this.game.playerTurn = false;
 
@@ -109,17 +119,14 @@ export default class Hand {
         //     document.getElementById("card-errors").innerText = "";
         //   }, 5000);
         // }
-        if (this.game.player.energy - card.cost < 0) {
-          document.getElementById("card-description").innerText =
-            "Not enough energy";
-        }
+        // if (this.game.player.energy - card.cost < 0) {
+        //   document.getElementById("card-description").innerText =
+        //     "Not enough energy";
+        // }
 
         // if a player does
-        if (
-          this.game.playerTurn &&
-          this.game.player.energy - card.cost >= 0 &&
-          this.disabled === false
-        ) {
+
+        if (this.game.playerTurn && card.check() && this.disabled === false) {
           this.disabled = true;
           setTimeout(() => {
             this.disabled = false;

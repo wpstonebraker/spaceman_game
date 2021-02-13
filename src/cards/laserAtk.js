@@ -6,11 +6,8 @@ export default class LaserAttack extends Card {
     super(game);
     this.cost = 1;
     this.image = "assets/laserAtk.png";
-    this.description = `Fire your lasers. Lasers do ${
-      this.game.player.lasers
-    } damage vs Shields and half damage (${
-      this.game.player.lasers / 2
-    }) vs Armor`;
+    this.description = `Fire your lasers. Lasers do full damage vs Shields and half damage vs Armor`;
+
     this.speed = 5;
     this.lastTime = 0;
     this.position = {
