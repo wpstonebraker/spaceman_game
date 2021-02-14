@@ -1,27 +1,30 @@
 export default class Player {
   constructor(game) {
-    this.image = document.getElementById("img_player");
+    this.image = document.getElementById("testship");
+    // this.image = document.getElementById("img_player");
     this.gameHeight = game.gameHeight;
     this.position = {
       x: 200,
       //   y: game.gameHeight / 2 - this.height / 2,
       y: 200,
     };
-    this.width = 100;
-    this.height = 100;
+    this.width = 64;
+    this.height = 64;
     this.shields = 100;
     this.armor = 100;
     this.maxEnergy = 3;
     this.energy = this.maxEnergy;
     this.lasers = 10;
     this.missles = 10;
-    this.laserPoint1 = 250;
+    this.laserPoint1 = this.position.x + 60;
     this.receiveAttack = 250;
     // this.shieldX = this.position.x;
     // this.shieldY = this.position.y;
     this.speed = 0.1;
 
     this.game = game;
+    this.loopIndex = 0;
+    this.frames = 0;
   }
 
   receiveDamage(atkType) {
@@ -61,24 +64,47 @@ export default class Player {
     }
   }
 
-  draw(ctx) {
+  drawFrame(fX, fY, ctx) {
+    debugger;
     ctx.drawImage(
       this.image,
-      this.position.x,
-      this.position.y,
+      fX * this.width,
+      fY * this.height,
       this.width,
-      this.height
+      this.height,
+      this.game.player.position.x,
+      this.game.player.position.y,
+      130,
+      130
     );
   }
 
+  draw(ctx) {
+    if (this.frames > 5) {
+      this.loopIndex += 1;
+      this.frames = 0;
+      this.drawFrame(this.loopIndex, 0, ctx);
+    } else {
+      this.drawFrame(this.loopIndex, 0, ctx);
+      this.frames += 1;
+    }
+
+    if (this.loopIndex === 5) {
+      this.loopIndex = 0;
+    }
+
+    // this.drawFrame(3, 0, this.position.x, this.position.y, ctx);
+    // this.drawFrame(4, 0, this.position.x, this.position.y, ctx);
+  }
+
   update(dt) {
-    if (this.position.y < 220) {
+    if (this.position.y < 210) {
       this.position.y += this.speed;
     } else {
       this.speed = -this.speed;
       this.position.y += this.speed;
     }
-    if (this.position.y > 180) {
+    if (this.position.y > 190) {
       this.position.y += this.speed;
     } else {
       this.speed = -this.speed;

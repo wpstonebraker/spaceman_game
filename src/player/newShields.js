@@ -1,6 +1,6 @@
-export default class Shields {
+export default class NewShields {
   constructor(x, y, game) {
-    this.image = document.getElementById("img_shields");
+    this.image = document.getElementById("img_newshields");
     this.position = {
       x: x,
       y: y,
@@ -40,7 +40,7 @@ export default class Shields {
       this.frames += 1;
     }
 
-    if (this.loopIndex > 11) {
+    if (this.loopIndex > 37) {
       this.game.elements.pop();
     }
 

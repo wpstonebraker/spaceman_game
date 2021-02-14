@@ -1,5 +1,5 @@
 import Card from "./card";
-import Shields from "../player/shields";
+import Shields from "../player/newShields";
 
 export default class Recharge extends Card {
   constructor(game) {
