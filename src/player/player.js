@@ -10,8 +10,8 @@ export default class Player {
     };
     this.width = 64;
     this.height = 64;
-    this.shields = 100;
-    this.armor = 100;
+    this.shields = 50;
+    this.armor = 50;
     this.maxEnergy = 3;
     this.energy = this.maxEnergy;
     this.lasers = 10;
@@ -41,12 +41,15 @@ export default class Player {
         if (this.shields > this.game.enemy.lasers) {
           dmg = this.game.enemy.lasers;
           this.shields -= dmg;
-        } else if (
-          this.shields !== 0 &&
-          this.shields <= this.game.enemy.lasers
-        ) {
-          dmg = this.shields;
+        } else if (this.shields - this.game.enemy.lasers < 0) {
+          dmg = -(this.shields - this.game.enemy.lasers);
+          this.armor -= dmg;
           this.shields = 0;
+          //   this.shields !== 0 &&
+          //   this.shields <= this.game.enemy.lasers
+          // ) {
+          //   dmg = this.shields;
+          //   this.shields = 0;
         } else if (this.shields === 0) {
           dmg = this.game.enemy.lasers / 2;
           this.armor -= dmg;

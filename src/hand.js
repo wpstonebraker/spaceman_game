@@ -37,10 +37,13 @@ export default class Hand {
     switch (startingCard) {
       case "overcharge":
         this.deck.push(new Overcharge(this.game));
+        break;
       case "syphon":
         this.deck.push(new SyphonEnergy(this.game));
+        break;
       case "update":
         this.deck.push(new InstallUpdate(this.game));
+        break;
       default:
         break;
     }

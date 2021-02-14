@@ -5,6 +5,7 @@ import Player from "./player/player";
 import PlayerStatus from "./player/player_status";
 import EnemyStatus from "./enemy/enemy_status";
 import Overcharge from "./cards/overcharge";
+import Explosion from "./util/explosion";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -56,6 +57,7 @@ export default class Game {
           "ENEMY DESTROYED! YOU WIN!";
         this.hand.disabled = true;
         return true;
+        this.elements = [];
       } else if (this.player.armor <= 0) {
         document.getElementById("enemy-display").innerText =
           "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
