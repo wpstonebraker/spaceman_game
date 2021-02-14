@@ -10,8 +10,8 @@ export default class Overcharge extends Card {
     this.description =
       "Sacrifice 20 shield points to boost your lasers by 20 for one attack";
     this.position = {
-      x: this.game.player.laserPoint1,
-      y: this.game.player.laserPoint1,
+      x: this.game.player.laserPos.x,
+      y: this.game.player.laserPos.y,
     };
     this.sprite = document.getElementById("img_laser");
     this.atkType = "overcharge";

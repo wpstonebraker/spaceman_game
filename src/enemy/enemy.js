@@ -23,7 +23,7 @@ export default class Enemy {
     this.armor = 100;
     this.lasers = 40;
     this.missles = 40;
-    this.receiveAttack = this.position.x;
+    this.receiveAttack = 1050;
   }
 
   draw(ctx) {
@@ -110,7 +110,7 @@ export default class Enemy {
     this.game.elements.push(
       new EnemyProjectile(
         this.position.x,
-        this.position.y + 120,
+        this.position.y + 190,
         this.laserSprite,
         32,
         16,

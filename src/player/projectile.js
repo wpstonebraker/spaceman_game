@@ -1,10 +1,11 @@
+import EnemyShields from "../enemy/enemyShields";
 import Explosion from "../util/explosion";
 
 export default class Projectile {
   constructor(x, y, sprite, width, height, speed, game, atkType) {
     this.position = {
-      x: x,
-      y: y,
+      x: x + game.player.position.x,
+      y: y + game.player.position.y,
     };
     this.speed = speed;
     this.sprite = sprite;
@@ -23,7 +24,17 @@ export default class Projectile {
       this.height
     );
 
-    if (this.position.x > this.game.enemy.receiveAttack) {
+    if (
+      this.game.enemy.shields > 0 &&
+      this.position.x > this.game.enemy.receiveAttack - 20
+    ) {
+      this.game.enemyStatus.render();
+      this.game.elements.pop();
+      this.game.elements.push(
+        new EnemyShields(this.position.x, this.position.y, this.game)
+      );
+      this.game.enemy.receiveDamage(this.atkType);
+    } else if (this.position.x > this.game.enemy.receiveAttack) {
       this.game.enemyStatus.render();
       this.game.elements.pop();
       this.game.elements.push(
@@ -34,6 +45,7 @@ export default class Projectile {
   }
 
   update(dt) {
+    debugger;
     this.position.x += this.speed;
   }
 }

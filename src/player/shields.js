@@ -23,15 +23,15 @@ export default class Shields {
       fY * this.height,
       this.width,
       this.height,
-      this.game.player.position.x - 16,
-      this.game.player.position.y - 16,
-      130,
-      130
+      this.game.player.position.x - 5,
+      this.game.player.position.y + 10,
+      150,
+      150
     );
   }
 
   draw(ctx) {
-    if (this.frames > 0) {
+    if (this.frames > 1) {
       this.loopIndex += 1;
       this.frames = 0;
       this.drawFrame(this.loopIndex, 0, ctx);

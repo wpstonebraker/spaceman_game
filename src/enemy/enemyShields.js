@@ -32,12 +32,13 @@ export default class EnemyShields {
   }
 
   draw(ctx) {
-    if (this.frames > 0) {
+    if (this.frames > 1) {
       this.loopIndex += 1;
       this.frames = 0;
       this.drawFrame(this.loopIndex, 0, ctx);
     } else {
-      this.frames += 1;
+      this.frames++;
+      this.drawFrame(this.loopIndex, 0, ctx);
     }
 
     if (this.loopIndex > 11) {

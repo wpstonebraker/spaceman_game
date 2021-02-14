@@ -8,8 +8,8 @@ export default class MissleAttack extends Card {
     this.image = "assets/missleAtk.png";
     this.description = `Fire your missles. Missles do full damage vs Armor and half damage vs Shields`;
     this.position = {
-      x: this.game.player.laserPoint1,
-      y: this.game.player.laserPoint1,
+      x: this.game.player.misslePos.x,
+      y: this.game.player.misslePos.y,
     };
     this.sprite = document.getElementById("img_missle");
     this.game = game;

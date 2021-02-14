@@ -29,12 +29,13 @@ export default class Explosion {
   }
 
   draw(ctx) {
-    if (this.frames > 0) {
-      this.loopIndex += 1;
+    if (this.frames > 1) {
+      this.loopIndex++;
       this.frames = 0;
       this.drawFrame(this.loopIndex, 0, ctx);
     } else {
-      this.frames += 1;
+      this.drawFrame(this.loopIndex, 0, ctx);
+      this.frames++;
     }
 
     if (this.loopIndex > 11) {

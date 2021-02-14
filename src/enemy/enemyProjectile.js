@@ -1,3 +1,4 @@
+import Shields from "../player/shields";
 import Explosion from "../util/explosion";
 
 export default class EnemyProjectile {
@@ -24,7 +25,17 @@ export default class EnemyProjectile {
       this.height
     );
 
-    if (this.position.x < this.game.player.receiveAttack) {
+    if (
+      this.game.player.shields > 0 &&
+      this.position.x < this.game.player.receiveAttack + 10
+    ) {
+      this.game.playerStatus.render();
+      this.game.elements.pop();
+      this.game.elements.push(
+        new Shields(this.position.x, this.position.y, this.game)
+      );
+      this.game.player.receiveDamage(this.atkType);
+    } else if (this.position.x < this.game.player.receiveAttack) {
       this.game.playerStatus.render();
       this.game.elements.pop();
       this.game.elements.push(

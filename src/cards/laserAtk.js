@@ -11,8 +11,8 @@ export default class LaserAttack extends Card {
     this.speed = 5;
     this.lastTime = 0;
     this.position = {
-      x: this.game.player.laserPoint1,
-      y: this.game.player.laserPoint1,
+      x: this.game.player.laserPos.x,
+      y: this.game.player.laserPos.y,
     };
     this.sprite = document.getElementById("img_laser");
     this.game = game;

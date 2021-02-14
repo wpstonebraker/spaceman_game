@@ -16,8 +16,15 @@ export default class Player {
     this.energy = this.maxEnergy;
     this.lasers = 10;
     this.missles = 10;
-    this.laserPoint1 = this.position.x + 60;
-    this.receiveAttack = 250;
+    this.laserPos = {
+      x: 115,
+      y: 100,
+    };
+    this.misslePos = {
+      x: 90,
+      y: 105,
+    };
+    this.receiveAttack = 305;
     // this.shieldX = this.position.x;
     // this.shieldY = this.position.y;
     this.speed = 0.1;
@@ -65,7 +72,6 @@ export default class Player {
   }
 
   drawFrame(fX, fY, ctx) {
-    debugger;
     ctx.drawImage(
       this.image,
       fX * this.width,
