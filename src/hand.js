@@ -1,5 +1,6 @@
 import Card from "./cards/card";
 import DrainShield from "./cards/drainShield";
+import InstallUpdate from "./cards/installUpdate";
 import LaserAttack from "./cards/laserAtk";
 import MissleAttack from "./cards/missleAtk";
 import Overcharge from "./cards/overcharge";
@@ -7,11 +8,12 @@ import Recharge from "./cards/recharge";
 import SyphonEnergy from "./cards/syphonEnergy";
 
 export default class Hand {
-  constructor(game) {
+  constructor(game, startingCard) {
     this.game = game;
     const STARTING_CARDS = [
       new Recharge(this.game),
       new Recharge(this.game),
+      new Recharge(this.game),
 
       new LaserAttack(this.game),
       new LaserAttack(this.game),
@@ -20,23 +22,28 @@ export default class Hand {
       new MissleAttack(this.game),
       new MissleAttack(this.game),
       new MissleAttack(this.game),
-
-      // new DrainShield(this.game),
-      // new DrainShield(this.game),
-
-      new Overcharge(this.game),
-      new Overcharge(this.game),
-
-      new SyphonEnergy(this.game),
-      // new SyphonEnergy(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
     this.cardPile = this.deck.slice();
     this.playerCards = [];
     this.currentHand = [];
     this.discardPile = [];
-    this.startTurn();
     this.disabled = false;
+    this.initializeDeck(startingCard);
+    this.startTurn();
+  }
+
+  initializeDeck(startingCard) {
+    switch (startingCard) {
+      case "overcharge":
+        this.deck.push(new Overcharge(this.game));
+      case "syphon":
+        this.deck.push(new SyphonEnergy(this.game));
+      case "update":
+        this.deck.push(new InstallUpdate(this.game));
+      default:
+        break;
+    }
   }
 
   // takes the players complete deck and SHUFFLES it into

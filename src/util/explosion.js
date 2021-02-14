@@ -2,8 +2,8 @@ export default class Explosion {
   constructor(x, y, game) {
     this.image = document.getElementById("img_explosion");
     this.position = {
-      x: x,
-      y: y,
+      x,
+      y,
     };
     this.width = 96;
     this.height = 96;

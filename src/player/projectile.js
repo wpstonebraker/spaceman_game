@@ -45,7 +45,6 @@ export default class Projectile {
   }
 
   update(dt) {
-    debugger;
     this.position.x += this.speed;
   }
 }

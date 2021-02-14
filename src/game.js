@@ -4,6 +4,7 @@ import Hand from "./hand";
 import Player from "./player/player";
 import PlayerStatus from "./player/player_status";
 import EnemyStatus from "./enemy/enemy_status";
+import Overcharge from "./cards/overcharge";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -12,15 +13,19 @@ export default class Game {
     this.background = document.getElementById("img_background");
     this.playerTurn = true;
     this.projectiles = [];
+    // this.startingCard = startingCard;
+    this.elements = [];
+    this.hasStarted = false;
   }
 
-  start() {
+  start(startingCard) {
+    this.hasStarted = true;
     this.player = new Player(this);
 
     this.enemy = new Enemy(this);
     this.playerStatus = new PlayerStatus(this);
 
-    this.hand = new Hand(this);
+    this.hand = new Hand(this, startingCard);
 
     this.enemyStatus = new EnemyStatus(this);
 
@@ -39,24 +44,26 @@ export default class Game {
   }
 
   isOver() {
-    if (this.enemy.armor <= 0) {
-      // const endScreen = document.createElement("div");
-      // endScreen.classList.add("end-screen");
-      // endScreen.innerText = "YOU WON!";
-      // document.getElementById("end-turn-button").appendChild(endScreen);
-      // this.enemy.image = "";
-      // document.getElementById("card-description").innerText = "YOU WIN!";
-      document.getElementById("enemy-display").innerText =
-        "ENEMY DESTROYED! YOU WIN!";
-      this.hand.disabled = true;
-      return true;
-    } else if (this.player.armor <= 0) {
-      document.getElementById("enemy-display").innerText =
-        "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
-      this.hand.disabled = true;
-      return true;
+    if (this.hasStarted) {
+      if (this.enemy.armor <= 0) {
+        // const endScreen = document.createElement("div");
+        // endScreen.classList.add("end-screen");
+        // endScreen.innerText = "YOU WON!";
+        // document.getElementById("end-turn-button").appendChild(endScreen);
+        // this.enemy.image = "";
+        // document.getElementById("card-description").innerText = "YOU WIN!";
+        document.getElementById("enemy-display").innerText =
+          "ENEMY DESTROYED! YOU WIN!";
+        this.hand.disabled = true;
+        return true;
+      } else if (this.player.armor <= 0) {
+        document.getElementById("enemy-display").innerText =
+          "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
+        this.hand.disabled = true;
+        return true;
+      }
+      return false;
     }
-    return false;
   }
 
   draw(ctx) {

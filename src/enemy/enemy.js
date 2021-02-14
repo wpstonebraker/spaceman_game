@@ -176,7 +176,7 @@ export default class Enemy {
         }
         break;
       case "missle":
-        if (this.shields > this.game.player.missles) {
+        if (this.shields > this.game.player.missles / 2) {
           dmg = this.game.player.missles / 2;
           this.shields -= dmg;
         } else if (

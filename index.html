@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./dist/main.css" />
-    <title>spaceman game</title>
+    <title>Space Dad</title>
     <script src="./dist/main.js"></script>
     <style>
       /* #game-screen {
@@ -36,10 +36,13 @@
       <img id="img_npc1a2" src="assets/npcattack2.png" />
       <img id="img_npc1shields" src="assets/enemyshieldsss.png" />
       <img id="img_newshields" src="assets/trynewshields.png" />
-      <img id="testship" src="assets/newship.png" />
+      <img id="testship" src="assets/blueship.png" />
     </div>
     <div id="information-box">
-      <div id="information"></div>
+      <div id="information">
+        <!-- <button id="rules-button"><a href="#rules">aogisdjgblksjdfgblkjaslkgj</a></button> -->
+        <button id="rules-button">Rules and Game Start</button>
+      </div>
     </div>
     <div id="main-outer">
       <div id="main-inner">
@@ -112,4 +115,54 @@
       </div>
     </div>
   </body>
+
+  <div class="popup hidden" id="rules">
+    <div class="popup-content">
+      <div id="popup-top-row">
+        <a href="/">X</a>
+        <div id="description">
+          Space. Alone. A Dad trying to make his way home encounters a massive
+          alien base. You alone have control over his ship. Will Space Dad make
+          it home in time for dinner? Or will Space Dad... be dinner?
+        </div>
+        <div id="rules-div">
+          Spacedad is turn-based card game. Your premade deck includes 6 attack
+          cards, 3 defensive cards, and your choice of a power card. You begin
+          the game with 3 energy per turn; each card has an energy cost that
+          detracts from that turns energy. Once you're out of energy (or before,
+          if you'd like), click the "End Turn" button and the enemy will play
+          their turn. At the start of your turn, you will draw 5 new cards from
+          your deck of 10 cards. Tip: hover over a card for a description of
+          what it does!
+          <span> Select your Power Card:</span>
+        </div>
+      </div>
+      <div id="popup-bottom-row">
+        <img
+          src="assets/overcharge.png"
+          id="overcharge"
+          alt=""
+          title="Fire a charged laser at the cost of shields"
+        />
+        <img
+          src="assets/syphonEnergy.png"
+          id="syphon"
+          alt=""
+          title="Boost laser damage at the cost of energy"
+        />
+        <img
+          src="assets/installUpdate.png"
+          id="update"
+          alt=""
+          title="Increase max energy (one time use)"
+        />
+        <div id="popup-card-description"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- &:target {
+    opacity: 1;
+    visibility: visible;
+  } -->
 </html>

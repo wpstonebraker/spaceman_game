@@ -2,8 +2,8 @@ export default class Shields {
   constructor(x, y, game) {
     this.image = document.getElementById("img_shields");
     this.position = {
-      x: x,
-      y: y,
+      x,
+      y,
     };
     this.width = 256;
     this.height = 256;

@@ -9,17 +9,34 @@ import "./styles/index.scss";
 // });
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("rules-button").addEventListener("click", () => {
+    document.getElementById("rules").classList.remove("hidden");
+    document.getElementById("rules").classList.add("visible");
+  });
+
+  const GAME_WIDTH = 1400;
+  const GAME_HEIGHT = 500;
+  let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  const startingCards = Array.from(
+    document.getElementById("popup-bottom-row").children
+  );
+
+  startingCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      game.start(card.id);
+      document.getElementById("rules").classList.remove("visible");
+      document.getElementById("rules").classList.add("hidden");
+    });
+  });
+
   let canvas = document.getElementById("game-screen");
   let ctx = canvas.getContext("2d");
   let lastTime = 0;
   let frames = 0;
 
-  const GAME_WIDTH = 1400;
-  const GAME_HEIGHT = 500;
-  let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-  game.start();
+  const endTurn = document.getElementById("end-turn-button");
 
-  document.getElementById("end-turn-button").addEventListener("click", () => {
+  endTurn.addEventListener("click", () => {
     if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
     // if (!game.hand.disabled) game.hand.endTurn();
   });

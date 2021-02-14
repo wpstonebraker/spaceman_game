@@ -1,5 +1,50 @@
 .top-row {
-    display: flex;
-    margin: auto;
-    justify-content: space-around;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.disabled-btn {
+  background-color: grey;
+}
+.active-btn {
+  background-color: red;
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 500;
+  transition: all 0.2s;
+}
+
+.popup-content {
+  @include absCenter;
+  width: 75%;
+  background-color: white;
+  height: 50vh;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  font-size: 20px;
 }
