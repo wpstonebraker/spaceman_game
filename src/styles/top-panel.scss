@@ -1,12 +1,14 @@
 #top-panel {
+  margin-left: 100px;
   position: absolute;
-  height: 500px;
-  width: 200px;
+  height: 100px;
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .status-display {
   display: flex;
-  margin-top: 10px;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -21,22 +23,16 @@
   font-size: 40px;
 }
 
-#player-shields {
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  width: 110px;
-  height: 60px;
-  color: #6f6;
+#player-shields,
+#player-armor {
+  margin-top: 10px;
+  height: 50px;
+  width: 100px;
 }
 
+#player-shields {
+}
 #player-armor {
-  position: absolute;
-  top: 65%;
-  left: 32%;
-  width: 110px;
-  height: 60px;
-  color: #6f6;
 }
 
 #player-energy {

@@ -47,7 +47,7 @@
     <div id="main-outer">
       <div id="main-inner">
         <div id="cockpit-div">
-          <img src="assets/dadDash.png" alt="" id="cockpit" />
+          <img src="assets/dadDash5.png" alt="" id="cockpit" />
           <div id="top-panel">
             <div id="player-shields" class="dash-display">
               <p class="status-display">
@@ -72,29 +72,30 @@
             <div id="dash-box">
               <div id="left-panel">
                 <div id="player-lasers" class="dash-display">
-                  Laser Power:
+                  &nbsp; &nbsp; Laser Power:
                   <span id="player-lasers-num" class="status-display"></span>
-                  Missle Power:
+                  &nbsp; &nbsp; Missle Power:
                   <span id="player-missles-num" class="status-display"></span>
                 </div>
               </div>
 
               <div id="center-panel">
                 <div class="top-row">
-                  <div id="card-description" class="dash-display"></div>
-                  <div id="end-turn-button" class="status-display">
-                    End Turn
-                  </div>
-                  <div id="enemy-display" class="dash-display"></div>
-                </div>
-                <div class="bottom-row">
                   <div id="game-controls">
                     <!-- <img src="assets/cockpitdash.png" alt="" /> -->
                     <ul id="player-hand"></ul>
                     <div id="player-deck">
                       <img src="assets/deck.png" alt="" />
+                      <span id="deck-size"></span>
                     </div>
                   </div>
+                </div>
+                <div class="top-row">
+                  <div id="card-description" class="dash-display"></div>
+                  <div id="end-turn-button" class="status-display">
+                    End Turn
+                  </div>
+                  <div id="enemy-display" class="dash-display"></div>
                 </div>
               </div>
               <div id="right-panel">
@@ -157,14 +158,21 @@
     </div>
   </div>
 
-  <!-- div {
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100px;
-    height: 50px;
-    border-radius: 3px;
+  <!-- #player-shields {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    width: 110px;
+    height: 60px;
     color: #6f6;
-
-    font-size: 20px;
+  }
+  
+  #player-armor {
+    position: absolute;
+    top: 65%;
+    left: 32%;
+    width: 110px;
+    height: 60px;
+    color: #6f6;
   } -->
 </html>
