@@ -144,50 +144,57 @@ export default class Enemy {
 
   receiveDamage(atkType) {
     let dmg;
+    let type;
+    debugger;
     switch (atkType) {
       case "laser":
-        if (this.shields > this.game.player.lasers) {
+        if (this.shields >= this.game.player.lasers) {
           dmg = this.game.player.lasers;
+          type = "shields";
           this.shields -= dmg;
-        } else if (
-          this.shields !== 0 &&
-          this.shields <= this.game.player.lasers
-        ) {
-          dmg = this.shields;
+        } else if (this.shields - this.game.player.lasers < 0) {
+          dmg = -(this.shields - this.game.player.lasers);
+          this.armor -= dmg;
           this.shields = 0;
+          type = "armor";
         } else if (this.shields === 0) {
           dmg = this.game.player.lasers / 2;
           this.armor -= dmg;
+          type = "armor";
         }
         break;
       case "overcharge":
-        if (this.shields > this.game.player.lasers + 20) {
+        if (this.shields >= this.game.player.lasers + 20) {
           dmg = this.game.player.lasers + 20;
           this.shields -= dmg;
-        } else if (
-          this.shields !== 0 &&
-          this.shields <= this.game.player.lasers + 20
-        ) {
-          dmg = this.shields;
+          type = "shields";
+        } else if (this.shields - (this.game.player.lasers + 20) < 0) {
+          dmg = -(this.shields - (this.game.player.lasers + 20));
+          this.armor -= dm / 2;
           this.shields = 0;
+          type = "armor";
         } else if (this.shields === 0) {
           dmg = (this.game.player.lasers + 20) / 2;
           this.armor -= dmg;
+          type = "armor";
         }
         break;
       case "missle":
         if (this.shields > this.game.player.missles / 2) {
           dmg = this.game.player.missles / 2;
           this.shields -= dmg;
+          type = "shields";
         } else if (
           this.shields !== 0 &&
           this.shields <= this.game.player.missles
         ) {
           dmg = this.shields;
           this.shields = 0;
+          type = "armor";
         } else if (this.shields === 0) {
           dmg = this.game.player.missles;
           this.armor -= dmg;
+          type = "armor";
         }
 
       default:
@@ -196,7 +203,7 @@ export default class Enemy {
 
     document.getElementById(
       "enemy-display"
-    ).innerText = `Enemy receives ${dmg} damage!`;
+    ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
 
     this.game.enemyStatus.render();
   }

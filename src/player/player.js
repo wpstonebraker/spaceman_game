@@ -38,12 +38,12 @@ export default class Player {
     let dmg;
     switch (atkType) {
       case "laser":
-        if (this.shields > this.game.enemy.lasers) {
+        if (this.shields >= this.game.enemy.lasers) {
           dmg = this.game.enemy.lasers;
           this.shields -= dmg;
         } else if (this.shields - this.game.enemy.lasers < 0) {
           dmg = -(this.shields - this.game.enemy.lasers);
-          this.armor -= dmg;
+          this.armor -= dmg / 2;
           this.shields = 0;
           //   this.shields !== 0 &&
           //   this.shields <= this.game.enemy.lasers

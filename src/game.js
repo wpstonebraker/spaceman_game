@@ -57,7 +57,6 @@ export default class Game {
           "ENEMY DESTROYED! YOU WIN!";
         this.hand.disabled = true;
         return true;
-        this.elements = [];
       } else if (this.player.armor <= 0) {
         document.getElementById("enemy-display").innerText =
           "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";

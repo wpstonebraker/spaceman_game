@@ -47,40 +47,36 @@
     <div id="main-outer">
       <div id="main-inner">
         <div id="cockpit-div">
-          <img src="assets/placeholder_dash.png" alt="" id="cockpit" />
+          <img src="assets/dadDash.png" alt="" id="cockpit" />
           <div id="top-panel">
             <div id="player-shields" class="dash-display">
               <p class="status-display">
-                Shields: <span id="player-shields-num"></span>
-              </p>
-            </div>
-            <div id="player-energy" class="dash-display">
-              <p class="status-display">
-                Energy: <span id="player-energy-num"></span>
+                <span id="player-shields-num"></span>
               </p>
             </div>
             <div id="player-armor" class="dash-display">
               <p class="status-display">
-                Armor: <span id="player-armor-num"></span>
+                <span id="player-armor-num"></span>
               </p>
             </div>
           </div>
+        </div>
+        <div id="player-energy" class="dash-display">
+          <p class="status-display">
+            Energy: <span id="player-energy-num"></span>
+          </p>
         </div>
         <canvas id="game-screen" width="1395" height="420"></canvas>
         <div id="dash-outer">
           <div id="dash-inner">
             <div id="dash-box">
               <div id="left-panel">
-                <!-- <div id="player-status"> -->
                 <div id="player-lasers" class="dash-display">
                   Laser Power:
                   <span id="player-lasers-num" class="status-display"></span>
-                </div>
-                <div id="player-energy" class="dash-display">
                   Missle Power:
                   <span id="player-missles-num" class="status-display"></span>
                 </div>
-                <!-- </div> -->
               </div>
 
               <div id="center-panel">
@@ -103,10 +99,8 @@
               </div>
               <div id="right-panel">
                 <div id="enemy-shields" class="dash-display">
-                  Shields: <span id="enemy-shields-num"></span>
-                </div>
-                <div id="enemy-armor" class="dash-display">
-                  Armor: <span id="enemy-armor-num"></span>
+                  Shields: <span id="enemy-shields-num"></span> Armor:
+                  <span id="enemy-armor-num"></span>
                 </div>
               </div>
             </div>
@@ -128,7 +122,7 @@
           be... dinner?
         </div>
         <div id="rules-div">
-          Spacedad is turn-based card game. Your premade deck includes 6 attack
+          Space Dad is turn-based card game. Your premade deck includes 6 attack
           cards, 3 defensive cards, and your choice of a power card. You begin
           the game with 3 energy per turn; each card has an energy cost that
           detracts from that turns energy. Once you're out of energy (or before,
@@ -163,8 +157,14 @@
     </div>
   </div>
 
-  <!-- &:target {
-    opacity: 1;
-    visibility: visible;
+  <!-- div {
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100px;
+    height: 50px;
+    border-radius: 3px;
+    color: #6f6;
+
+    font-size: 20px;
   } -->
 </html>
