@@ -22,14 +22,14 @@ export default class LaserAttack extends Card {
   action() {
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
-    this.game.elements.push(
+    this.game.projectiles.push(
       new Projectile(
         this.position.x,
         this.position.y,
         this.sprite,
         20,
         3,
-        7,
+        20,
         this.game,
         this.atkType
       )

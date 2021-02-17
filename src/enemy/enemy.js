@@ -63,11 +63,13 @@ export default class Enemy {
   action() {
     const rand = Math.random();
 
-    if (rand < 1) {
-      // if (rand < 0.33) {
+    // if (rand < 1) {
+    if (rand < 0.33) {
       debugger;
       this.dudCards();
-      this.game.hand.startTurn();
+      setTimeout(() => {
+        this.game.hand.startTurn();
+      }, 2500);
       return;
     }
 
@@ -131,14 +133,14 @@ export default class Enemy {
     setTimeout(() => {
       document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
-    this.game.elements.push(
+    this.game.projectiles.push(
       new EnemyProjectile(
         this.position.x,
         this.position.y + 190,
         this.laserSprite,
         32,
         16,
-        -7,
+        -15,
         this.game,
         "laser"
       )
@@ -152,14 +154,14 @@ export default class Enemy {
     setTimeout(() => {
       document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
-    this.game.elements.push(
+    this.game.projectiles.push(
       new EnemyProjectile(
         this.position.x,
         this.position.y + 190,
         this.missleSprite,
         50,
         50,
-        -7,
+        -10,
         this.game,
         "missle"
       )
@@ -196,7 +198,7 @@ export default class Enemy {
           type = "shields";
         } else if (this.shields - (this.game.player.lasers + 20) < 0) {
           dmg = -(this.shields - (this.game.player.lasers + 20));
-          this.armor -= dm / 2;
+          this.armor -= dmg / 2;
           this.shields = 0;
           type = "armor";
         } else if (this.shields === 0) {

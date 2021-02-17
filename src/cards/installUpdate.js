@@ -18,7 +18,7 @@ export default class InstallUpdate extends Card {
     this.game.playerStatus.render();
     debugger;
     this.game.elements.push(
-      new Animation(this.sprite, 50, 0, 64, 64, 12, 4, this.game)
+      new Animation(this.sprite, 50, 0, 64, 64, 12, 6, this.game)
     );
     debugger;
     const idx = this.game.hand.deck.indexOf(this);

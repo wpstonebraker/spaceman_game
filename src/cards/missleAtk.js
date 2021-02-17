@@ -19,14 +19,14 @@ export default class MissleAttack extends Card {
   action() {
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
-    this.game.elements.push(
+    this.game.projectiles.push(
       new Projectile(
         this.position.x,
         this.position.y,
         this.sprite,
         20,
         20,
-        7,
+        10,
         this.game,
         this.atkType
       )

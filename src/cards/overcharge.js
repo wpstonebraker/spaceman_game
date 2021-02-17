@@ -19,13 +19,13 @@ export default class Overcharge extends Card {
 
   check() {
     if (this.game.player.energy - this.cost < 0) {
-      document.getElementById("card-description").innerText =
+      document.getElementById("card-description-span").innerText =
         "Not enough energy";
       return false;
     }
 
     if (this.game.player.shields - this.power < 0) {
-      document.getElementById("card-description").innerText =
+      document.getElementById("card-description-span").innerText =
         "Need at least 20 shields";
       return false;
     }
@@ -38,14 +38,14 @@ export default class Overcharge extends Card {
     this.game.player.shields -= 20;
     this.game.player.energy -= this.cost;
     this.game.playerStatus.render();
-    this.game.elements.push(
+    this.game.projectiles.push(
       new Projectile(
         this.position.x,
         this.position.y,
         this.sprite,
         20,
         6,
-        7,
+        20,
         this.game,
         this.atkType
       )

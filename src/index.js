@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("rules-pic-box").classList.add("visible");
   });
 
-  document.getElementById("rules-pic").addEventListener("click", () => {
+  document.getElementById("rules-pic-box").addEventListener("click", () => {
     document.getElementById("rules-pic-box").classList.add("hidden");
   });
 
@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   endTurn.addEventListener("click", () => {
     debugger;
-    if (game.playerTurn) game.hand.endTurn();
-    // if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
+    if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
+    // if (game.playerTurn) game.hand.endTurn();
     // if (!game.hand.disabled) game.hand.endTurn();
   });
 

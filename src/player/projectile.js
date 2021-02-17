@@ -29,14 +29,14 @@ export default class Projectile {
       this.position.x > this.game.enemy.receiveAttack - 20
     ) {
       this.game.enemyStatus.render();
-      this.game.elements.pop();
+      this.game.projectiles.pop();
       this.game.elements.push(
         new EnemyShields(this.position.x, this.position.y, this.game)
       );
       this.game.enemy.receiveDamage(this.atkType);
     } else if (this.position.x > this.game.enemy.receiveAttack) {
       this.game.enemyStatus.render();
-      this.game.elements.pop();
+      this.game.projectiles.pop();
       this.game.elements.push(
         new Explosion(this.position.x, this.position.y, this.game)
       );

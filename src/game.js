@@ -30,7 +30,7 @@ export default class Game {
 
     this.enemyStatus = new EnemyStatus(this);
 
-    this.elements = [this.player, this.enemy, ...this.projectiles];
+    this.elements = [this.player, this.enemy];
   }
 
   computerTurn() {
@@ -42,6 +42,7 @@ export default class Game {
   update(dt) {
     // this.enemy.update(dt);
     this.elements.forEach((element) => element.update(dt));
+    this.projectiles.forEach((element) => element.update(dt));
   }
 
   isOver() {
@@ -53,12 +54,12 @@ export default class Game {
         // document.getElementById("end-turn-button").appendChild(endScreen);
         // this.enemy.image = "";
         // document.getElementById("card-description").innerText = "YOU WIN!";
-        document.getElementById("enemy-display").innerText =
+        document.getElementById("enemy-display-span").innerText =
           "ENEMY DESTROYED! YOU WIN!";
         this.hand.disabled = true;
         return true;
       } else if (this.player.armor <= 0) {
-        document.getElementById("enemy-display").innerText =
+        document.getElementById("enemy-display-span").innerText =
           "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
         this.hand.disabled = true;
         return true;
@@ -70,5 +71,6 @@ export default class Game {
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1400, 800);
     this.elements.forEach((element) => element.draw(ctx));
+    this.projectiles.forEach((element) => element.draw(ctx));
   }
 }
