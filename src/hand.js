@@ -22,6 +22,10 @@ export default class Hand {
       new MissleAttack(this.game),
       new MissleAttack(this.game),
       new MissleAttack(this.game),
+
+      // new InstallUpdate(this.game),
+      // new InstallUpdate(this.game),
+      // new InstallUpdate(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
     this.cardPile = this.deck.slice();
@@ -154,11 +158,11 @@ export default class Hand {
       });
       listItem.addEventListener("mouseover", () => {
         document.getElementById(
-          "card-description"
+          "card-description-span"
         ).innerText = `${card.description}`;
       });
       listItem.addEventListener("mouseout", () => {
-        document.getElementById("card-description").innerText = ``;
+        document.getElementById("card-description-span").innerText = ``;
       });
 
       document.getElementById("player-hand").appendChild(listItem);

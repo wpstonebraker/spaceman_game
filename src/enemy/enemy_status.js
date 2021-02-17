@@ -12,10 +12,12 @@ export default class EnemyStatus {
 
   renderShields() {
     this.shields = this.game.enemy.shields;
-    document.getElementById("enemy-shields-num").innerText = `${this.shields}`;
+    this.armor = this.game.enemy.armor;
+    document.getElementById(
+      "enemy-shields-num"
+    ).innerText = `Enemy Shields: ${this.shields} Enemy Armor: ${this.armor}`;
   }
   renderArmor() {
-    this.armor = this.game.enemy.armor;
-    document.getElementById("enemy-armor-num").innerText = `${this.armor}`;
+    // document.getElementById("enemy-armor-num").innerText = `${this.armor}`;
   }
 }

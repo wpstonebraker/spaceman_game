@@ -16,7 +16,6 @@ export default class EnemyProjectile {
   }
 
   draw(ctx) {
-    debugger;
     ctx.drawImage(
       this.sprite,
       this.position.x,

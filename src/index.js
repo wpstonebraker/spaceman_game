@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("rules").classList.remove("hidden");
     document.getElementById("rules").classList.add("visible");
   });
+  document.getElementById("rules-pic-button").addEventListener("click", () => {
+    document.getElementById("rules-pic-box").classList.remove("hidden");
+    document.getElementById("rules-pic-box").classList.add("visible");
+  });
+
+  document.getElementById("rules-pic").addEventListener("click", () => {
+    document.getElementById("rules-pic-box").classList.add("hidden");
+  });
 
   const GAME_WIDTH = 1400;
   const GAME_HEIGHT = 500;
@@ -37,7 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const endTurn = document.getElementById("end-turn-button");
 
   endTurn.addEventListener("click", () => {
-    if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
+    debugger;
+    if (game.playerTurn) game.hand.endTurn();
+    // if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
     // if (!game.hand.disabled) game.hand.endTurn();
   });
 

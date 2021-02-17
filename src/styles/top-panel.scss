@@ -2,7 +2,7 @@
   margin-left: 100px;
   position: absolute;
   height: 100px;
-  width: 500px;
+  width: 460px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -14,34 +14,25 @@
   align-items: center;
 }
 
-#player-energy-num,
-#player-shields-num,
-#player-armor-num {
-  margin: 5px;
+.top-terminal {
+  top: 5px;
+  position: relative;
+}
+
+#player-lasers-num {
+  top: 10px;
+  right: 310px;
   font-size: 50px;
   color: #6f6;
   font-size: 40px;
-}
-
-#player-shields,
-#player-armor {
-  margin-top: 10px;
-  height: 50px;
-  width: 100px;
-}
-
-#player-shields {
-}
-#player-armor {
-}
-
-#player-energy {
-  border-radius: 3px;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 450px;
-  width: 110px;
-  height: 80px;
+}
+
+#player-missles-num {
+  top: 10px;
+  right: 120px;
+  font-size: 50px;
   color: #6f6;
+  font-size: 40px;
+  position: absolute;
 }

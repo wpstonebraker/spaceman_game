@@ -48,3 +48,22 @@
   border-radius: 2px;
   font-size: 20px;
 }
+
+#rules-pic-box {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 500;
+  transition: all 0.2s;
+}
+
+#rules-pic {
+  @include absCenter;
+  background-color: white;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  font-size: 20px;
+}

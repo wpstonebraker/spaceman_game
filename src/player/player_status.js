@@ -17,17 +17,19 @@ export default class PlayerStatus {
 
   renderShields() {
     this.shields = this.game.player.shields;
+    this.armor = this.game.player.armor;
     // const playerShields = document.createElement("span");
     // playerShields.innerText = `${this.shields}`;
     // document.getElementById("player-shields").appendChild(playerShields);
-    document.getElementById("player-shields-num").innerText = `${this.shields}`;
+    document.getElementById(
+      "player-armor-num"
+    ).innerText = `Dad Shields: ${this.shields} Dad Armor: ${this.armor}`;
   }
   renderArmor() {
-    this.armor = this.game.player.armor;
-    // const playerArmor = document.createElement("span");
-    // playerArmor.innerText = `${this.armor}`;
-    // document.getElementById("player-armor").appendChild(playerArmor);
-    document.getElementById("player-armor-num").innerText = `${this.armor}`;
+    // // const playerArmor = document.createElement("span");
+    // // playerArmor.innerText = `${this.armor}`;
+    // // document.getElementById("player-armor").appendChild(playerArmor);
+    // document.getElementById("player-armor-num").innerText = `${this.armor}`;
   }
   renderEnergy() {
     this.energy = this.game.player.energy;

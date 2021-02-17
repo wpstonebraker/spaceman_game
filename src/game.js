@@ -12,10 +12,10 @@ export default class Game {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
     this.background = document.getElementById("img_background");
-    this.playerTurn = true;
     this.projectiles = [];
     // this.startingCard = startingCard;
     this.elements = [];
+    this.playerTurn = true;
     this.hasStarted = false;
   }
 

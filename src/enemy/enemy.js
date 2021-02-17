@@ -1,3 +1,4 @@
+import Dud from "../cards/dud";
 import EnemyProjectile from "./enemyProjectile";
 import EnemyShields from "./enemyShields";
 
@@ -21,9 +22,10 @@ export default class Enemy {
     this.shields = 50;
     this.shieldCharge = 2;
     this.armor = 100;
-    this.lasers = 40;
-    this.missles = 40;
+    this.lasers = 20;
+    this.missles = 20;
     this.receiveAttack = 1050;
+    this.special = 1;
   }
 
   draw(ctx) {
@@ -57,7 +59,15 @@ export default class Enemy {
   }
 
   action() {
-    debugger;
+    const rand = Math.random();
+
+    if (rand < 0.33) {
+      debugger;
+      this.dudCards();
+      this.game.hand.startTurn();
+      return;
+    }
+
     if (this.shields === 0 && this.shieldCharge > 0) {
       this.heal();
     } else if (this.shieldCharge === 0) {
@@ -73,21 +83,29 @@ export default class Enemy {
     }, 2500);
   }
 
+  dudCards() {
+    this.game.hand.deck.push(new Dud(this.game));
+    this.game.hand.deck.push(new Dud(this.game));
+    this.game.hand.deck.push(new Dud(this.game));
+    document.getElementById("enemy-display-span").innerText =
+      "3 Malware cards uploaded to player's deck.";
+  }
+
   rechargeShields() {
     this.shieldCharge = 2;
-    document.getElementById("enemy-display").innerText =
+    document.getElementById("enemy-display-span").innerText =
       "Recharging shield core...";
     setTimeout(() => {
-      document.getElementById("enemy-display").innerText = "";
+      document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
   }
 
   heal() {
     this.shieldCharge--;
-    document.getElementById("enemy-display").innerText =
+    document.getElementById("enemy-display-span").innerText =
       "Enemy boosts shields by 20";
     setTimeout(() => {
-      document.getElementById("enemy-display").innerText = "";
+      document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
     this.shields += 20;
     this.game.elements.push(
@@ -102,10 +120,10 @@ export default class Enemy {
 
   attackLasers() {
     document.getElementById(
-      "enemy-display"
+      "enemy-display-span"
     ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
     setTimeout(() => {
-      document.getElementById("enemy-display").innerText = "";
+      document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
     this.game.elements.push(
       new EnemyProjectile(
@@ -123,10 +141,10 @@ export default class Enemy {
 
   attackMissles() {
     document.getElementById(
-      "enemy-display"
+      "enemy-display-span"
     ).innerText = `Enemy attacks for ${this.missles} projectile damage`;
     setTimeout(() => {
-      document.getElementById("enemy-display").innerText = "";
+      document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
     this.game.elements.push(
       new EnemyProjectile(
@@ -141,6 +159,8 @@ export default class Enemy {
       )
     );
   }
+
+  special() {}
 
   receiveDamage(atkType) {
     let dmg;
@@ -202,7 +222,7 @@ export default class Enemy {
     }
 
     document.getElementById(
-      "enemy-display"
+      "enemy-display-span"
     ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
 
     this.game.enemyStatus.render();
