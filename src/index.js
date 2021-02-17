@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("rules").classList.remove("hidden");
     document.getElementById("rules").classList.add("visible");
   });
+  document.getElementById("rules-close").addEventListener("click", () => {
+    document.getElementById("rules").classList.add("hidden");
+  });
   document.getElementById("rules-pic-button").addEventListener("click", () => {
     document.getElementById("rules-pic-box").classList.remove("hidden");
     document.getElementById("rules-pic-box").classList.add("visible");
