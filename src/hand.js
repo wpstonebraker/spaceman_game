@@ -65,7 +65,6 @@ export default class Hand {
 
   //
   startTurn() {
-    debugger;
     this.game.playerTurn = true;
     this.disabled = false;
     this.game.player.energy = this.game.player.maxEnergy;
@@ -79,7 +78,6 @@ export default class Hand {
 
   endTurn() {
     let discards = document.getElementById("player-hand").childNodes;
-    debugger;
     // for (card of discards) {
     //   card.classList.add("discardCard");
     // }

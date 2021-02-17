@@ -39,9 +39,9 @@ export default class Animation {
       this.frames++;
     }
 
-    if (this.loopIndex > this.loops) {
-      this.game.elements.pop();
-    }
+    // if (this.loopIndex > this.loops) {
+    //   this.game.elements.pop();
+    // }
 
     // this.drawFrame(3, 0, this.position.x, this.position.y, ctx);
     // this.drawFrame(4, 0, this.position.x, this.position.y, ctx);

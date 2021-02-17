@@ -1,4 +1,5 @@
 import Dud from "../cards/dud";
+import Animation from "../util/animation";
 import EnemyProjectile from "./enemyProjectile";
 import EnemyShields from "./enemyShields";
 
@@ -12,6 +13,7 @@ export default class Enemy {
 
     this.laserSprite = document.getElementById("img_npc1a1");
     this.missleSprite = document.getElementById("img_npc1a2");
+    this.dudSprite = document.getElementById("img_malwareAni");
 
     this.speed = 0.2;
 
@@ -61,7 +63,8 @@ export default class Enemy {
   action() {
     const rand = Math.random();
 
-    if (rand < 0.33) {
+    if (rand < 1) {
+      // if (rand < 0.33) {
       debugger;
       this.dudCards();
       this.game.hand.startTurn();
@@ -87,6 +90,9 @@ export default class Enemy {
     this.game.hand.deck.push(new Dud(this.game));
     this.game.hand.deck.push(new Dud(this.game));
     this.game.hand.deck.push(new Dud(this.game));
+    this.game.elements.push(
+      new Animation(this.dudSprite, 50, 0, 64, 64, 12, 6, this.game)
+    );
     document.getElementById("enemy-display-span").innerText =
       "3 Malware cards uploaded to player's deck.";
   }
@@ -149,7 +155,7 @@ export default class Enemy {
     this.game.elements.push(
       new EnemyProjectile(
         this.position.x,
-        this.position.y + 120,
+        this.position.y + 190,
         this.missleSprite,
         50,
         50,

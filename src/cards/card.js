@@ -8,7 +8,7 @@ export default class Card {
 
   check() {
     if (this.game.player.energy - this.cost < 0) {
-      document.getElementById("card-description").innerText =
+      document.getElementById("card-description-span").innerText =
         "Not enough energy";
       return false;
     }
