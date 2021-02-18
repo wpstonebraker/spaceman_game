@@ -1,0 +1,15 @@
+#popup-top-row {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+#description {
+  background-color: darkgrey;
+  width: 500px;
+  padding: 20px;
+}
+
+#rules-div {
+  width: 500px;
+}

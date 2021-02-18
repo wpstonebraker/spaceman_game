@@ -6,6 +6,7 @@ import MissleAttack from "./cards/missleAtk";
 import Overcharge from "./cards/overcharge";
 import Recharge from "./cards/recharge";
 import SyphonEnergy from "./cards/syphonEnergy";
+import Salvo from "./cards/salvo";
 
 export default class Hand {
   constructor(game, startingCard) {
@@ -22,10 +23,6 @@ export default class Hand {
       new MissleAttack(this.game),
       new MissleAttack(this.game),
       new MissleAttack(this.game),
-
-      // new InstallUpdate(this.game),
-      // new InstallUpdate(this.game),
-      // new InstallUpdate(this.game),
     ];
     this.deck = STARTING_CARDS.slice();
     this.cardPile = this.deck.slice();
@@ -48,6 +45,8 @@ export default class Hand {
       case "update":
         this.deck.push(new InstallUpdate(this.game));
         break;
+      case "salvo":
+        this.deck.push(new Salvo(this.game));
       default:
         break;
     }

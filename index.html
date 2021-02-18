@@ -27,6 +27,7 @@
     <div id="canvas-images">
       <img id="img_background" src="assets/background.png" />
       <img id="img_player" src="assets/blueship.png" />
+      <img id="img_poweredUp" src="assets/poweredUp.png" />
       <img id="img_npc1" src="assets/badguy1.png" />
       <img id="img_laser" src="assets/laser.png" />
       <img id="img_missle" src="assets/missle.png" />
@@ -36,7 +37,6 @@
       <img id="img_npc1a2" src="assets/npcattack2.png" />
       <img id="img_npc1shields" src="assets/enemyshieldsss.png" />
       <img id="img_newshields" src="assets/trynewshields.png" />
-      <img id="testship" src="assets/blueship.png" />
       <img id="img_updateAni" src="assets/installUpdateAni.png" />
       <img id="img_malwareAni" src="assets/malware.png" />
     </div>
@@ -102,7 +102,7 @@
                   <div id="card-description" class="dash-display">
                     <span id="card-description-span"></span>
                     <img
-                    src="/assets/bottomTerminal2.png"
+                    src="assets/bottomTerminal2.png"
                     class="bottom-terminal"
                     />
                   </div>
@@ -112,7 +112,7 @@
                   <div id="enemy-display" class="dash-display">
                     <span id="enemy-display-span"></span>
                     <img
-                    src="/assets/bottomTerminal2.png"
+                    src="assets/bottomTerminal2.png"
                     class="bottom-terminal"
                     />
                   </div>
@@ -143,11 +143,11 @@
 <div class="popup hidden" id="rules">
   <div class="popup-content">
     <div id="popup-top-row">
-      <div id="rules-close">X</div>
+      <div id="rules-close">Close</div>
       <div id="description">
         After a routine scientific expedition to mars, Dad begins to make his
-        way home... when encounters a massive alien base. As the nearest Space
-        Force outpost, you only have control over his ship. You alone can save
+        way home... when he encounters a massive alien base! As the nearest Space
+        Force outpost, you have control over his ship's defense systems. You alone can save
         Dad. Will Space Dad be home in time for dinner? Or will Space Dad
         be... dinner?
       </div>
@@ -183,6 +183,12 @@
       id="update"
       alt=""
       title="Increase max energy (one time use)"
+      />
+      <img
+      src="assets/salvo.png"
+      id="salvo"
+      alt=""
+      title="Launch 3 missles at once"
       />
       <div id="popup-card-description"></div>
     </div>

@@ -9,6 +9,7 @@ export default class SyphonEnergy extends Card {
   }
 
   action() {
+    this.game.player.syphonEnergy();
     this.game.player.maxEnergy -= 1;
     this.game.player.lasers *= 2;
     this.game.playerStatus.render();

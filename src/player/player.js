@@ -1,6 +1,7 @@
 export default class Player {
   constructor(game) {
-    this.image = document.getElementById("testship");
+    this.image = document.getElementById("img_player");
+    this.poweredUp = document.getElementById("img_poweredUp");
     // this.image = document.getElementById("img_player");
     this.gameHeight = game.gameHeight;
     this.position = {
@@ -32,6 +33,10 @@ export default class Player {
     this.game = game;
     this.loopIndex = 0;
     this.frames = 0;
+  }
+
+  syphonEnergy() {
+    this.image = this.poweredUp;
   }
 
   receiveDamage(atkType) {

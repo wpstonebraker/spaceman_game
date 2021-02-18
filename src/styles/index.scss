@@ -4,6 +4,7 @@
 @import "dashboard.scss";
 @import "util.scss";
 @import "top-panel.scss";
+@import "popups.scss";
 
 * {
   font-family: "VT323";
@@ -55,6 +56,6 @@
 #img_newshields,
 #img_updateAni,
 #img_malwareAni,
-#testship {
+#img_poweredUp {
   display: none;
 }

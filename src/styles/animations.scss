@@ -5,7 +5,7 @@
 
 .playCard {
   animation-name: playCard;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
 }
 
 .discardCard {
@@ -34,9 +34,14 @@
     opacity: 1;
   }
 
+  50% {
+    opacity: 1;
+    transform: translateY(-150px);
+  }
+
   100% {
     opacity: 0;
-    transform: translateY(-150px);
+    transform: translate(-250px, 500px);
   }
 }
 
