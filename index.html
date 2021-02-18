@@ -155,16 +155,17 @@
         Space Dad is turn-based card game. Aside from the enemy ship (provided
         by https://ko-fi.com/norma2d) and the explosion effect (JROB774 Joshua
         "JROB774" Robertson of opengameart.org), all assets and animations
-        were drawn (badly) by me. Your premade deck includes 6 attack cards, 3
-        defensive cards, and your choice of a power card. You begin the game
+        were drawn (badly) by me. Your premade deck includes 9 "basic" cards: 3 laser attack cards, 3
+        missle attack cards, and 3 shield recharge cards. For each power card (below) that you select beyond the first, 1 each of the basic cards will be added to your deck as filler. You begin the game
         with 3 energy per turn; each card has an energy cost that detracts
         from that turns energy. Once you're out of energy (or before, if you'd
         like), click the "End Turn" button and the enemy will play their turn.
         At the start of your turn, you will draw 5 new cards from your deck of
         10 cards. Tip: hover over a card for a description of what it does!
-        <span> Select your Power Card:</span>
+        <span> Select 2 Power Cards:</span>
       </div>
     </div>
+    <button id="start-game-btn">Start Game</button>
     <div id="popup-bottom-row">
       <img
       src="assets/overcharge.png"
@@ -189,6 +190,12 @@
       id="salvo"
       alt=""
       title="Launch 3 missles at once"
+      />
+      <img
+      src="assets/tuneUp.png"
+      id="tune"
+      alt=""
+      title="Permanently increase laser damage"
       />
       <div id="popup-card-description"></div>
     </div>

@@ -11,7 +11,7 @@ export default class Player {
     };
     this.width = 64;
     this.height = 64;
-    this.shields = 50;
+    this.shields = 10;
     this.armor = 50;
     this.maxEnergy = 3;
     this.energy = this.maxEnergy;

@@ -180,14 +180,15 @@ export default class Enemy {
           dmg = this.game.player.lasers;
           type = "shields";
           this.shields -= dmg;
-        } else if (this.shields - this.game.player.lasers < 0) {
-          dmg = -(this.shields - this.game.player.lasers);
-          this.armor -= dmg;
-          this.shields = 0;
-          type = "armor";
         } else if (this.shields === 0) {
+          debugger;
           dmg = this.game.player.lasers / 2;
           this.armor -= dmg;
+          type = "armor";
+        } else if (this.shields - this.game.player.lasers < 0) {
+          dmg = -(this.shields - this.game.player.lasers) / 2;
+          this.armor -= dmg;
+          this.shields = 0;
           type = "armor";
         }
         break;
@@ -196,14 +197,14 @@ export default class Enemy {
           dmg = this.game.player.lasers + 20;
           this.shields -= dmg;
           type = "shields";
-        } else if (this.shields - (this.game.player.lasers + 20) < 0) {
-          dmg = -(this.shields - (this.game.player.lasers + 20));
-          this.armor -= dmg / 2;
-          this.shields = 0;
-          type = "armor";
         } else if (this.shields === 0) {
           dmg = (this.game.player.lasers + 20) / 2;
           this.armor -= dmg;
+          type = "armor";
+        } else if (this.shields - (this.game.player.lasers + 20) < 0) {
+          dmg = -(this.shields - (this.game.player.lasers + 20)) / 2;
+          this.armor -= dmg;
+          this.shields = 0;
           type = "armor";
         }
         break;
@@ -212,16 +213,16 @@ export default class Enemy {
           dmg = this.game.player.missles / 2;
           this.shields -= dmg;
           type = "shields";
+        } else if (this.shields === 0) {
+          dmg = this.game.player.missles;
+          this.armor -= dmg;
+          type = "armor";
         } else if (
           this.shields !== 0 &&
           this.shields <= this.game.player.missles
         ) {
           dmg = this.shields;
           this.shields = 0;
-          type = "armor";
-        } else if (this.shields === 0) {
-          dmg = this.game.player.missles;
-          this.armor -= dmg;
           type = "armor";
         }
 

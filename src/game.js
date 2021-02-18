@@ -19,14 +19,14 @@ export default class Game {
     this.hasStarted = false;
   }
 
-  start(startingCard) {
+  start(startingCards) {
     this.hasStarted = true;
     this.player = new Player(this);
 
     this.enemy = new Enemy(this);
     this.playerStatus = new PlayerStatus(this);
 
-    this.hand = new Hand(this, startingCard);
+    this.hand = new Hand(this, startingCards);
 
     this.enemyStatus = new EnemyStatus(this);
 

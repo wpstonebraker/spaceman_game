@@ -7,6 +7,7 @@ import Overcharge from "./cards/overcharge";
 import Recharge from "./cards/recharge";
 import SyphonEnergy from "./cards/syphonEnergy";
 import Salvo from "./cards/salvo";
+import TuneUp from "./cards/tuneUp";
 
 export default class Hand {
   constructor(game, startingCard) {
@@ -34,21 +35,36 @@ export default class Hand {
     this.startTurn();
   }
 
-  initializeDeck(startingCard) {
-    switch (startingCard) {
-      case "overcharge":
-        this.deck.push(new Overcharge(this.game));
-        break;
-      case "syphon":
-        this.deck.push(new SyphonEnergy(this.game));
-        break;
-      case "update":
-        this.deck.push(new InstallUpdate(this.game));
-        break;
-      case "salvo":
-        this.deck.push(new Salvo(this.game));
-      default:
-        break;
+  initializeDeck(startingCards) {
+    startingCards.forEach((card) => {
+      switch (card) {
+        case "overcharge":
+          this.deck.push(new Overcharge(this.game));
+          break;
+        case "syphon":
+          this.deck.push(new SyphonEnergy(this.game));
+          break;
+        case "update":
+          this.deck.push(new InstallUpdate(this.game));
+          break;
+        case "salvo":
+          this.deck.push(new Salvo(this.game));
+          break;
+        case "tune":
+          this.deck.push(new TuneUp(this.game));
+          break;
+        default:
+          break;
+      }
+    });
+    if (startingCards.length > 1) {
+      // let extra = startingCards.length - 2;
+      let extra = startingCards.length - 1;
+      for (let i = 0; i < extra; i++) {
+        this.deck.push(new MissleAttack(this.game));
+        this.deck.push(new LaserAttack(this.game));
+        this.deck.push(new Recharge(this.game));
+      }
     }
   }
 
@@ -64,6 +80,7 @@ export default class Hand {
 
   //
   startTurn() {
+    debugger;
     this.game.playerTurn = true;
     this.disabled = false;
     this.game.player.energy = this.game.player.maxEnergy;
@@ -147,6 +164,7 @@ export default class Hand {
           document.getElementById(`card-${i}`).classList.add("playCard");
 
           setTimeout(() => {
+            debugger;
             document.getElementById(`card-${i}`).remove();
           }, 1500);
           // delete this.currentHand[i];

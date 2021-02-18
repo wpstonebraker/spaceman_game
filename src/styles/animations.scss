@@ -13,6 +13,12 @@
   animation-duration: 3s;
 }
 
+.selectCard {
+  animation-name: selectCard;
+  animation-duration: 1s;
+  filter: brightness(25%);
+}
+
 @keyframes drawCard {
   0% {
     opacity: 0;
@@ -41,7 +47,7 @@
 
   100% {
     opacity: 0;
-    transform: translate(-250px, 500px);
+    transform: translate(250px, 250px);
   }
 }
 
@@ -56,5 +62,11 @@
 
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes selectCard {
+  100% {
+    filter: brightness(25%);
   }
 }

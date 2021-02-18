@@ -28,16 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const GAME_WIDTH = 1400;
   const GAME_HEIGHT = 500;
   let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-  const startingCards = Array.from(
+  const startingChoices = Array.from(
     document.getElementById("popup-bottom-row").children
   );
+  const startingCards = [];
 
-  startingCards.forEach((card) => {
+  startingChoices.forEach((card) => {
     card.addEventListener("click", () => {
-      game.start(card.id);
-      document.getElementById("rules").classList.remove("visible");
-      document.getElementById("rules").classList.add("hidden");
+      if (startingCards.includes(card.id)) {
+        startingCards.splice(startingCards.indexOf(card.id), 1);
+      } else {
+        startingCards.push(card.id);
+      }
+
+      if (card.classList.contains("selectCard")) {
+        card.classList.remove("selectCard");
+      } else {
+        card.classList.add("selectCard");
+      }
     });
+  });
+
+  document.getElementById("start-game-btn").addEventListener("click", () => {
+    game.start(startingCards);
+    document.getElementById("rules").classList.remove("visible");
+    document.getElementById("rules").classList.add("hidden");
   });
 
   let canvas = document.getElementById("game-screen");

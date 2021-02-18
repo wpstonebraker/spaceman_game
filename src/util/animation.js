@@ -15,7 +15,6 @@ export default class Animation {
   }
 
   drawFrame(fX, fY, ctx) {
-    debugger;
     ctx.drawImage(
       this.image,
       fX * this.width,
