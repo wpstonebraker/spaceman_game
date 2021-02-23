@@ -1,3 +1,5 @@
+import Fire from "./fire";
+
 export default class Player {
   constructor(game) {
     this.image = document.getElementById("img_player");
@@ -28,11 +30,16 @@ export default class Player {
     this.receiveAttack = 305;
     // this.shieldX = this.position.x;
     // this.shieldY = this.position.y;
-    this.speed = 0.1;
+    // this.speed = 0;
+    this.speedX = 0;
+    this.speedY = 0;
+    this.maxSpeedX = 3;
+    this.maxSpeedY = 3;
 
     this.game = game;
     this.loopIndex = 0;
     this.frames = 0;
+    this.disableLaser = false;
   }
 
   syphonEnergy() {
@@ -112,17 +119,52 @@ export default class Player {
   }
 
   update(dt) {
-    if (this.position.y < 210) {
-      this.position.y += this.speed;
-    } else {
-      this.speed = -this.speed;
-      this.position.y += this.speed;
-    }
-    if (this.position.y > 190) {
-      this.position.y += this.speed;
-    } else {
-      this.speed = -this.speed;
-      this.position.y += this.speed;
+    // this.position.x += this.speedX;
+    this.position.x += this.speedX;
+    this.position.y += this.speedY;
+  }
+
+  moveUp() {
+    this.speedY = -this.maxSpeedY;
+  }
+
+  moveDown() {
+    this.speedY = this.maxSpeedY;
+  }
+
+  moveLeft() {
+    this.speedX = -this.maxSpeedX;
+  }
+
+  moveRight() {
+    this.speedX = this.maxSpeedX;
+  }
+
+  stop() {
+    this.speedX = 0;
+    this.speedY = 0;
+  }
+
+  fire() {
+    if (!this.disableLaser) {
+      this.disableLaser = true;
+      this.game.projectiles.push(new Fire(this.game));
+      setTimeout(() => {
+        this.disableLaser = false;
+      }, 200);
     }
   }
 }
+
+// if (this.position.y < 210) {
+//   this.position.y += this.speed;
+// } else {
+//   this.speed = -this.speed;
+//   this.position.y += this.speed;
+// }
+// if (this.position.y > 190) {
+//   this.position.y += this.speed;
+// } else {
+//   this.speed = -this.speed;
+//   this.position.y += this.speed;
+// }
