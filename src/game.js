@@ -50,6 +50,7 @@ export default class Game {
 
   update(dt) {
     // this.enemy.update(dt);
+    this.startingCards.forEach((card) => card.update(dt));
 
     this.elements.forEach((element) => element.update(dt));
     this.projectiles.forEach((element) => element.update(dt));

@@ -32,14 +32,4 @@ export default class InstallUpdate extends Card {
     //   this.game.hand.endTurn();
     // }, 1500);
   }
-
-  draw(ctx) {
-    ctx.drawImage(
-      this.cardImg,
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height
-    );
-  }
 }
