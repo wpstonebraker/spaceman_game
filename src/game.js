@@ -8,6 +8,7 @@ import Overcharge from "./cards/overcharge";
 import Explosion from "./util/explosion";
 import InputHandler from "./player/Input";
 import InstallUpdate from "./cards/installUpdate";
+import StartGame from "./cards/startGame";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -15,32 +16,32 @@ export default class Game {
     this.gameHeight = gameHeight;
     this.background = document.getElementById("img_background");
     this.projectiles = [];
+    this.startingChoices = [new InstallUpdate(this), new StartGame(this)];
     this.startingCards = [];
     this.elements = [];
     this.playerTurn = true;
     this.hasStarted = false;
   }
 
-  start(startingCards) {
+  selectCards() {
     this.player = new Player(this);
-    this.installUpdate = new InstallUpdate(this);
-    this.startingCards = [this.installUpdate];
     this.elements = [this.player];
     new InputHandler(this.player);
   }
-  // start(startingCards) {
-  //   this.hasStarted = true;
-  //   this.player = new Player(this);
 
-  //   this.enemy = new Enemy(this);
-  //   this.playerStatus = new PlayerStatus(this);
+  start(startingCards) {
+    this.hasStarted = true;
+    this.player = new Player(this);
 
-  //   this.hand = new Hand(this, startingCards);
+    this.enemy = new Enemy(this);
+    this.playerStatus = new PlayerStatus(this);
 
-  //   this.enemyStatus = new EnemyStatus(this);
+    this.hand = new Hand(this, startingCards);
 
-  //   this.elements = [this.player, this.enemy];
-  // }
+    this.enemyStatus = new EnemyStatus(this);
+
+    this.elements = [this.player, this.enemy];
+  }
 
   computerTurn() {
     if (!this.playerTurn) {
@@ -50,7 +51,7 @@ export default class Game {
 
   update(dt) {
     // this.enemy.update(dt);
-    this.startingCards.forEach((card) => card.update(dt));
+    this.startingChoices.forEach((card) => card.update(dt));
 
     this.elements.forEach((element) => element.update(dt));
     this.projectiles.forEach((element) => element.update(dt));
@@ -81,7 +82,7 @@ export default class Game {
 
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1600, 800);
-    this.startingCards.forEach((card) => card.draw(ctx));
+    this.startingChoices.forEach((card) => card.draw(ctx));
     this.elements.forEach((element) => element.draw(ctx));
     this.projectiles.forEach((element) => element.draw(ctx));
   }

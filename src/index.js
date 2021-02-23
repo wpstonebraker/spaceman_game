@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("start-game-btn").addEventListener("click", () => {
-    game.start(startingCards);
+    game.selectCards();
     document.getElementById("rules").classList.remove("visible");
     document.getElementById("rules").classList.add("hidden");
   });
@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const endTurn = document.getElementById("end-turn-button");
 
   endTurn.addEventListener("click", () => {
-    debugger;
     if (!game.hand.disabled && game.playerTurn) game.hand.endTurn();
     // if (game.playerTurn) game.hand.endTurn();
     // if (!game.hand.disabled) game.hand.endTurn();

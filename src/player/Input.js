@@ -17,6 +17,7 @@ export default class InputHandler {
           player.moveRight();
           break;
         case " ":
+          e.preventDefault();
           player.fire();
           break;
         default:
