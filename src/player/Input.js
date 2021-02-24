@@ -28,16 +28,16 @@ export default class InputHandler {
     document.addEventListener("keyup", (e) => {
       switch (e.key) {
         case "w":
-          player.stop();
+          if (player.speedY <= 0) player.stopY();
           break;
         case "s":
-          player.stop();
+          if (player.speedY >= 0) player.stopY();
           break;
         case "a":
-          player.stop();
+          if (player.speedX <= 0) player.stopX();
           break;
         case "d":
-          player.stop();
+          if (player.speedX >= 0) player.stopX();
           break;
         case " ":
           break;

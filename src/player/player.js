@@ -122,6 +122,11 @@ export default class Player {
     // this.position.x += this.speedX;
     this.position.x += this.speedX;
     this.position.y += this.speedY;
+
+    if (this.position.x <= 100) this.position.x = 100;
+    if (this.position.x >= 500) this.position.x = 500;
+    if (this.position.y <= 0) this.position.y = 0;
+    if (this.position.y >= 500) this.position.y = 500;
   }
 
   moveUp() {
@@ -140,9 +145,12 @@ export default class Player {
     this.speedX = this.maxSpeedX;
   }
 
-  stop() {
-    this.speedX = 0;
+  stopY() {
     this.speedY = 0;
+  }
+
+  stopX() {
+    this.speedX = 0;
   }
 
   fire() {
