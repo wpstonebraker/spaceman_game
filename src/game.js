@@ -110,7 +110,7 @@ export default class Game {
         ctx.drawImage(this.background, 0, 0, 1600, 800);
         this.startingChoices.forEach((card, i) => {
           card.draw(ctx, 1200, card.y, 40, 60);
-          card.checkPos();
+          card.checkPos(ctx);
         });
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));

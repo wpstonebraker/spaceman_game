@@ -18,15 +18,14 @@ export default class Card {
     return true;
   }
 
-  checkPos() {
+  checkPos(ctx) {
     debugger;
     let playerPosY = this.game.player.position.y + 100;
     if (playerPosY >= this.y && playerPosY <= this.y + 60) {
-      document.getElementById(
-        "card-description-span"
-      ).innerText = `${this.description}`;
-    } else if (playerPosY > 540 || playerPosY < 80) {
-      document.getElementById("card-description-span").innerText = ``;
+      ctx.font = "25px VT323";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "right";
+      ctx.fillText(this.description, 1185, this.y + 35);
     }
   }
 
