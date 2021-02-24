@@ -18,6 +18,18 @@ export default class Card {
     return true;
   }
 
+  checkPos() {
+    debugger;
+    let playerPosY = this.game.player.position.y + 100;
+    if (playerPosY >= this.y && playerPosY <= this.y + 60) {
+      document.getElementById(
+        "card-description-span"
+      ).innerText = `${this.description}`;
+    } else if (playerPosY > 540 || playerPosY < 80) {
+      document.getElementById("card-description-span").innerText = ``;
+    }
+  }
+
   draw(ctx, x, y, width, height) {
     ctx.drawImage(this.cardImg, x, y, width, height);
   }

@@ -53,19 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function gameLoop(timestamp) {
     let dt = timestamp - lastTime;
     lastTime = timestamp;
-    switch (game.gameState) {
-      case 0:
-        break;
-      case 1:
-        game.drawStartingCards(ctx);
-        game.update(dt);
-        break;
-      case 2:
-        game.update(dt);
-        game.draw(ctx);
-      default:
-        break;
-    }
+
+    game.update(dt);
+    game.draw(ctx);
+
     if (!game.isOver()) {
       requestAnimationFrame(gameLoop);
     }

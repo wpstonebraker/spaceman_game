@@ -6,6 +6,7 @@ export default class StartGame extends Card {
     super(game);
     this.y = 480;
     this.game = game;
+    this.description = "Start game";
 
     this.image = "assets/dud.png";
     this.cardImg = document.getElementById("img_startGame");

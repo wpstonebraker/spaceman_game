@@ -19,7 +19,7 @@ export default class Game {
     this.gameHeight = gameHeight;
     this.background = document.getElementById("img_background");
     this.projectiles = [];
-    this.startingChoices;
+    this.startingChoices = [];
     this.gameState = 0;
     this.startingCards = [];
     this.elements = [];
@@ -102,9 +102,27 @@ export default class Game {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.background, 0, 0, 1600, 800);
-    // this.startingChoices.forEach((card) => card.draw(ctx));
-    this.elements.forEach((element) => element.draw(ctx));
-    this.projectiles.forEach((element) => element.draw(ctx));
+    switch (this.gameState) {
+      case 0:
+        ctx.drawImage(this.background, 0, 0, 1600, 800);
+        break;
+      case 1:
+        ctx.drawImage(this.background, 0, 0, 1600, 800);
+        this.startingChoices.forEach((card, i) => {
+          card.draw(ctx, 1200, card.y, 40, 60);
+          card.checkPos();
+        });
+        this.elements.forEach((element) => element.draw(ctx));
+        this.projectiles.forEach((element) => element.draw(ctx));
+        break;
+      case 2:
+        ctx.drawImage(this.background, 0, 0, 1600, 800);
+        // this.startingChoices.forEach((card) => card.draw(ctx));
+        this.elements.forEach((element) => element.draw(ctx));
+        this.projectiles.forEach((element) => element.draw(ctx));
+        break;
+      default:
+        break;
+    }
   }
 }
