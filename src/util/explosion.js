@@ -11,7 +11,6 @@ export default class Explosion {
     this.loopIndex = 0;
     this.frames = 0;
     this.game = game;
-    debugger;
   }
 
   drawFrame(fX, fY, ctx) {

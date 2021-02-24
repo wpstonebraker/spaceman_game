@@ -28,26 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const GAME_WIDTH = 1400;
   const GAME_HEIGHT = 500;
   let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-  const startingChoices = Array.from(
-    document.getElementById("popup-bottom-row").children
-  );
+
   const startingCards = [];
-
-  startingChoices.forEach((card) => {
-    card.addEventListener("click", () => {
-      if (startingCards.includes(card.id)) {
-        startingCards.splice(startingCards.indexOf(card.id), 1);
-      } else {
-        startingCards.push(card.id);
-      }
-
-      if (card.classList.contains("selectCard")) {
-        card.classList.remove("selectCard");
-      } else {
-        card.classList.add("selectCard");
-      }
-    });
-  });
 
   document.getElementById("start-game-btn").addEventListener("click", () => {
     game.selectCards();
@@ -71,9 +53,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function gameLoop(timestamp) {
     let dt = timestamp - lastTime;
     lastTime = timestamp;
-
-    game.update(dt);
-    game.draw(ctx);
+    switch (game.gameState) {
+      case 0:
+        break;
+      case 1:
+        game.drawStartingCards(ctx);
+        game.update(dt);
+        break;
+      case 2:
+        game.update(dt);
+        game.draw(ctx);
+      default:
+        break;
+    }
     if (!game.isOver()) {
       requestAnimationFrame(gameLoop);
     }

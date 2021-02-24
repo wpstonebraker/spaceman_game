@@ -13,8 +13,11 @@ export default class Overcharge extends Card {
       x: this.game.player.laserPos.x,
       y: this.game.player.laserPos.y,
     };
+    this.y = 160;
     this.sprite = document.getElementById("img_laser");
+    this.cardImg = document.getElementById("img_overchargeCard");
     this.atkType = "overcharge";
+    this.type = "overcharge";
   }
 
   check() {

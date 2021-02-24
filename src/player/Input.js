@@ -18,7 +18,7 @@ export default class InputHandler {
           break;
         case " ":
           e.preventDefault();
-          player.fire();
+          if (player.game.gameState === 1) player.fire();
           break;
         default:
           break;

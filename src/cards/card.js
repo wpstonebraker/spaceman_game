@@ -18,31 +18,36 @@ export default class Card {
     return true;
   }
 
-  draw(ctx) {
-    ctx.drawImage(
-      this.cardImg,
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height
-    );
+  draw(ctx, x, y, width, height) {
+    ctx.drawImage(this.cardImg, x, y, width, height);
+  }
+
+  findCardIdx() {
+    return this.game.startingChoices.indexOf(this);
+  }
+
+  findCard(idx) {
+    return this.game.startingChoices[idx];
+  }
+
+  removeAndAddCard(idx, card) {
+    this.game.startingChoices.splice(idx, 1);
+    this.game.startingCards.push(card);
   }
 
   collision(laser, card) {
     let laserRight = laser.position.x + laser.width;
     let laserY = laser.position.y;
-    let topLeft = card.position.y;
-    let bottomLeft = card.position.y + card.height;
-    let cardX = card.position.x;
+    let topLeft = card.y;
+    let bottomLeft = card.y + 60;
+    let cardX = 1200;
 
     if (laserRight >= cardX && laserY >= topLeft && laserY <= bottomLeft) {
-      const cardIdx = this.game.startingChoices.indexOf(this);
-      const card = this.game.startingChoices[cardIdx];
-      this.game.startingChoices.splice(cardIdx, cardIdx + 1);
-      debugger;
-      this.game.startingCards.push(card);
+      const cardIdx = this.findCardIdx();
+      const card = this.findCard(cardIdx);
+      this.removeAndAddCard(cardIdx, card);
       const laserIdx = this.game.projectiles.indexOf(laser);
-      this.game.projectiles.splice(laserIdx, laserIdx + 1);
+      this.game.projectiles.splice(laserIdx, 1);
       this.game.elements.push(
         new Explosion(laser.position.x, laser.position.y, this.game)
       );
@@ -54,10 +59,6 @@ export default class Card {
       this.game.projectiles.forEach((projectile) => {
         this.collision(projectile, this);
       });
-      // this.collision(
-      //   this.game.projectiles[this.game.projectiles.length - 1],
-      //   this
-      // );
     }
   }
 }

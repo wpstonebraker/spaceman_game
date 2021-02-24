@@ -9,6 +9,9 @@ import Explosion from "./util/explosion";
 import InputHandler from "./player/Input";
 import InstallUpdate from "./cards/installUpdate";
 import StartGame from "./cards/startGame";
+import SyphonEnergy from "./cards/syphonEnergy";
+import Salvo from "./cards/salvo";
+import TuneUp from "./cards/tuneUp";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -16,7 +19,8 @@ export default class Game {
     this.gameHeight = gameHeight;
     this.background = document.getElementById("img_background");
     this.projectiles = [];
-    this.startingChoices = [new InstallUpdate(this), new StartGame(this)];
+    this.startingChoices;
+    this.gameState = 0;
     this.startingCards = [];
     this.elements = [];
     this.playerTurn = true;
@@ -24,9 +28,31 @@ export default class Game {
   }
 
   selectCards() {
+    this.gameState = 1;
     this.player = new Player(this);
     this.elements = [this.player];
+    this.initializeStartingCards();
     new InputHandler(this.player);
+  }
+
+  initializeStartingCards() {
+    this.startingChoices = [
+      new InstallUpdate(this),
+      new Overcharge(this),
+      new SyphonEnergy(this),
+      new TuneUp(this),
+      new Salvo(this),
+      new StartGame(this),
+    ];
+  }
+
+  drawStartingCards(ctx) {
+    ctx.drawImage(this.background, 0, 0, 1600, 800);
+    this.startingChoices.forEach((card, i) => {
+      card.draw(ctx, 1200, card.y, 40, 60);
+    });
+    this.elements.forEach((element) => element.draw(ctx));
+    this.projectiles.forEach((element) => element.draw(ctx));
   }
 
   start(startingCards) {
@@ -41,6 +67,7 @@ export default class Game {
     this.enemyStatus = new EnemyStatus(this);
 
     this.elements = [this.player, this.enemy];
+    this.gameState = 2;
   }
 
   computerTurn() {
@@ -60,12 +87,6 @@ export default class Game {
   isOver() {
     if (this.hasStarted) {
       if (this.enemy.armor <= 0) {
-        // const endScreen = document.createElement("div");
-        // endScreen.classList.add("end-screen");
-        // endScreen.innerText = "YOU WON!";
-        // document.getElementById("end-turn-button").appendChild(endScreen);
-        // this.enemy.image = "";
-        // document.getElementById("card-description").innerText = "YOU WIN!";
         document.getElementById("enemy-display-span").innerText =
           "ENEMY DESTROYED! YOU WIN!";
         this.hand.disabled = true;
@@ -82,7 +103,7 @@ export default class Game {
 
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1600, 800);
-    this.startingChoices.forEach((card) => card.draw(ctx));
+    // this.startingChoices.forEach((card) => card.draw(ctx));
     this.elements.forEach((element) => element.draw(ctx));
     this.projectiles.forEach((element) => element.draw(ctx));
   }

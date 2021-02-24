@@ -14,6 +14,9 @@ export default class Salvo extends Card {
     this.sprite = document.getElementById("img_missle");
     this.game = game;
     this.atkType = "missle";
+    this.y = 400;
+    this.cardImg = document.getElementById("img_salvoCard");
+    this.type = "salvo";
   }
 
   action() {

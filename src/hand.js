@@ -37,25 +37,7 @@ export default class Hand {
 
   initializeDeck(startingCards) {
     startingCards.forEach((card) => {
-      switch (card) {
-        case "overcharge":
-          this.deck.push(new Overcharge(this.game));
-          break;
-        case "syphon":
-          this.deck.push(new SyphonEnergy(this.game));
-          break;
-        case "update":
-          this.deck.push(new InstallUpdate(this.game));
-          break;
-        case "salvo":
-          this.deck.push(new Salvo(this.game));
-          break;
-        case "tune":
-          this.deck.push(new TuneUp(this.game));
-          break;
-        default:
-          break;
-      }
+      this.deck.push(card);
     });
     if (startingCards.length > 1) {
       // let extra = startingCards.length - 2;
