@@ -3,6 +3,7 @@ import Player from "./player";
 export default class InputHandler {
   constructor(player) {
     document.addEventListener("keydown", (e) => {
+      debugger;
       switch (e.key) {
         case "w":
           player.moveUp();
@@ -18,7 +19,9 @@ export default class InputHandler {
           break;
         case " ":
           e.preventDefault();
+          if (player.game.gameState === 0) player.fire();
           if (player.game.gameState === 1) player.fire();
+
           break;
         default:
           break;

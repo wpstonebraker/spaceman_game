@@ -43,25 +43,6 @@
   z-index: -1;
 }
 
-#img_background,
-#img_player,
-#img_npc1,
-#img_laser,
-#img_missle,
-#img_explosion,
-#img_shields,
-#img_npc1a1,
-#img_npc1a2,
-#img_npc1shields,
-#img_newshields,
-#img_updateAni,
-#img_updateCard,
-#img_overchargeCard,
-#img_syphonCard,
-#img_salvoCard,
-#img_tuneUpCard,
-#img_startGame,
-#img_malwareAni,
-#img_poweredUp {
+.canvas-image {
   display: none;
 }

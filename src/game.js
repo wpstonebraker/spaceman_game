@@ -12,6 +12,7 @@ import StartGame from "./cards/startGame";
 import SyphonEnergy from "./cards/syphonEnergy";
 import Salvo from "./cards/salvo";
 import TuneUp from "./cards/tuneUp";
+import Button from "./buttons/button";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -25,12 +26,37 @@ export default class Game {
     this.elements = [];
     this.playerTurn = true;
     this.hasStarted = false;
+    this.player = new Player(this);
   }
 
-  selectCards() {
-    this.gameState = 1;
-    this.player = new Player(this);
+  pregame() {
     this.elements = [this.player];
+    new InputHandler(this.player);
+    this.initializeStartScreenButtons();
+  }
+
+  drawSelectScreenWords(ctx) {
+    ctx.font = "25px VT323";
+    ctx.fillStyle = "white";
+    ctx.fillText("Move Up and Down with W and S", 200, 200);
+    ctx.fillText("Move Left and Right with A and D", 200, 220);
+    ctx.fillText("Use space to shoot a selection", 200, 500);
+  }
+
+  initializeStartScreenButtons() {
+    const instructions = document.getElementById("btn-instructions");
+    const startGame = document.getElementById("btn-start");
+    this.elements.push(
+      new Button(instructions, 700, 100, "instructions", this),
+      new Button(startGame, 700, 300, "start", this)
+    );
+  }
+
+  drawSelectScreenButtons(ctx) {}
+
+  selectCards() {
+    this.elements = [this.player];
+    this.gameState = 1;
     this.initializeStartingCards();
     new InputHandler(this.player);
   }
@@ -46,14 +72,14 @@ export default class Game {
     ];
   }
 
-  drawStartingCards(ctx) {
-    ctx.drawImage(this.background, 0, 0, 1600, 800);
-    this.startingChoices.forEach((card, i) => {
-      card.draw(ctx, 1200, card.y, 40, 60);
-    });
-    this.elements.forEach((element) => element.draw(ctx));
-    this.projectiles.forEach((element) => element.draw(ctx));
-  }
+  // drawStartingCards(ctx) {
+  //   ctx.drawImage(this.background, 0, 0, 1600, 800);
+  //   this.startingChoices.forEach((card, i) => {
+  //     card.draw(ctx, 1200, card.y, 40, 60);
+  //   });
+  //   this.elements.forEach((element) => element.draw(ctx));
+  //   this.projectiles.forEach((element) => element.draw(ctx));
+  // }
 
   start(startingCards) {
     this.hasStarted = true;
@@ -77,6 +103,7 @@ export default class Game {
   }
 
   update(dt) {
+    debugger;
     // this.enemy.update(dt);
     this.startingChoices.forEach((card) => card.update(dt));
 
@@ -102,12 +129,15 @@ export default class Game {
   }
 
   draw(ctx) {
+    ctx.drawImage(this.background, 0, 0, 1600, 800);
     switch (this.gameState) {
       case 0:
-        ctx.drawImage(this.background, 0, 0, 1600, 800);
+        this.drawSelectScreenWords(ctx);
+        this.drawSelectScreenButtons(ctx);
+        this.elements.forEach((element) => element.draw(ctx));
+        this.projectiles.forEach((element) => element.draw(ctx));
         break;
       case 1:
-        ctx.drawImage(this.background, 0, 0, 1600, 800);
         this.startingChoices.forEach((card, i) => {
           card.draw(ctx, 1200, card.y, 40, 60);
           card.checkPos(ctx);
@@ -116,7 +146,6 @@ export default class Game {
         this.projectiles.forEach((element) => element.draw(ctx));
         break;
       case 2:
-        ctx.drawImage(this.background, 0, 0, 1600, 800);
         // this.startingChoices.forEach((card) => card.draw(ctx));
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));

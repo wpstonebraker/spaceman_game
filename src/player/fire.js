@@ -23,5 +23,9 @@ export default class Fire {
 
   update(dt) {
     this.position.x += this.speed;
+
+    if (this.position.x >= this.game.gameWidth) {
+      this.game.projectiles.splice(this.game.projectiles.indexOf(this), 1);
+    }
   }
 }

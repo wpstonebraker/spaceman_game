@@ -37,9 +37,10 @@ export default class Explosion {
       this.frames++;
     }
 
-    // if (this.loopIndex > 11) {
-    //   this.game.elements.pop();
-    // }
+    if (this.loopIndex > 11) {
+      const idx = this.game.elements.indexOf(this);
+      this.game.elements.splice(idx, 1);
+    }
 
     // this.drawFrame(3, 0, this.position.x, this.position.y, ctx);
     // this.drawFrame(4, 0, this.position.x, this.position.y, ctx);

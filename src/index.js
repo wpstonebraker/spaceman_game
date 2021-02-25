@@ -25,9 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("rules-pic-box").classList.add("hidden");
   });
 
-  const GAME_WIDTH = 1400;
+  const GAME_WIDTH = 1600;
   const GAME_HEIGHT = 500;
   let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+  game.pregame();
 
   const startingCards = [];
 

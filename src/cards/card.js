@@ -19,7 +19,6 @@ export default class Card {
   }
 
   checkPos(ctx) {
-    debugger;
     let playerPosY = this.game.player.position.y + 100;
     if (playerPosY >= this.y && playerPosY <= this.y + 60) {
       ctx.font = "25px VT323";
