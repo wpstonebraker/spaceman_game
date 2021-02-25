@@ -47,15 +47,19 @@
       <img class="canvas-image" id="img_startGame" src="assets/dud.png" />
       <img class="canvas-image" id="btn-instructions" src="assets/buttons/instruc.png" />
       <img class="canvas-image" id="btn-start" src="assets/buttons/start.png" />
+      <img class="canvas-image" id="btn-credits" src="assets/buttons/credits.png" />
+      <img class="canvas-image" id="btn-reset" src="assets/buttons/reset.png" />
+      <img class="canvas-image" id="btn-story" src="assets/buttons/story.png" />
+      <img class="canvas-image" id="btn-illustration" src="assets/buttons/illustration.png" />
 
     </div>
-    <div id="information-box">
-      <div id="information">
+    <!-- <div id="information-box">
+      <div id="information"> -->
         <!-- <button id="rules-button"><a href="#rules">aogisdjgblksjdfgblkjaslkgj</a></button> -->
-        <button id="rules-button">Rules and Game Start</button>
+        <!-- <button id="rules-button">Rules and Game Start</button>
         <button id="rules-pic-button">Click for Illustration</button>
       </div>
-    </div>
+    </div> -->
     <div id="main-outer">
       <div id="main-inner">
         <div id="cockpit-div">
@@ -72,15 +76,34 @@
           </div>
         </div>
         <canvas id="game-screen" width="1595" height="670"></canvas>
+        <div id="start-screen-display">
+          <div class="start-screen-div hidden" id="ss-story">
+            After a routine scientific expedition to mars, Dad begins to make his
+            way home... when he encounters a massive alien base! As the nearest Space
+            Force outpost, you have control over his ship's defense systems. You alone can save
+            Dad. Will Space Dad be home in time for dinner? Or will Space Dad
+            be... dinner?
+          </div>
+          <div class="start-screen-div hidden" id="ss-instructions">
+            Space Dad is turn-based card game. Your premade deck includes 9 "basic" cards: 3 laser attack cards, 3
+        missle attack cards, and 3 shield recharge cards. For each power card that you select beyond the first, 1 each of the basic cards will be added to your deck as filler. You begin the game
+        with 3 energy per turn; each card has an energy cost that detracts
+        from that turn's energy. Click the "End Turn" button and the enemy will play their turn.
+        At the start of your turn, you will draw 5 new cards from your deck.
+          </div>
+          <div class="start-screen-div hidden" id="ss-credits">
+            -enemy ship from https://ko-fi.com/norma2d
+            <br />
+            <br />
+            -explosion effect from JROB774 Joshua "JROB774" Robertson of opengameart.org
+            <br />
+            <br />
+            -all other assets and animations were drawn (badly) by me.
+          </div>
+        </div>
         <div id="dash-outer">
           <div id="dash-inner">
             <div id="dash-box">
-              <div id="player-energy" class="dash-display">
-                <div id="player-energy-num-box" >
-                  <span id="player-energy-num"></span>
-                </div>
-                <img src="assets/topTerminal.png" class="mid-terminal">
-              </div>
               <div id="left-panel">
                 <div id="player-weapons" class="dash-display">
                   <span id="player-shields-num"></span>
@@ -93,6 +116,12 @@
                   
                   <!-- <span id="player-lasers-num" class="status-display"></span> -->
                   <!-- <span id="player-missles-num" class="status-display"></span> -->
+                  <div id="player-energy" class="dash-display">
+                    <div id="player-energy-num-box" >
+                      <span id="player-energy-num"></span>
+                    </div>
+                    <img src="assets/topTerminal.png" class="mid-terminal">
+                  </div>
                 </div>
               </div>
               

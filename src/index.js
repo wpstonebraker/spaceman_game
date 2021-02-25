@@ -9,18 +9,6 @@ import "./styles/index.scss";
 // });
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("rules-button").addEventListener("click", () => {
-    document.getElementById("rules").classList.remove("hidden");
-    document.getElementById("rules").classList.add("visible");
-  });
-  document.getElementById("rules-close").addEventListener("click", () => {
-    document.getElementById("rules").classList.add("hidden");
-  });
-  document.getElementById("rules-pic-button").addEventListener("click", () => {
-    document.getElementById("rules-pic-box").classList.remove("hidden");
-    document.getElementById("rules-pic-box").classList.add("visible");
-  });
-
   document.getElementById("rules-pic-box").addEventListener("click", () => {
     document.getElementById("rules-pic-box").classList.add("hidden");
   });
@@ -31,12 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   game.pregame();
 
   const startingCards = [];
-
-  document.getElementById("start-game-btn").addEventListener("click", () => {
-    game.selectCards();
-    document.getElementById("rules").classList.remove("visible");
-    document.getElementById("rules").classList.add("hidden");
-  });
 
   let canvas = document.getElementById("game-screen");
   let ctx = canvas.getContext("2d");

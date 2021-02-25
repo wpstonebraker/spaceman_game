@@ -13,6 +13,13 @@ export default class Button {
     ctx.drawImage(this.image, this.x, this.y);
   }
 
+  hideAll() {
+    const btns = document.getElementsByClassName("start-screen-div");
+    Array.from(btns).forEach((btn) => {
+      btn.classList.add("hidden");
+    });
+  }
+
   collision(laser) {
     let laserRight = laser.position.x + laser.width;
     let laserY = laser.position.y;
@@ -25,13 +32,30 @@ export default class Button {
       this.game.elements.push(
         new Explosion(laser.position.x, laser.position.y, this.game)
       );
+      this.hideAll();
       switch (this.type) {
         case "start":
           this.game.selectCards();
           break;
         case "instructions":
-          document.getElementById("rules").classList.remove("hidden");
-          document.getElementById("rules").classList.add("visible");
+          document.getElementById("ss-instructions").classList.remove("hidden");
+          break;
+        case "story":
+          document.getElementById("ss-story").classList.remove("hidden");
+          break;
+        case "illustration":
+          document.getElementById("rules-pic-box").classList.remove("hidden");
+          document
+            .getElementById("rules-pic-box")
+            .addEventListener("click", () => {
+              document.getElementById("rules-pic-box").classList.add("hidden");
+            });
+          break;
+        case "credits":
+          document.getElementById("ss-credits").classList.remove("hidden");
+          break;
+        case "reset":
+          break;
         default:
           break;
       }

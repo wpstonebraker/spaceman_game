@@ -44,15 +44,29 @@ export default class Game {
   }
 
   initializeStartScreenButtons() {
+    const btnX = 725;
+    const story = document.getElementById("btn-story");
     const instructions = document.getElementById("btn-instructions");
+    const illustration = document.getElementById("btn-illustration");
     const startGame = document.getElementById("btn-start");
+    const credits = document.getElementById("btn-credits");
+    const reset = document.getElementById("btn-reset");
     this.elements.push(
-      new Button(instructions, 700, 100, "instructions", this),
-      new Button(startGame, 700, 300, "start", this)
+      new Button(story, btnX, 75, "story", this),
+      new Button(instructions, btnX, 175, "instructions", this),
+      new Button(illustration, btnX, 275, "illustration", this),
+      new Button(startGame, btnX, 375, "start", this),
+      new Button(credits, btnX, 475, "credits", this),
+      new Button(reset, btnX, 575, "reset", this)
     );
   }
 
-  drawSelectScreenButtons(ctx) {}
+  drawSelectInstructions(ctx) {
+    ctx.font = "25px VT323";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "left";
+    ctx.fillText("Shoot to select your starting cards", 150, 200);
+  }
 
   selectCards() {
     this.elements = [this.player];
@@ -103,8 +117,6 @@ export default class Game {
   }
 
   update(dt) {
-    debugger;
-    // this.enemy.update(dt);
     this.startingChoices.forEach((card) => card.update(dt));
 
     this.elements.forEach((element) => element.update(dt));
@@ -133,11 +145,11 @@ export default class Game {
     switch (this.gameState) {
       case 0:
         this.drawSelectScreenWords(ctx);
-        this.drawSelectScreenButtons(ctx);
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;
       case 1:
+        this.drawSelectInstructions(ctx);
         this.startingChoices.forEach((card, i) => {
           card.draw(ctx, 1200, card.y, 40, 60);
           card.checkPos(ctx);
