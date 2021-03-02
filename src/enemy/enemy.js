@@ -1,14 +1,15 @@
 import Dud from "../cards/dud";
 import Animation from "../util/animation";
+import Explosion from "../util/explosion";
 import EnemyProjectile from "./enemyProjectile";
 import EnemyShields from "./enemyShields";
 
 export default class Enemy {
-  constructor(game) {
+  constructor(game, x, y) {
     this.image = document.getElementById("img_npc1");
     this.position = {
-      x: 1000,
-      y: 100,
+      x: x,
+      y: y,
     };
 
     this.laserSprite = document.getElementById("img_npc1a1");
@@ -26,8 +27,11 @@ export default class Enemy {
     this.armor = 100;
     this.lasers = 20;
     this.missles = 20;
-    this.receiveAttack = 1050;
+    this.receiveAttackTop = this.position.y;
+    this.receiveAttackBottom = this.position.y + this.height;
+    this.receiveAttackX = 1150;
     this.special = 1;
+    this.destroyed = false;
   }
 
   draw(ctx) {
@@ -41,6 +45,8 @@ export default class Enemy {
   }
 
   update(dt) {
+    if (this.destroyed) this.y -= 10;
+    if (this.position.x > 1100) this.position.x -= 2;
     if (this.position.y < 120) {
       this.position.y += this.speed;
     } else {
@@ -65,11 +71,10 @@ export default class Enemy {
 
     // if (rand < 1) {
     if (rand < 0.33) {
-      debugger;
       this.dudCards();
-      setTimeout(() => {
-        this.game.hand.startTurn();
-      }, 2500);
+      // setTimeout(() => {
+      //   this.game.hand.startTurn();
+      // }, 2500);
       return;
     }
 
@@ -83,9 +88,9 @@ export default class Enemy {
       this.attackMissles();
     }
 
-    setTimeout(() => {
-      this.game.hand.startTurn();
-    }, 2500);
+    // setTimeout(() => {
+    //   this.game.hand.startTurn();
+    // }, 2500);
   }
 
   dudCards() {
@@ -116,14 +121,16 @@ export default class Enemy {
       document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
     this.shields += 20;
+    this.game.target = this;
     this.game.elements.push(
       new EnemyShields(
         this.game.enemy.position.x - 50,
         this.game.enemy.position.y - 50,
+        256,
         this.game
       )
     );
-    this.game.enemyStatus.render();
+    // this.game.enemyStatus.render();
   }
 
   attackLasers() {
@@ -133,16 +140,25 @@ export default class Enemy {
     setTimeout(() => {
       document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
+    const angle = Math.atan2(
+      this.position.y + 80 - (this.game.player.position.y + 100),
+      this.position.x - (this.game.player.position.x + 50)
+    );
+    const velocity = {
+      x: Math.cos(angle),
+      y: Math.sin(angle),
+    };
     this.game.projectiles.push(
       new EnemyProjectile(
         this.position.x,
-        this.position.y + 190,
+        this.position.y + 80,
         this.laserSprite,
         32,
         16,
         -15,
         this.game,
-        "laser"
+        "laser",
+        velocity
       )
     );
   }
@@ -154,16 +170,25 @@ export default class Enemy {
     setTimeout(() => {
       document.getElementById("enemy-display-span").innerText = "";
     }, 3000);
+    const angle = Math.atan2(
+      this.position.y + 80 - (this.game.player.position.y + 100),
+      this.position.x - (this.game.player.position.x + 50)
+    );
+    const velocity = {
+      x: Math.cos(angle),
+      y: Math.sin(angle),
+    };
     this.game.projectiles.push(
       new EnemyProjectile(
         this.position.x,
-        this.position.y + 190,
+        this.position.y + 80,
         this.missleSprite,
         50,
         50,
         -10,
         this.game,
-        "missle"
+        "missle",
+        velocity
       )
     );
   }
@@ -234,6 +259,17 @@ export default class Enemy {
       "enemy-display-span"
     ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
 
-    this.game.enemyStatus.render();
+    // this.game.enemyStatus.render();
+  }
+
+  renderShields() {
+    debugger;
+    this.game.elements.push(
+      new EnemyShields(this.position.x, this.position.y, 256, this.game)
+    );
+  }
+
+  renderExplosion(x, y) {
+    this.game.elements.push(new Explosion(x, y, this.game));
   }
 }

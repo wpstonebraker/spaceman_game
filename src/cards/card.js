@@ -65,7 +65,7 @@ export default class Card {
   }
 
   update(dt) {
-    if (this.game.projectiles.length >= 1) {
+    if (this.game.projectiles.length >= 1 && this.game.gameState === 1) {
       this.game.projectiles.forEach((projectile) => {
         this.collision(projectile, this);
       });

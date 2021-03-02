@@ -17,8 +17,8 @@ export default class Player {
     this.armor = 50;
     this.maxEnergy = 3;
     this.energy = this.maxEnergy;
-    this.lasers = 10;
-    this.missles = 10;
+    this.lasers = 50;
+    this.missles = 50;
     this.laserPos = {
       x: 115,
       y: 100,
@@ -49,6 +49,24 @@ export default class Player {
   receiveDamage(atkType) {
     let dmg;
     switch (atkType) {
+      case "small":
+        if (this.shields >= this.game.enemy.lasers) {
+          dmg = this.game.enemy.lasers;
+          this.shields -= dmg;
+        } else if (this.shields - this.game.enemy.lasers < 0) {
+          dmg = -(this.shields - this.game.enemy.lasers);
+          this.armor -= dmg / 2;
+          this.shields = 0;
+          //   this.shields !== 0 &&
+          //   this.shields <= this.game.enemy.lasers
+          // ) {
+          //   dmg = this.shields;
+          //   this.shields = 0;
+        } else if (this.shields === 0) {
+          dmg = this.game.enemy.lasers / 2;
+          this.armor -= dmg;
+        }
+        break;
       case "laser":
         if (this.shields >= this.game.enemy.lasers) {
           dmg = this.game.enemy.lasers;
@@ -128,6 +146,11 @@ export default class Player {
     if (this.position.y <= 0) this.position.y = 0;
     if (this.position.y >= 500) this.position.y = 500;
   }
+
+  // moveToStartPos() {
+  //   const angle = Math.atan2(this.position.y - 200, this.position.x - 200);
+  //   console.log(angle);
+  // }
 
   moveUp() {
     this.speedY = -this.maxSpeedY;

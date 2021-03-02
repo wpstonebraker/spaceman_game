@@ -1,5 +1,5 @@
 export default class EnemyShields {
-  constructor(x, y, game) {
+  constructor(x, y, size, game) {
     this.image = document.getElementById("img_npc1shields");
     this.position = {
       x: x,
@@ -11,23 +11,23 @@ export default class EnemyShields {
     this.loopIndex = 0;
     this.frames = 0;
     this.game = game;
+    this.size = size;
   }
 
   // give it the image
   // fX (nth frame x cord starts here (top left))
   // fX (nth frame y cord starts here (top left))
   drawFrame(fX, fY, ctx) {
-    debugger;
     ctx.drawImage(
       this.image,
       fX * this.width,
       fY * this.height,
       this.width,
       this.height,
-      this.game.enemy.position.x,
-      this.game.enemy.position.y,
-      256,
-      256
+      this.game.target.position.x,
+      this.game.target.position.y,
+      this.size,
+      this.size
     );
   }
 

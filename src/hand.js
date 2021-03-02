@@ -10,7 +10,7 @@ import Salvo from "./cards/salvo";
 import TuneUp from "./cards/tuneUp";
 
 export default class Hand {
-  constructor(game, startingCard) {
+  constructor(game, startingCards) {
     this.game = game;
     const STARTING_CARDS = [
       new Recharge(this.game),
@@ -31,7 +31,7 @@ export default class Hand {
     this.currentHand = [];
     this.discardPile = [];
     this.disabled = false;
-    this.initializeDeck(startingCard);
+    this.initializeDeck(startingCards);
     this.startTurn();
   }
 
@@ -62,7 +62,6 @@ export default class Hand {
 
   //
   startTurn() {
-    debugger;
     this.game.playerTurn = true;
     this.disabled = false;
     this.game.player.energy = this.game.player.maxEnergy;
@@ -146,7 +145,6 @@ export default class Hand {
           document.getElementById(`card-${i}`).classList.add("playCard");
 
           setTimeout(() => {
-            debugger;
             document.getElementById(`card-${i}`).remove();
           }, 1500);
           // delete this.currentHand[i];

@@ -3,7 +3,6 @@ import Player from "./player";
 export default class InputHandler {
   constructor(player) {
     document.addEventListener("keydown", (e) => {
-      debugger;
       switch (e.key) {
         case "w":
           player.moveUp();
