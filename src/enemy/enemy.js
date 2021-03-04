@@ -32,6 +32,7 @@ export default class Enemy {
     this.receiveAttackX = 1150;
     this.special = 1;
     this.destroyed = false;
+    this.name = "Big Boss";
   }
 
   draw(ctx) {
@@ -42,22 +43,34 @@ export default class Enemy {
       this.width,
       this.height
     );
-    if (this.position.x === 1100) {
-      ctx.fillStyle = "#6f6";
-      ctx.textAlign = "left";
-      ctx.fillText(`Big Boss`, 1350, 200);
-      ctx.fillStyle = "white";
-      ctx.fillText(
-        `Shields: ${this.shields}     Lasers: ${this.lasers}`,
-        1350,
-        240
-      );
-      ctx.fillText(`Armor: ${this.armor}`, 1350, 260);
+    debugger;
+    let playerPosY = this.game.player.position.y + 100;
+    if (
+      playerPosY >= this.position.y &&
+      playerPosY <= this.position.y + this.height
+    ) {
+      this.renderStats(ctx);
     }
   }
 
+  renderStats(ctx) {
+    ctx.fillStyle = "white";
+    ctx.fillText(this.name, 970, 20);
+    ctx.fillText(
+      `Shields: ${this.shields}     Lasers: ${this.lasers}`,
+      810,
+      45
+    );
+    ctx.fillText(`Armor: ${this.armor}      Missle: ${this.missles}`, 810, 70);
+  }
+
   update(dt) {
-    if (this.destroyed) this.y -= 10;
+    if (this.destroyed) {
+      this.position.y -= 5;
+      setTimeout(() => {
+        this.game.endScreen();
+      }, 2500);
+    }
     if (this.position.x > 1100) this.position.x -= 1;
     if (this.position.y < 120) {
       this.position.y += this.speed;
@@ -253,6 +266,7 @@ export default class Enemy {
         } else if (this.shields === 0) {
           dmg = this.game.player.missles;
           this.armor -= dmg;
+          Math.sign(this.armor) === -1 ? (this.armor = 0) : this.armor;
           type = "armor";
         } else if (
           this.shields !== 0 &&
@@ -267,6 +281,7 @@ export default class Enemy {
         break;
     }
 
+    if (this.armor <= 0) this.destroyed = true;
     document.getElementById(
       "enemy-display-span"
     ).innerText = `Enemy's ${type} receives ${dmg} damage!`;

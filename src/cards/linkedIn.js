@@ -1,12 +1,10 @@
 import Card from "./card";
-import Projectile from "../player/projectile";
 
-export default class LaserAttack extends Card {
+export default class LinkedIn extends Card {
   constructor(game) {
     super(game);
-    this.cost = 1;
     this.image = "assets/laserAtk.png";
-    this.description = `Fire your lasers. Lasers do full damage vs Shields and half damage vs Armor`;
+    this.description = `Check out my Linked in!`;
 
     this.speed = 5;
     this.lastTime = 0;
@@ -14,9 +12,8 @@ export default class LaserAttack extends Card {
       x: this.game.player.laserPos.x,
       y: this.game.player.laserPos.y,
     };
-    this.sprite = document.getElementById("img_laser");
+    this.sprite = document.getElementById("img_linkedIn");
     this.game = game;
-    this.atkType = "laser";
   }
 
   action() {

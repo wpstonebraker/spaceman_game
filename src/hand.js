@@ -65,7 +65,6 @@ export default class Hand {
     this.game.playerTurn = true;
     this.disabled = false;
     this.game.player.energy = this.game.player.maxEnergy;
-    this.game.playerStatus.render();
     for (let i = 0; i < 5; i++) {
       if (!this.playerCards.length) this.resetDeck();
       this.currentHand.push(this.playerCards.shift());
@@ -99,7 +98,13 @@ export default class Hand {
     }
   }
 
+  endGame() {
+    this.deck = null;
+    this.currentHand = null;
+  }
+
   render() {
+    if (this.currentHand === null) return;
     // clear the hand before each re render
     document.getElementById("player-hand").innerHTML = "";
 

@@ -30,14 +30,12 @@ export default class EnemyProjectile {
       this.game.player.shields > 0 &&
       this.position.x < this.game.player.position.x + 100
     ) {
-      this.game.playerStatus.render();
       this.game.projectiles.pop();
       this.game.elements.push(
         new Shields(this.position.x, this.position.y, this.game)
       );
       this.game.player.receiveDamage(this.atkType);
     } else if (this.position.x < this.game.player.position.x + 100) {
-      this.game.playerStatus.render();
       this.game.projectiles.pop();
       this.game.elements.push(
         new Explosion(this.position.x, this.position.y, this.game)

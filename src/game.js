@@ -30,6 +30,8 @@ export default class Game {
     this.hasStarted = false;
     this.player = new Player(this);
     this.target;
+    this.gameover = false;
+    this.isOver = this.isOver.bind(this);
   }
 
   pregame() {
@@ -169,7 +171,7 @@ export default class Game {
     ];
     // this.enemyStatus = new EnemyStatus(this);
 
-    this.elements = [this.player, ...this.enemies];
+    this.elements = [this.playerStatus, this.player, ...this.enemies];
     this.gameState = 5;
     // this.introBossBattle();
   }
@@ -179,7 +181,7 @@ export default class Game {
     this.gameState = 6;
 
     this.enemies = [this.enemy];
-    this.elements = [this.player, ...this.enemies];
+    this.elements = [this.playerStatus, this.player, ...this.enemies];
     setTimeout(() => {
       this.startBossBattle();
     }, 5000);
@@ -212,20 +214,33 @@ export default class Game {
   }
 
   isOver() {
-    if (this.hasStarted) {
-      if (this.enemy.armor <= 0) {
-        document.getElementById("enemy-display-span").innerText =
-          "ENEMY DESTROYED! YOU WIN!";
-        this.hand.disabled = true;
-        return true;
-      } else if (this.player.armor <= 0) {
-        document.getElementById("enemy-display-span").innerText =
-          "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
-        this.hand.disabled = true;
-        return true;
-      }
+    if (!this.gameover) {
       return false;
+    } else {
+      return true;
     }
+    // if (this.hasStarted) {
+    //   // if (this.enemy.armor <= 0) {
+    //   //   document.getElementById("enemy-display-span").innerText =
+    //   //     "ENEMY DESTROYED! YOU WIN!";
+    //   //   this.hand.disabled = true;
+    //   //   return true;
+    //   // } else if (this.player.armor <= 0) {
+    //   if (this.player.armor <= 0) {
+    //     document.getElementById("enemy-display-span").innerText =
+    //       "ABANDON SHIP! YOU HAVE LOST THE BATTLE!";
+    //     this.hand.disabled = true;
+    //     return true;
+    //   }
+    //   return false;
+    // }
+  }
+
+  endScreen() {
+    this.gameState = 7;
+    const linkedIn = document.getElementById("img_linkedIn");
+
+    this.elements.push(new Button(linkedIn, 1000, 75, "linked in", this));
   }
 
   draw(ctx) {
@@ -265,6 +280,13 @@ export default class Game {
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;
+      case 7:
+        ctx.fillText("YOU WIN!", 200, 200);
+
+        this.elements.forEach((element) => element.draw(ctx));
+        this.projectiles.forEach((element) => element.draw(ctx));
+        break;
+
       default:
         break;
     }

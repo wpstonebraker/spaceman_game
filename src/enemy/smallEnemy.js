@@ -18,6 +18,7 @@ export default class SmallEnemy {
     this.armor = 10;
     this.laserSprite = document.getElementById("img_npc1a1");
     this.lasers = 5;
+    this.name = "Alien Scout";
   }
 
   draw(ctx) {
@@ -28,25 +29,27 @@ export default class SmallEnemy {
       this.size,
       this.size
     );
-    if (this.position.x === 1200) {
-      ctx.fillStyle = "#6f6";
-      ctx.textAlign = "left";
-      ctx.fillText(`Alien Scout`, this.position.x + 100, this.position.y + 20);
-      ctx.fillStyle = "white";
-      ctx.fillText(
-        `Shields: ${this.shields}     Lasers: ${this.lasers}`,
-        this.position.x + 100,
-        this.position.y + 60
-      );
-      ctx.fillText(
-        `Armor: ${this.armor}`,
-        this.position.x + 100,
-        this.position.y + 80
-      );
+    let playerPosY = this.game.player.position.y + 100;
+    if (
+      playerPosY >= this.position.y &&
+      playerPosY <= this.position.y + this.size
+    ) {
+      this.renderStats(ctx);
     }
   }
+
+  renderStats(ctx) {
+    ctx.fillStyle = "white";
+    ctx.fillText(this.name, 970, 20);
+    ctx.fillText(
+      `Shields: ${this.shields}     Lasers: ${this.lasers}`,
+      810,
+      45
+    );
+    ctx.fillText(`Armor: ${this.armor}`, 810, 70);
+  }
+
   update(dt) {
-    debugger;
     if (this.armor <= 0 && this.position.x > 1500) {
       let idx = this.game.elements.indexOf(this);
       this.game.elements.splice(idx, 1);

@@ -1,7 +1,7 @@
 import Explosion from "../util/explosion";
 
 export default class Button {
-  constructor(image, x, y, type, game) {
+  constructor(image, x, y, type, game, width, height) {
     this.image = image;
     this.x = x;
     this.y = y;
@@ -56,6 +56,11 @@ export default class Button {
           break;
         case "reset":
           break;
+        case "linked in":
+          window.open(
+            "https://www.linkedin.com/in/paul-stonebraker-a8b034207/",
+            "_blank"
+          );
         default:
           break;
       }

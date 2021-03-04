@@ -21,6 +21,5 @@ export default class Recharge extends Card {
         this.game
       )
     );
-    this.game.playerStatus.render();
   }
 }

@@ -11,7 +11,6 @@ export default class Dud extends Card {
 
   action() {
     this.game.player.energy -= this.cost;
-    this.game.playerStatus.render();
     const idx = this.game.hand.deck.indexOf(this);
     this.game.hand.deck.splice(idx, idx + 1);
   }
