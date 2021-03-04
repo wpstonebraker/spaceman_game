@@ -10,22 +10,32 @@
   font-family: "VT323";
 }
 
+body {
+  background-image: url("../../assets/background.png");
+  background-size: cover;
+}
+
 #game-screen {
-  width: 100%;
-  height: 100%;
+  top: 10vh;
+  width: 1595px;
+  height: 670px;
   border: 1px solid black;
   z-index: -1;
   position: relative;
 }
 
 #main-outer {
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 #main-inner {
+  height: 100%;
   width: 1600px;
   position: relative;
+  display: block;
+  margin: auto;
 }
 
 #cockpit-div {
@@ -37,17 +47,13 @@
   position: fixed;
   width: 100vw;
   max-height: 100px;
+  min-height: 100px;
 }
 
 #bottom-dash {
   position: fixed;
   width: 100vw;
   bottom: 0px;
-}
-
-#main-inner {
-  display: block;
-  margin: auto;
 }
 
 .canvas-image {

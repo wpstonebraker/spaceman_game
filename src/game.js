@@ -171,7 +171,7 @@ export default class Game {
 
     this.elements = [this.player, ...this.enemies];
     this.gameState = 5;
-    // this.startBossBattle();
+    // this.introBossBattle();
   }
 
   introBossBattle() {
@@ -231,12 +231,12 @@ export default class Game {
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1600, 800);
     switch (this.gameState) {
-      case 0:
+      case 0: // start screen
         this.drawSelectScreenWords(ctx);
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;
-      case 1:
+      case 1: // select Power Cards screen
         this.drawSelectInstructions(ctx);
         this.startingChoices.forEach((card, i) => {
           card.draw(ctx, 1200, card.y, 40, 60);
@@ -245,23 +245,23 @@ export default class Game {
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;
-      case 2:
+      case 2: // intro pause
         this.elements.forEach((element) => element.draw(ctx));
         break;
-      case 3:
+      case 3: // intro words 1
         this.elements.forEach((element) => element.draw(ctx));
         this.writeIntroText1(ctx);
         break;
-      case 4:
+      case 4: // intro words 2
         this.elements.forEach((element) => element.draw(ctx));
         this.writeIntroText2(ctx);
         break;
-      case 5:
+      case 5: // battle 1
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         if (this.enemies.length === 0) this.introBossBattle();
         break;
-      case 6:
+      case 6: // boss battle
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;

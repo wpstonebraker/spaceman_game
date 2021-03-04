@@ -42,11 +42,23 @@ export default class Enemy {
       this.width,
       this.height
     );
+    if (this.position.x === 1100) {
+      ctx.fillStyle = "#6f6";
+      ctx.textAlign = "left";
+      ctx.fillText(`Big Boss`, 1350, 200);
+      ctx.fillStyle = "white";
+      ctx.fillText(
+        `Shields: ${this.shields}     Lasers: ${this.lasers}`,
+        1350,
+        240
+      );
+      ctx.fillText(`Armor: ${this.armor}`, 1350, 260);
+    }
   }
 
   update(dt) {
     if (this.destroyed) this.y -= 10;
-    if (this.position.x > 1100) this.position.x -= 2;
+    if (this.position.x > 1100) this.position.x -= 1;
     if (this.position.y < 120) {
       this.position.y += this.speed;
     } else {

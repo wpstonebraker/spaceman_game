@@ -27,7 +27,6 @@ export default class Projectile {
     const self = this;
 
     this.game.enemies.forEach((enemy) => {
-      debugger;
       if (
         enemy.shields > 0 &&
         self.position.x > enemy.receiveAttackX &&

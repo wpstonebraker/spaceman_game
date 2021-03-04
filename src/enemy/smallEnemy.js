@@ -28,9 +28,33 @@ export default class SmallEnemy {
       this.size,
       this.size
     );
+    if (this.position.x === 1200) {
+      ctx.fillStyle = "#6f6";
+      ctx.textAlign = "left";
+      ctx.fillText(`Alien Scout`, this.position.x + 100, this.position.y + 20);
+      ctx.fillStyle = "white";
+      ctx.fillText(
+        `Shields: ${this.shields}     Lasers: ${this.lasers}`,
+        this.position.x + 100,
+        this.position.y + 60
+      );
+      ctx.fillText(
+        `Armor: ${this.armor}`,
+        this.position.x + 100,
+        this.position.y + 80
+      );
+    }
   }
   update(dt) {
-    if (this.position.x > 1200) {
+    debugger;
+    if (this.armor <= 0 && this.position.x > 1500) {
+      let idx = this.game.elements.indexOf(this);
+      this.game.elements.splice(idx, 1);
+      idx = this.game.enemies.indexOf(this);
+      this.game.enemies.splice(idx, 1);
+    } else if (this.armor <= 0) {
+      this.position.x += 3;
+    } else if (this.position.x > 1200) {
       this.position.x -= 3;
     }
   }
@@ -94,13 +118,13 @@ export default class SmallEnemy {
         break;
     }
 
-    if (this.armor <= 0) {
-      debugger;
-      let idx = this.game.elements.indexOf(this);
-      this.game.elements.splice(idx, 1);
-      idx = this.game.enemies.indexOf(this);
-      this.game.enemies.splice(idx, 1);
-    }
+    // if (this.armor <= 0) {
+    //   debugger;
+    //   let idx = this.game.elements.indexOf(this);
+    //   this.game.elements.splice(idx, 1);
+    //   idx = this.game.enemies.indexOf(this);
+    //   this.game.enemies.splice(idx, 1);
+    // }
 
     // self.game.elements.push(
     //   new EnemyShields(self.position.x, self.position.y, self.game)
