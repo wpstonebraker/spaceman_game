@@ -58,10 +58,10 @@ export default class Enemy {
     ctx.fillText(this.name, 970, 20);
     ctx.fillText(
       `Shields: ${this.shields}     Lasers: ${this.lasers}`,
-      810,
-      45
+      1120,
+      55
     );
-    ctx.fillText(`Armor: ${this.armor}      Missle: ${this.missles}`, 810, 70);
+    ctx.fillText(`Armor: ${this.armor}      Missle: ${this.missles}`, 1120, 80);
   }
 
   update(dt) {

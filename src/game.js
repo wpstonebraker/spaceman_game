@@ -32,6 +32,10 @@ export default class Game {
     this.target;
     this.gameover = false;
     this.isOver = this.isOver.bind(this);
+    this.topDash = document.getElementById("img_topDash");
+    this.bottomDash = document.getElementById("img_bottomDash");
+    this.topScreen = document.getElementById("img_topTerminal");
+    this.energyScreen = document.getElementById("img_energyTerminal");
   }
 
   pregame() {
@@ -57,12 +61,12 @@ export default class Game {
     const credits = document.getElementById("btn-credits");
     const reset = document.getElementById("btn-reset");
     this.elements.push(
-      new Button(story, btnX, 75, "story", this),
-      new Button(instructions, btnX, 175, "instructions", this),
-      new Button(illustration, btnX, 275, "illustration", this),
-      new Button(startGame, btnX, 375, "start", this),
-      new Button(credits, btnX, 475, "credits", this),
-      new Button(reset, btnX, 575, "reset", this)
+      new Button(story, btnX, 75, "story", this, 128, 64),
+      new Button(instructions, btnX, 175, "instructions", this, 128, 64),
+      new Button(illustration, btnX, 275, "illustration", this, 128, 64),
+      new Button(startGame, btnX, 375, "start", this, 128, 64),
+      new Button(credits, btnX, 475, "credits", this, 128, 64),
+      new Button(reset, btnX, 575, "reset", this, 128, 64)
     );
   }
 
@@ -245,6 +249,11 @@ export default class Game {
 
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1600, 800);
+    ctx.drawImage(this.topDash, 0, 0, 1600, 94);
+    ctx.drawImage(this.bottomDash, 0, this.gameHeight - 240, 1600, 240);
+    ctx.drawImage(this.topScreen, 200, 0, 300, 100);
+    ctx.drawImage(this.topScreen, 1100, 0, 300, 100);
+    ctx.drawImage(this.energyScreen, 675, 10, 250, 80);
     switch (this.gameState) {
       case 0: // start screen
         this.drawSelectScreenWords(ctx);

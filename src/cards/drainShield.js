@@ -11,6 +11,6 @@ export default class DrainShield extends Card {
 
   action() {
     this.game.player.shields += this.game.enemy.shields * 0.1;
-    this.game.player.energy -= this.cost;
+    this.game.player.energy.pop();
   }
 }

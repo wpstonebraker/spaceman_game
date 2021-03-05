@@ -26,6 +26,8 @@
   <body>
     <div id="canvas-images">
 
+      <img class="canvas-image" id="img_topDash" src="assets/topDash1600.png" />
+      <img class="canvas-image" id="img_bottomDash" src="assets/bottomDash1600.png" />
       <img class="canvas-image" id="img_background" src="assets/background.png" />
       <img class="canvas-image" id="img_player" src="assets/blueship.png" />
       <img class="canvas-image" id="img_poweredUp" src="assets/poweredUp.png" />
@@ -54,7 +56,9 @@
       <img class="canvas-image" id="btn-story" src="assets/buttons/story.png" />
       <img class="canvas-image" id="btn-illustration" src="assets/buttons/illustration.png" />
       <img class="canvas-image" id="img_linkedIn" src="assets/linkedin.jpg" />
-
+      <img class="canvas-image" id="img_topTerminal" src="assets/topTerminal.png" />
+      <img class="canvas-image" id="img_energyTerminal" src="assets/sideTerminal.png" />
+      <img class="canvas-image" id="img_energyBall" src="assets/energyBall.png" />
     </div>
     <!-- <div id="information-box">
       <div id="information"> -->
@@ -78,7 +82,7 @@
             </div>
           </div>
         </div> -->
-        <canvas id="game-screen" width="1595" height="670"></canvas>
+        <canvas id="game-screen" width="1600" height="800"></canvas>
         <div id="start-screen-display">
           <div class="start-screen-div hidden" id="ss-story">
             After a routine scientific expedition to mars, Dad begins to make his
@@ -107,7 +111,7 @@
         <!-- <div id="dash-outer">
           <div id="dash-inner"> -->
             <div id="dash-box">
-              <div id="left-panel">
+              <!-- <div id="left-panel">
                 <div id="player-weapons" class="dash-display">
                   <span id="player-shields-num"></span>
                   <span id="player-armor-num"></span>
@@ -115,65 +119,65 @@
                   src="assets/sideTerminal.png"
                   alt=""
                   class="side-terminal"
-                  />
+                  /> -->
                   
                   <!-- <span id="player-lasers-num" class="status-display"></span> -->
                   <!-- <span id="player-missles-num" class="status-display"></span> -->
-                  <div id="player-energy" class="dash-display">
+                  <!-- <div id="player-energy" class="dash-display">
                     <div id="player-energy-num-box" >
                       <span id="player-energy-num"></span>
                     </div>
                     <img src="assets/topTerminal.png" class="mid-terminal">
                   </div>
                 </div>
+              </div> -->
+              <div id="card-description" class="dash-display hidden">
+                <span id="card-description-span"></span>
+                <!-- <img
+                src="assets/bottomTerminal2.png"
+                class="bottom-terminal"
+                /> -->
               </div>
-              
-              <div id="center-panel">
-                <div class="top-row">
-                  <div id="game-controls">
-                    <ul id="player-hand"></ul>
-                    <div id="player-deck">
-                      <img src="assets/deck.png" alt="" />
-                      <span id="deck-size"></span>
-                    </div>
-                  </div>
-                </div>
-                <div class="top-row">
-                  <div id="card-description" class="dash-display">
-                    <span id="card-description-span"></span>
-                    <img
-                    src="assets/bottomTerminal2.png"
-                    class="bottom-terminal"
-                    />
-                  </div>
-                  <div id="end-turn-button" class="status-display">
-                    End Turn
-                  </div>
-                  <div id="enemy-display" class="dash-display">
-                    <span id="enemy-display-span"></span>
-                    <img
-                    src="assets/bottomTerminal2.png"
-                    class="bottom-terminal"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div id="right-panel">
+              <!-- <div id="right-panel">
                 <span id="enemy-shields-num"></span>
                 <img
                 src="assets/sideTerminal.png"
                 alt=""
                 class="side-terminal"
                 />
+              </div> -->
+              
+              <div id="center-panel">
+                
+                <div id="game-controls">
+                  <ul id="player-hand"></ul>
+                  <div id="player-deck">
+                    <img src="assets/deck.png" alt="" />
+                    <span id="deck-size"></span>
+                  </div>
+                </div>
+                
+                <div id="end-turn-button" class="status-display">
+                  End Turn
+                </div>
+                
+              </div>
+              <div id="enemy-display" class="dash-display">
+                <span id="enemy-display-span"></span>
+                <!-- <img
+                src="assets/bottomTerminal2.png"
+                class="bottom-terminal"
+                /> -->
               </div>
             </div>
+          </div>
           <!-- </div>
-        </div> -->
+          </div> -->
+        </div>
+        <!-- <img src="assets/bottomDash.png" alt="" id="bottom-dash" /> -->
       </div>
-      <!-- <img src="assets/bottomDash.png" alt="" id="bottom-dash" /> -->
     </div>
-  </div>
-</body>
+  </body>
 
 <div class="rules-pic hidden" id="rules-pic-box">
   <div id="rules-pic">

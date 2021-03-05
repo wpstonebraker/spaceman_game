@@ -18,7 +18,9 @@ export default class InstallUpdate extends Card {
 
   action() {
     this.game.player.maxEnergy++;
-    this.game.player.energy -= this.cost;
+    this.game.player.energy.pop();
+    this.game.player.energy.pop();
+    this.game.player.energy.pop();
     this.game.elements.push(
       new Animation(this.sprite, 50, 0, 64, 64, 12, 20, this.game)
     );

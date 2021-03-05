@@ -64,7 +64,7 @@ export default class Hand {
   startTurn() {
     this.game.playerTurn = true;
     this.disabled = false;
-    this.game.player.energy = this.game.player.maxEnergy;
+    this.game.player.initializeEnergy();
     for (let i = 0; i < 5; i++) {
       if (!this.playerCards.length) this.resetDeck();
       this.currentHand.push(this.playerCards.shift());
@@ -157,11 +157,13 @@ export default class Hand {
         }
       });
       listItem.addEventListener("mouseover", () => {
+        document.getElementById("card-description").classList.remove("hidden");
         document.getElementById(
           "card-description-span"
         ).innerText = `${card.description}`;
       });
       listItem.addEventListener("mouseout", () => {
+        document.getElementById("card-description").classList.add("hidden");
         document.getElementById("card-description-span").innerText = ``;
       });
 

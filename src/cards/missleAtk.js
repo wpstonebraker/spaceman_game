@@ -17,7 +17,7 @@ export default class MissleAttack extends Card {
   }
 
   action() {
-    this.game.player.energy -= this.cost;
+    this.game.player.energy.pop();
     this.game.projectiles.push(
       new Projectile(
         this.position.x,

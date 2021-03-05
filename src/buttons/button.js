@@ -7,10 +7,12 @@ export default class Button {
     this.y = y;
     this.game = game;
     this.type = type;
+    this.width = width;
+    this.height = height;
   }
 
   draw(ctx) {
-    ctx.drawImage(this.image, this.x, this.y);
+    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 
   hideAll() {

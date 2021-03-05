@@ -38,7 +38,7 @@ export default class Overcharge extends Card {
 
   action() {
     this.game.player.shields -= 20;
-    this.game.player.energy -= this.cost;
+    this.game.player.energy.pop();
     this.game.projectiles.push(
       new Projectile(
         this.position.x,

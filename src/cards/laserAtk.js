@@ -23,7 +23,7 @@ export default class LaserAttack extends Card {
     // document.addEventListener("click", (e) => {
     //   if (e.clientX <= )
     // });
-    this.game.player.energy -= this.cost;
+    this.game.player.energy.pop();
     this.game.projectiles.push(
       new Projectile(
         this.position.x,

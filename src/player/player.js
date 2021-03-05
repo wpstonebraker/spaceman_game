@@ -1,3 +1,4 @@
+import Energy from "./energy";
 import Fire from "./fire";
 
 export default class Player {
@@ -16,7 +17,7 @@ export default class Player {
     this.shields = 10;
     this.armor = 50;
     this.maxEnergy = 3;
-    this.energy = this.maxEnergy;
+    this.energy = [];
     this.lasers = 50;
     this.missles = 50;
     this.laserPos = {
@@ -40,6 +41,16 @@ export default class Player {
     this.loopIndex = 0;
     this.frames = 0;
     this.disableLaser = false;
+    this.initializeEnergy();
+  }
+
+  initializeEnergy() {
+    this.energy = [];
+    const energyX = 710;
+    for (let i = 0; i < this.maxEnergy; i++) {
+      let x = i * 40 + energyX;
+      this.energy.push(new Energy(x, 50));
+    }
   }
 
   syphonEnergy() {

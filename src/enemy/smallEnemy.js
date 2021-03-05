@@ -43,10 +43,10 @@ export default class SmallEnemy {
     ctx.fillText(this.name, 970, 20);
     ctx.fillText(
       `Shields: ${this.shields}     Lasers: ${this.lasers}`,
-      810,
-      45
+      1120,
+      55
     );
-    ctx.fillText(`Armor: ${this.armor}`, 810, 70);
+    ctx.fillText(`Armor: ${this.armor}`, 1120, 80);
   }
 
   update(dt) {

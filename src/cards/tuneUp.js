@@ -14,6 +14,6 @@ export default class TuneUp extends Card {
 
   action() {
     this.game.player.lasers += this.power;
-    this.game.player.energy -= this.cost;
+    this.game.player.energy.pop();
   }
 }

@@ -1,8 +1,11 @@
+import Animation from "../util/animation";
+import Energy from "./energy";
+
 export default class PlayerStatus {
   constructor(game) {
     this.position = {
-      x: 20,
-      y: 20,
+      x: 210,
+      y: 30,
     };
     this.game = game;
     // this.render();
@@ -50,15 +53,30 @@ export default class PlayerStatus {
   //   document.getElementById("player-missles-num").innerText = `${this.missles}`;
   // }
 
+  renderEnergy(ctx) {
+    debugger;
+    this.game.player.energy.forEach((ball) => {
+      ball.draw(ctx);
+    });
+  }
+
   draw(ctx) {
-    ctx.fillStyle = "blue";
-    ctx.fillRect(0, 0, this.game.gameWidth, 80);
+    // const energy = this.game.player.energy;
+    // const energyX = 500;
+    // for (let i = 0; i < energy; i++) {
+    //   debugger;
+    //   let x = i * 40 + energyX;
+    //   let dad = new Energy(x, 40);
+    //   dad.draw(ctx);
+    // }
+    this.renderEnergy(ctx);
     ctx.fillStyle = "#6f6";
     ctx.textAlign = "left";
     ctx.fillText(`Dad Stats:`, this.position.x, this.position.y);
     ctx.fillStyle = "white";
     ctx.fillText(
-      `Shields: ${this.game.player.shields}    Lasers: ${this.game.player.lasers}       Energy: ${this.game.player.energy}`,
+      `Shields: ${this.game.player.shields}    Lasers: ${this.game.player.lasers}`,
+      // `Shields: ${this.game.player.shields}    Lasers: ${this.game.player.lasers}       Energy: ${this.game.player.energy}`,
       this.position.x + 10,
       this.position.y + 25
     );
@@ -68,7 +86,8 @@ export default class PlayerStatus {
       this.position.y + 50
     );
     ctx.fillStyle = "#ffbb00";
-    ctx.fillText(`Current Target:`, 800, this.position.y);
+    ctx.fillText(`Current Target:`, 1110, this.position.y);
+    ctx.fillText(`Energy`, 765, 40);
 
     // ctx.fillStyle = "blue";
     // ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
