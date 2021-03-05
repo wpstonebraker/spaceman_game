@@ -1,6 +1,8 @@
 .card {
   animation-name: drawCard;
   animation-duration: 1.5s;
+  max-height: 120px;
+  max-width: 80px;
 }
 
 .playCard {
@@ -10,7 +12,7 @@
 
 .discardCard {
   animation-name: discardCard;
-  animation-duration: 3s;
+  animation-duration: 2s;
 }
 
 .selectCard {
@@ -21,17 +23,11 @@
 
 @keyframes drawCard {
   0% {
-    opacity: 0;
-    transform: translateX(350px);
-  }
-
-  20% {
-    opacity: 0.8;
+    transform: rotateY(90deg);
   }
 
   100% {
-    opactiy: 1;
-    transform: translate(0);
+    transform: rotateY(0deg);
   }
 }
 
@@ -47,7 +43,7 @@
 
   100% {
     opacity: 0;
-    transform: translate(250px, 250px);
+    transform: translateY(-150px);
   }
 }
 

@@ -54,7 +54,6 @@ export default class PlayerStatus {
   // }
 
   renderEnergy(ctx) {
-    debugger;
     this.game.player.energy.forEach((ball) => {
       ball.draw(ctx);
     });

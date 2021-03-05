@@ -73,7 +73,9 @@ export default class Hand {
   }
 
   endTurn() {
-    let discards = document.getElementById("player-hand").childNodes;
+    debugger;
+    let discards = Array.from(document.getElementsByClassName("card"));
+    // let discards = document.getElementById("player-hand").childNodes;
     // for (card of discards) {
     //   card.classList.add("discardCard");
     // }
@@ -96,6 +98,13 @@ export default class Hand {
     while (this.currentHand.length) {
       this.discardPile.push(this.currentHand.pop());
     }
+    let discards = Array.from(document.getElementsByClassName("no-card"));
+    debugger;
+    discards.forEach((card) => {
+      setTimeout(() => {
+        card.innerHTML = "";
+      }, 1500);
+    });
   }
 
   endGame() {
@@ -106,7 +115,7 @@ export default class Hand {
   render() {
     if (this.currentHand === null) return;
     // clear the hand before each re render
-    document.getElementById("player-hand").innerHTML = "";
+    // document.getElementById("player-hand").innerHTML = "";
 
     // iterate through the current hand
 
@@ -115,15 +124,16 @@ export default class Hand {
       const cardImg = document.createElement("img");
       cardImg.src = card.image;
       cardImg.classList.add("card");
+      cardImg.id = `card-${i}`;
+      document.getElementById(`nc-${i}`).appendChild(cardImg);
 
       // create an li and attach the img to it
 
-      const listItem = document.createElement("li").appendChild(cardImg);
-      listItem.id = `card-${i}`;
+      // const listItem = document.createElement("li").appendChild(cardImg);
       // add a click listener to the li
       // if its the players turn, and the player has enough energy to play the card
       // play the card, add the card to the discard pile, delete the card from the hand, and re render
-      listItem.addEventListener("click", () => {
+      cardImg.addEventListener("click", () => {
         // if a player doesnt have the energy to play the card
         // display error message in error box
         // if (this.game.player.energy - card.cost < 0) {
@@ -151,23 +161,23 @@ export default class Hand {
 
           setTimeout(() => {
             document.getElementById(`card-${i}`).remove();
-          }, 1500);
+          }, 1450);
           // delete this.currentHand[i];
           // this.render();
         }
       });
-      listItem.addEventListener("mouseover", () => {
+      cardImg.addEventListener("mouseover", () => {
         document.getElementById("card-description").classList.remove("hidden");
         document.getElementById(
           "card-description-span"
         ).innerText = `${card.description}`;
       });
-      listItem.addEventListener("mouseout", () => {
+      cardImg.addEventListener("mouseout", () => {
         document.getElementById("card-description").classList.add("hidden");
         document.getElementById("card-description-span").innerText = ``;
       });
 
-      document.getElementById("player-hand").appendChild(listItem);
+      // document.getElementById("player-hand").appendChild(listItem);
     });
   }
 }

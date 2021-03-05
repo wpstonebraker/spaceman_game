@@ -19,34 +19,56 @@ export default class SmallEnemy {
     this.laserSprite = document.getElementById("img_npc1a1");
     this.lasers = 5;
     this.name = "Alien Scout";
+    this.destroyed = false;
   }
 
   draw(ctx) {
-    ctx.drawImage(
-      this.image,
-      this.position.x,
-      this.position.y,
-      this.size,
-      this.size
-    );
-    let playerPosY = this.game.player.position.y + 100;
-    if (
-      playerPosY >= this.position.y &&
-      playerPosY <= this.position.y + this.size
-    ) {
-      this.renderStats(ctx);
+    if (!this.destroyed) {
+      ctx.drawImage(
+        this.image,
+        this.position.x,
+        this.position.y,
+        this.size,
+        this.size
+      );
+      let playerPosY = this.game.player.position.y + 100;
+      if (
+        playerPosY >= this.position.y &&
+        playerPosY <= this.position.y + this.size
+      ) {
+        this.renderStats(ctx);
+      }
     }
   }
 
   renderStats(ctx) {
+    ctx.fillStyle = "hsla(0, 100%, 50%, 0.15)";
+    ctx.fillRect(this.position.x + 120, this.position.y + 50, 130, 80);
     ctx.fillStyle = "white";
     ctx.fillText(this.name, 970, 20);
     ctx.fillText(
-      `Shields: ${this.shields}     Lasers: ${this.lasers}`,
-      1120,
-      55
+      `Shields: ${this.shields}`,
+      this.position.x + 125,
+      this.position.y + 75
     );
-    ctx.fillText(`Armor: ${this.armor}`, 1120, 80);
+    ctx.fillText(
+      `Lasers: ${this.lasers}`,
+      this.position.x + 125,
+      this.position.y + 95
+    );
+    ctx.fillText(
+      `Armor: ${this.armor}`,
+      this.position.x + 125,
+      this.position.y + 115
+    );
+    // ctx.fillStyle = "white";
+    // ctx.fillText(this.name, 970, 20);
+    // ctx.fillText(
+    //   `Shields: ${this.shields}     Lasers: ${this.lasers}`,
+    //   1120,
+    //   55
+    // );
+    // ctx.fillText(`Armor: ${this.armor}`, 1120, 80);
   }
 
   update(dt) {
@@ -121,6 +143,7 @@ export default class SmallEnemy {
         break;
     }
 
+    if (this.armor <= 0) this.destroyed = true;
     // if (this.armor <= 0) {
     //   debugger;
     //   let idx = this.game.elements.indexOf(this);
@@ -133,8 +156,9 @@ export default class SmallEnemy {
     //   new EnemyShields(self.position.x, self.position.y, self.game)
     // );
 
+    document.getElementById("card-description").classList.remove("hidden");
     document.getElementById(
-      "enemy-display-span"
+      "card-description-span"
     ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
     // document.getElementById(
     //   "enemy-display-span"

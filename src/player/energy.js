@@ -12,7 +12,6 @@ export default class Energy {
   }
 
   drawFrame(fX, fY, ctx) {
-    debugger;
     ctx.drawImage(
       this.image,
       fX * this.width,
