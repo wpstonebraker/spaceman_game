@@ -25,13 +25,24 @@
 
   <body>
     <div id="canvas-images">
-
       <img class="canvas-image" id="img_topDash" src="assets/topDash1600.png" />
-      <img class="canvas-image" id="img_bottomDash" src="assets/bottomDash1600.png" />
-      <img class="canvas-image" id="img_background" src="assets/background.png" />
+      <img
+        class="canvas-image"
+        id="img_bottomDash"
+        src="assets/bottomDash1600.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_background"
+        src="assets/background.png"
+      />
       <img class="canvas-image" id="img_player" src="assets/blueship.png" />
       <img class="canvas-image" id="img_poweredUp" src="assets/poweredUp.png" />
-      <img class="canvas-image" id="img_smallEnemy" src="assets/smallEnemy.png" />
+      <img
+        class="canvas-image"
+        id="img_smallEnemy"
+        src="assets/smallEnemy.png"
+      />
       <img class="canvas-image" id="img_npc1" src="assets/badguy1.png" />
       <img class="canvas-image" id="img_laser" src="assets/laser.png" />
       <img class="canvas-image" id="img_missle" src="assets/missle.png" />
@@ -39,215 +50,213 @@
       <img class="canvas-image" id="img_shields" src="assets/shieldsss.png" />
       <img class="canvas-image" id="img_npc1a1" src="assets/npcattack1.png" />
       <img class="canvas-image" id="img_npc1a2" src="assets/npcattack2.png" />
-      <img class="canvas-image" id="img_npc1shields" src="assets/enemyshieldsss.png" />
-      <img class="canvas-image" id="img_newshields" src="assets/trynewshields.png" />
-      <img class="canvas-image" id="img_updateAni" src="assets/installUpdateAni.png" />
+      <img
+        class="canvas-image"
+        id="img_npc1shields"
+        src="assets/enemyshieldsss.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_newshields"
+        src="assets/trynewshields.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_updateAni"
+        src="assets/installUpdateAni.png"
+      />
       <img class="canvas-image" id="img_malwareAni" src="assets/malware.png" />
-      <img class="canvas-image" id="img_updateCard" src="assets/installUpdateCard.png" />
-      <img class="canvas-image" id="img_overchargeCard" src="assets/overcharge.png" />
-      <img class="canvas-image" id="img_syphonCard" src="assets/syphonEnergy.png" />
+      <img
+        class="canvas-image"
+        id="img_updateCard"
+        src="assets/installUpdateCard.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_overchargeCard"
+        src="assets/overcharge.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_syphonCard"
+        src="assets/syphonEnergy.png"
+      />
       <img class="canvas-image" id="img_salvoCard" src="assets/salvo.png" />
       <img class="canvas-image" id="img_tuneUpCard" src="assets/tuneUp.png" />
       <img class="canvas-image" id="img_startGame" src="assets/dud.png" />
-      <img class="canvas-image" id="btn-instructions" src="assets/buttons/instruc.png" />
+      <img
+        class="canvas-image"
+        id="btn-instructions"
+        src="assets/buttons/instruc.png"
+      />
       <img class="canvas-image" id="btn-start" src="assets/buttons/start.png" />
-      <img class="canvas-image" id="btn-credits" src="assets/buttons/credits.png" />
+      <img
+        class="canvas-image"
+        id="btn-credits"
+        src="assets/buttons/credits.png"
+      />
       <img class="canvas-image" id="btn-reset" src="assets/buttons/reset.png" />
       <img class="canvas-image" id="btn-story" src="assets/buttons/story.png" />
-      <img class="canvas-image" id="btn-illustration" src="assets/buttons/illustration.png" />
+      <img
+        class="canvas-image"
+        id="btn-illustration"
+        src="assets/buttons/illustration.png"
+      />
       <img class="canvas-image" id="img_linkedIn" src="assets/linkedin.jpg" />
-      <img class="canvas-image" id="img_topTerminal" src="assets/topTerminal.png" />
-      <img class="canvas-image" id="img_energyTerminal" src="assets/sideTerminal.png" />
-      <img class="canvas-image" id="img_energyBall" src="assets/energyBall.png" />
+      <img
+        class="canvas-image"
+        id="img_topTerminal"
+        src="assets/topTerminal.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_energyTerminal"
+        src="assets/sideTerminal.png"
+      />
+      <img
+        class="canvas-image"
+        id="img_energyBall"
+        src="assets/energyBall.png"
+      />
     </div>
     <!-- <div id="information-box">
       <div id="information"> -->
-        <!-- <button id="rules-button"><a href="#rules">aogisdjgblksjdfgblkjaslkgj</a></button> -->
-        <!-- <button id="rules-button">Rules and Game Start</button>
+    <!-- <button id="rules-button"><a href="#rules">aogisdjgblksjdfgblkjaslkgj</a></button> -->
+    <!-- <button id="rules-button">Rules and Game Start</button>
         <button id="rules-pic-button">Click for Illustration</button>
       </div>
     </div> -->
     <div id="main-outer">
-      <!-- <img src="assets/topDash.png" alt="" id="top-dash" /> -->
       <div id="main-inner">
-        <!-- <div id="cockpit-div">
-          <div id="top-panel">
-            <div id="player-shields">
-              <img src="assets/topTerminal.png" class="top-terminal">
-              <span id="player-lasers-num"></span>
+        <div id="game-box">
+          <canvas id="game-screen" width="1600" height="800"></canvas>
+          <div id="dash-box">
+            <div id="dash-displays-box">
+              <div id="card-description" class="hidden">
+                <span id="card-description-span"></span>
+              </div>
+              <div id="enemy-display">
+                <span id="enemy-display-span" class="hidden"></span>
+              </div>
             </div>
-            <div id="player-armor">
-              <img src="assets/topTerminal.png" class="top-terminal">
-              <span id="player-missles-num"></span>
+
+            <div id="dash-bottom-box">
+              <div id="game-controls">
+                <ul id="player-hand"></ul>
+                <div id="player-deck">
+                  <img src="assets/deck.png" alt="" />
+                  <span id="deck-size"></span>
+                </div>
+              </div>
+
+              <div id="end-turn-button" class="status-display">End Turn</div>
             </div>
           </div>
-        </div> -->
-        <canvas id="game-screen" width="1600" height="800"></canvas>
+        </div>
         <div id="start-screen-display">
           <div class="start-screen-div hidden" id="ss-story">
-            After a routine scientific expedition to mars, Dad begins to make his
-            way home... when he encounters a massive alien base! As the nearest Space
-            Force outpost, you have control over his ship's defense systems. You alone can save
-            Dad. Will Space Dad be home in time for dinner? Or will Space Dad
-            be... dinner?
+            After a routine scientific expedition to mars, Dad begins to make
+            his way home... when he encounters a massive alien base! As the
+            nearest Space Force outpost, you have control over his ship's
+            defense systems. You alone can save Dad. Will Space Dad be home in
+            time for dinner? Or will Space Dad be... dinner?
           </div>
           <div class="start-screen-div hidden" id="ss-instructions">
-            Space Dad is turn-based card game. Your premade deck includes 9 "basic" cards: 3 laser attack cards, 3
-            missle attack cards, and 3 shield recharge cards. For each power card that you select beyond the first, 1 each of the basic cards will be added to your deck as filler. You begin the game
-            with 3 energy per turn; each card has an energy cost that detracts
-            from that turn's energy. Click the "End Turn" button and the enemy will play their turn.
-            At the start of your turn, you will draw 5 new cards from your deck.
+            Space Dad is turn-based card game. Your premade deck includes 9
+            "basic" cards: 3 laser attack cards, 3 missle attack cards, and 3
+            shield recharge cards. For each power card that you select beyond
+            the first, 1 each of the basic cards will be added to your deck as
+            filler. You begin the game with 3 energy per turn; each card has an
+            energy cost that detracts from that turn's energy. Click the "End
+            Turn" button and the enemy will play their turn. At the start of
+            your turn, you will draw 5 new cards from your deck.
           </div>
           <div class="start-screen-div hidden" id="ss-credits">
             -enemy ship from https://ko-fi.com/norma2d
             <br />
             <br />
-            -explosion effect from JROB774 Joshua "JROB774" Robertson of opengameart.org
+            -explosion effect from JROB774 Joshua "JROB774" Robertson of
+            opengameart.org
             <br />
             <br />
             -all other assets and animations were drawn (badly) by me.
           </div>
         </div>
-        <!-- <div id="dash-outer">
-          <div id="dash-inner"> -->
-            <div id="dash-box">
-              <!-- <div id="left-panel">
-                <div id="player-weapons" class="dash-display">
-                  <span id="player-shields-num"></span>
-                  <span id="player-armor-num"></span>
-                  <img
-                  src="assets/sideTerminal.png"
-                  alt=""
-                  class="side-terminal"
-                  /> -->
-                  
-                  <!-- <span id="player-lasers-num" class="status-display"></span> -->
-                  <!-- <span id="player-missles-num" class="status-display"></span> -->
-                  <!-- <div id="player-energy" class="dash-display">
-                    <div id="player-energy-num-box" >
-                      <span id="player-energy-num"></span>
-                    </div>
-                    <img src="assets/topTerminal.png" class="mid-terminal">
-                  </div>
-                </div>
-              </div> -->
-              <div id="card-description" class="dash-display hidden">
-                <span id="card-description-span"></span>
-                <!-- <img
-                src="assets/bottomTerminal2.png"
-                class="bottom-terminal"
-                /> -->
-              </div>
-              <!-- <div id="right-panel">
-                <span id="enemy-shields-num"></span>
-                <img
-                src="assets/sideTerminal.png"
-                alt=""
-                class="side-terminal"
-                />
-              </div> -->
-              
-              <div id="center-panel">
-                
-                <div id="game-controls">
-                  <ul id="player-hand"></ul>
-                  <div id="player-deck">
-                    <img src="assets/deck.png" alt="" />
-                    <span id="deck-size"></span>
-                  </div>
-                </div>
-                
-                <div id="end-turn-button" class="status-display">
-                  End Turn
-                </div>
-                
-              </div>
-              <div id="enemy-display" class="dash-display">
-                <span id="enemy-display-span"></span>
-                <!-- <img
-                src="assets/bottomTerminal2.png"
-                class="bottom-terminal"
-                /> -->
-              </div>
-            </div>
-          </div>
-          <!-- </div>
-          </div> -->
-        </div>
-        <!-- <img src="assets/bottomDash.png" alt="" id="bottom-dash" /> -->
       </div>
     </div>
   </body>
 
-<div class="rules-pic hidden" id="rules-pic-box">
-  <div id="rules-pic">
-    
-    <img src="assets/rulesPic.png" >
-  </div>
-</div>
-<div class="popup hidden" id="rules">
-  <div class="popup-content">
-    <div id="popup-top-row">
-      <div id="rules-close">Close</div>
-      <div id="description">
-        After a routine scientific expedition to mars, Dad begins to make his
-        way home... when he encounters a massive alien base! As the nearest Space
-        Force outpost, you have control over his ship's defense systems. You alone can save
-        Dad. Will Space Dad be home in time for dinner? Or will Space Dad
-        be... dinner?
-      </div>
-      <div id="rules-div">
-        Space Dad is turn-based card game. Aside from the enemy ship (provided
-        by https://ko-fi.com/norma2d) and the explosion effect (JROB774 Joshua
-        "JROB774" Robertson of opengameart.org), all assets and animations
-        were drawn (badly) by me. Your premade deck includes 9 "basic" cards: 3 laser attack cards, 3
-        missle attack cards, and 3 shield recharge cards. For each power card (below) that you select beyond the first, 1 each of the basic cards will be added to your deck as filler. You begin the game
-        with 3 energy per turn; each card has an energy cost that detracts
-        from that turns energy. Once you're out of energy (or before, if you'd
-        like), click the "End Turn" button and the enemy will play their turn.
-        At the start of your turn, you will draw 5 new cards from your deck of
-        10 cards. Tip: hover over a card for a description of what it does!
-        <span> Select 2 Power Cards:</span>
-      </div>
-    </div>
-    <button id="start-game-btn">Start Game</button>
-    <div id="popup-bottom-row">
-      <img
-      src="assets/overcharge.png"
-      id="overcharge"
-      alt=""
-      title="Fire a charged laser at the cost of shields"
-      />
-      <img
-      src="assets/syphonEnergy.png"
-      id="syphon"
-      alt=""
-      title="Boost laser damage at the cost of energy"
-      />
-      <img
-      src="assets/installUpdateCard.png"
-      id="update"
-      alt=""
-      title="Increase max energy (one time use)"
-      />
-      <img
-      src="assets/salvo.png"
-      id="salvo"
-      alt=""
-      title="Launch 3 missles at once"
-      />
-      <img
-      src="assets/tuneUp.png"
-      id="tune"
-      alt=""
-      title="Permanently increase laser damage"
-      />
-      <div id="popup-card-description"></div>
+  <div class="rules-pic hidden" id="rules-pic-box">
+    <div id="rules-pic">
+      <img src="assets/rulesPic.png" />
     </div>
   </div>
-</div>
+  <div class="popup hidden" id="rules">
+    <div class="popup-content">
+      <div id="popup-top-row">
+        <div id="rules-close">Close</div>
+        <div id="description">
+          After a routine scientific expedition to mars, Dad begins to make his
+          way home... when he encounters a massive alien base! As the nearest
+          Space Force outpost, you have control over his ship's defense systems.
+          You alone can save Dad. Will Space Dad be home in time for dinner? Or
+          will Space Dad be... dinner?
+        </div>
+        <div id="rules-div">
+          Space Dad is turn-based card game. Aside from the enemy ship (provided
+          by https://ko-fi.com/norma2d) and the explosion effect (JROB774 Joshua
+          "JROB774" Robertson of opengameart.org), all assets and animations
+          were drawn (badly) by me. Your premade deck includes 9 "basic" cards:
+          3 laser attack cards, 3 missle attack cards, and 3 shield recharge
+          cards. For each power card (below) that you select beyond the first, 1
+          each of the basic cards will be added to your deck as filler. You
+          begin the game with 3 energy per turn; each card has an energy cost
+          that detracts from that turns energy. Once you're out of energy (or
+          before, if you'd like), click the "End Turn" button and the enemy will
+          play their turn. At the start of your turn, you will draw 5 new cards
+          from your deck of 10 cards. Tip: hover over a card for a description
+          of what it does!
+          <span> Select 2 Power Cards:</span>
+        </div>
+      </div>
+      <button id="start-game-btn">Start Game</button>
+      <div id="popup-bottom-row">
+        <img
+          src="assets/overcharge.png"
+          id="overcharge"
+          alt=""
+          title="Fire a charged laser at the cost of shields"
+        />
+        <img
+          src="assets/syphonEnergy.png"
+          id="syphon"
+          alt=""
+          title="Boost laser damage at the cost of energy"
+        />
+        <img
+          src="assets/installUpdateCard.png"
+          id="update"
+          alt=""
+          title="Increase max energy (one time use)"
+        />
+        <img
+          src="assets/salvo.png"
+          id="salvo"
+          alt=""
+          title="Launch 3 missles at once"
+        />
+        <img
+          src="assets/tuneUp.png"
+          id="tune"
+          alt=""
+          title="Permanently increase laser damage"
+        />
+        <div id="popup-card-description"></div>
+      </div>
+    </div>
+  </div>
 
-<!-- #player-shields {
+  <!-- #player-shields {
   position: absolute;
   top: 50%;
   left: 20%;

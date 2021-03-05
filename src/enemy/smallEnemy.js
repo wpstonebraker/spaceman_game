@@ -133,12 +133,12 @@ export default class SmallEnemy {
     //   new EnemyShields(self.position.x, self.position.y, self.game)
     // );
 
-    // document.getElementById(
-    //   "enemy-display-span"
-    // ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
     document.getElementById(
       "enemy-display-span"
-    ).innerText = `Enemy's armor is at ${this.armor}`;
+    ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
+    // document.getElementById(
+    //   "enemy-display-span"
+    // ).innerText = `Enemy's armor is at ${this.armor}`;
 
     // this.game.enemyStatus.render();
   }

@@ -1,76 +1,20 @@
-#dash-outer {
-  position: relative;
-  z-index: 2;
-  width: 80%;
-  bottom: 0%;
-}
-
-#dash-inner {
-  position: absolute;
-  display: flex;
-  width: 50%;
-  bottom: 0;
-}
-
 #dash-box {
-  width: 100%;
   position: absolute;
-  display: flex;
-  bottom: 0;
+  width: 100%;
   z-index: 2;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#dash-displays-box {
+  display: flex;
   justify-content: space-evenly;
 }
 
-#text-panel {
+#dash-bottom-box {
   display: flex;
-  justify-content: space-around;
-
-  div {
-    border: 3px solid black;
-    background-color: #282828;
-  }
-}
-
-#player-energy {
-  border-radius: 3px;
-  position: absolute;
-  width: 110px;
-  height: 80px;
-  color: #6f6;
-}
-
-#player-energy-num-box {
-  position: relative;
-}
-
-#player-energy-num {
-  position: absolute;
-  margin-left: 43px;
-  font-size: 40px;
-}
-
-#left-panel {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.side-terminal {
-  width: 200px;
-  color: #6f6;
-  height: 80px;
-}
-
-#player-weapons {
-  position: relative;
-}
-
-#player-laser-num,
-#player-armor-num {
-  padding: 15px;
-  font-size: 25px;
-  position: absolute;
-  color: #6f6;
+  justify-content: space-evenly;
 }
 
 #center-panel {
@@ -81,7 +25,6 @@
   width: 320px;
   height: 120px;
 }
-
 #card-description {
   width: 300px;
   height: 100px;
@@ -90,7 +33,6 @@
   color: white;
   padding: 10px;
   position: relative;
-  bottom: 200px;
 }
 
 #card-description-span {
@@ -103,7 +45,6 @@
   width: 300px;
   height: 100px;
   background-color: hsla(0, 100%, 50%, 0.1);
-  bottom: 200px;
   font-size: 25px;
   color: #ffbb00;
   position: relative;

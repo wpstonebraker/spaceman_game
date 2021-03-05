@@ -10,9 +10,14 @@
   font-family: "VT323";
 }
 
+#game-box {
+  position: absolute;
+  height: 800px;
+}
+
 #game-screen {
   width: 1600px;
-  height: 800;
+  height: 800px;
   border: 1px solid black;
   z-index: -1;
   position: relative;
