@@ -35,7 +35,7 @@ export default class Energy {
       this.frames += 1;
     }
 
-    if (this.loopIndex === 12) {
+    if (this.loopIndex === 11) {
       this.loopIndex = 0;
     }
 

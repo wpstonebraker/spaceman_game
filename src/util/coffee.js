@@ -1,17 +1,17 @@
 export default class Coffee {
-  constructor(x, y, width, height, loops, fps, game) {
-    this.image = image;
+  constructor(game) {
+    this.image = document.getElementById("img_coffeeMug");
     this.position = {
-      x,
-      y,
+      x: 1500,
+      y: 800,
     };
-    this.width = width;
-    this.height = height;
+    this.width = 64;
+    this.height = 64;
     this.loopIndex = 0;
     this.frames = 0;
     this.game = game;
-    this.loops = loops;
-    this.fps = fps;
+    // this.loops = loops;
+    this.fps = 5;
   }
 
   drawFrame(fX, fY, ctx) {
@@ -21,8 +21,8 @@ export default class Coffee {
       fY * this.height,
       this.width,
       this.height,
-      this.game.player.position.x + this.position.x,
-      this.game.player.position.y + this.position.y,
+      this.position.x,
+      this.position.y,
       100,
       100
     );
@@ -36,6 +36,10 @@ export default class Coffee {
     } else {
       this.drawFrame(this.loopIndex, 0, ctx);
       this.frames++;
+    }
+
+    if (this.loopIndex === 5) {
+      this.loopIndex = 0;
     }
 
     // if (this.loopIndex > this.loops) {

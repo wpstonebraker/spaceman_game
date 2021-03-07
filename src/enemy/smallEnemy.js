@@ -42,7 +42,13 @@ export default class SmallEnemy {
   }
 
   renderStats(ctx) {
-    ctx.fillStyle = "hsla(0, 100%, 50%, 0.15)";
+    ctx.beginPath();
+    ctx.moveTo(this.position.x + 50, this.position.y + 70);
+    ctx.lineTo(this.position.x + 120, this.position.y + 90);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "hsla(0, 100%, 50%, 0.25)";
+    ctx.stroke();
+    ctx.fillStyle = "hsla(0, 100%, 50%, 0.25)";
     ctx.fillRect(this.position.x + 120, this.position.y + 50, 130, 80);
     ctx.fillStyle = "white";
     ctx.fillText(this.name, 970, 20);
@@ -168,7 +174,6 @@ export default class SmallEnemy {
   }
 
   action() {
-    debugger;
     const angle = Math.atan2(
       this.position.y + 80 - (this.game.player.position.y + 100),
       this.position.x - (this.game.player.position.x + 50)

@@ -85,7 +85,6 @@ export default class PlayerStatus {
       this.position.y + 50
     );
     ctx.fillStyle = "#ffbb00";
-    ctx.fillText(`Current Target:`, 1110, this.position.y);
     ctx.fillText(`Energy`, 765, 40);
 
     // ctx.fillStyle = "blue";

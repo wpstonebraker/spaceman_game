@@ -33,6 +33,7 @@ export default class Enemy {
     this.special = 1;
     this.destroyed = false;
     this.name = "Big Boss";
+    this.nextAction = "Laser Attack";
   }
 
   draw(ctx) {
@@ -50,18 +51,54 @@ export default class Enemy {
       playerPosY <= this.position.y + this.height
     ) {
       this.renderStats(ctx);
+      this.renderTarget(ctx);
     }
   }
 
+  renderTarget(ctx) {
+    ctx.fillText(this.name, 1110, 40);
+    ctx.fillText(this.nextAction, 1110, 60);
+  }
+
   renderStats(ctx) {
+    ctx.beginPath();
+    ctx.moveTo(this.position.x + 180, this.position.y + 190);
+    ctx.lineTo(this.position.x + 250, this.position.y + 220);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "hsla(0, 100%, 50%, 0.25)";
+    ctx.stroke();
+    ctx.fillStyle = "hsla(0, 100%, 50%, 0.25)";
+    ctx.fillRect(this.position.x + 250, this.position.y + 220, 130, 100);
     ctx.fillStyle = "white";
     ctx.fillText(this.name, 970, 20);
     ctx.fillText(
-      `Shields: ${this.shields}     Lasers: ${this.lasers}`,
-      1120,
-      55
+      `Shields: ${this.shields}`,
+      this.position.x + 255,
+      this.position.y + 245
     );
-    ctx.fillText(`Armor: ${this.armor}      Missle: ${this.missles}`, 1120, 80);
+    ctx.fillText(
+      `Armor: ${this.armor}`,
+      this.position.x + 255,
+      this.position.y + 265
+    );
+    ctx.fillText(
+      `Lasers: ${this.lasers}`,
+      this.position.x + 255,
+      this.position.y + 285
+    );
+    ctx.fillText(
+      `Missles: ${this.missles}`,
+      this.position.x + 255,
+      this.position.y + 305
+    );
+    // ctx.fillStyle = "white";
+    // ctx.fillText(this.name, 970, 20);
+    // ctx.fillText(
+    //   `Shields: ${this.shields}     Lasers: ${this.lasers}`,
+    //   1120,
+    //   55
+    // );
+    // ctx.fillText(`Armor: ${this.armor}      Missle: ${this.missles}`, 1120, 80);
   }
 
   update(dt) {
@@ -92,11 +129,30 @@ export default class Enemy {
   }
 
   action() {
+    switch (this.nextAction) {
+      case "Laser Attack":
+        this.attackLasers();
+        break;
+      case "Missle Attack":
+        this.attackMissles();
+        break;
+      case "Recharge Shield":
+        this.heal();
+        break;
+      case "Replenish Shield Charges":
+        this.rechargeShields();
+        break;
+      case "Upload Malware":
+        this.dudCards();
+        break;
+      default:
+        break;
+    }
     const rand = Math.random();
 
     // if (rand < 1) {
     if (rand < 0.33) {
-      this.dudCards();
+      this.nextAction = "Upload Malware";
       // setTimeout(() => {
       //   this.game.hand.startTurn();
       // }, 2500);
@@ -104,13 +160,13 @@ export default class Enemy {
     }
 
     if (this.shields === 0 && this.shieldCharge > 0) {
-      this.heal();
+      this.nextAction = "Recharge Shield";
     } else if (this.shieldCharge === 0) {
-      this.rechargeShields();
+      this.nextAction = "Replenish Shield Charges";
     } else if (this.game.player.shields > 0) {
-      this.attackLasers();
+      this.nextAction = "Laser Attack";
     } else {
-      this.attackMissles();
+      this.nextAction = "Missle Attack";
     }
 
     // setTimeout(() => {
@@ -159,12 +215,12 @@ export default class Enemy {
   }
 
   attackLasers() {
-    document.getElementById(
-      "enemy-display-span"
-    ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
-    setTimeout(() => {
-      document.getElementById("enemy-display-span").innerText = "";
-    }, 3000);
+    // document.getElementById(
+    //   "enemy-display-span"
+    // ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
+    // setTimeout(() => {
+    //   document.getElementById("enemy-display-span").innerText = "";
+    // }, 3000);
     const angle = Math.atan2(
       this.position.y + 80 - (this.game.player.position.y + 100),
       this.position.x - (this.game.player.position.x + 50)
@@ -282,8 +338,9 @@ export default class Enemy {
     }
 
     if (this.armor <= 0) this.destroyed = true;
+    document.getElementById("card-description").classList.remove("hidden");
     document.getElementById(
-      "enemy-display-span"
+      "card-description-span"
     ).innerText = `Enemy's ${type} receives ${dmg} damage!`;
 
     // this.game.enemyStatus.render();

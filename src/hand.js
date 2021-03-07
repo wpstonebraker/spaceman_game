@@ -33,6 +33,7 @@ export default class Hand {
     this.disabled = false;
     this.initializeDeck(startingCards);
     this.startTurn();
+    this.playCard = this.playCard.bind(this);
   }
 
   initializeDeck(startingCards) {
@@ -72,6 +73,26 @@ export default class Hand {
     this.render();
   }
 
+  playCard(card, i) {
+    return () => {
+      if (this.game.playerTurn && card.check() && this.disabled === false) {
+        this.disabled = true;
+        setTimeout(() => {
+          this.disabled = false;
+        }, 2500);
+        card.action();
+        this.discardPile.push(card);
+        document.getElementById(`card-${i}`).classList.add("playCard");
+
+        setTimeout(() => {
+          document.getElementById(`card-${i}`).remove();
+        }, 1450);
+        // delete this.currentHand[i];
+        // this.render();
+      }
+    };
+  }
+
   endTurn() {
     debugger;
     let discards = Array.from(document.getElementsByClassName("card"));
@@ -79,9 +100,26 @@ export default class Hand {
     // for (card of discards) {
     //   card.classList.add("discardCard");
     // }
-    discards.forEach((card) => {
+    discards.forEach((card, i) => {
       card.classList.add("discardCard");
     });
+
+    // document
+    //   .getElementById("cb-0")
+    //   .removeEventListener("click", this.playcard, true);
+
+    // Array.from(document.getElementsByClassName("card-button")).forEach(
+    //   (button) => {
+    //     debugger;
+    //     button.removeEventListener("click", this.playCard, true);
+    //   }
+    // );
+    // Array.from(document.getElementsByClassName("card-button")).forEach(
+    //   (button) => {
+    //     debugger;
+    //     button.removeEventListener("click", playCard);
+    //   }
+    // );
 
     // end the players turn
     this.game.playerTurn = false;
@@ -133,39 +171,21 @@ export default class Hand {
       // add a click listener to the li
       // if its the players turn, and the player has enough energy to play the card
       // play the card, add the card to the discard pile, delete the card from the hand, and re render
-      cardImg.addEventListener("click", () => {
-        // if a player doesnt have the energy to play the card
-        // display error message in error box
-        // if (this.game.player.energy - card.cost < 0) {
-        //   document.getElementById("card-errors").innerText =
-        //     "Not enough energy";
-        //   setInterval(() => {
-        //     document.getElementById("card-errors").innerText = "";
-        //   }, 5000);
-        // }
-        // if (this.game.player.energy - card.cost < 0) {
-        //   document.getElementById("card-description").innerText =
-        //     "Not enough energy";
-        // }
-
-        // if a player does
-
-        if (this.game.playerTurn && card.check() && this.disabled === false) {
-          this.disabled = true;
-          setTimeout(() => {
-            this.disabled = false;
-          }, 2500);
-          card.action();
-          this.discardPile.push(card);
-          document.getElementById(`card-${i}`).classList.add("playCard");
-
-          setTimeout(() => {
-            document.getElementById(`card-${i}`).remove();
-          }, 1450);
-          // delete this.currentHand[i];
-          // this.render();
-        }
-      });
+      cardImg.addEventListener("click", this.playCard(card, i), true);
+      // if a player doesnt have the energy to play the card
+      // display error message in error box
+      // if (this.game.player.energy - card.cost < 0) {
+      //   document.getElementById("card-errors").innerText =
+      //     "Not enough energy";
+      //   setInterval(() => {
+      //     document.getElementById("card-errors").innerText = "";
+      //   }, 5000);
+      // }
+      // if (this.game.player.energy - card.cost < 0) {
+      //   document.getElementById("card-description").innerText =
+      //     "Not enough energy";
+      // }
+      // if a player does
       cardImg.addEventListener("mouseover", () => {
         document.getElementById("card-description").classList.remove("hidden");
         document.getElementById(

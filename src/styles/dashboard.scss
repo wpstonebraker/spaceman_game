@@ -75,17 +75,34 @@
   margin-top: 20px;
 }
 
+#player-hand-box {
+  height: 180px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 #player-hand {
   display: flex;
   justify-content: space-evenly;
-  width: 70%;
 }
 
 .no-card {
-  background-image: url(../../assets/nocard.png);
-  background-size: 100%;
-  max-height: 120px;
-  max-width: 80px;
+  height: 120px;
+  width: 80px;
+}
+
+#card-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-button {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  border-radius: 50%;
 }
 
 #player-deck {

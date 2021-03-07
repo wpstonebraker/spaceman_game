@@ -14,6 +14,7 @@ import Salvo from "./cards/salvo";
 import TuneUp from "./cards/tuneUp";
 import Button from "./buttons/button";
 import SmallEnemy from "./enemy/smallEnemy";
+import Coffee from "./util/coffee";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -167,6 +168,7 @@ export default class Game {
     this.hand = new Hand(this, startingCards);
 
     this.enemy = new Enemy(this, 1500, 100);
+    this.coffee = new Coffee(this);
 
     this.enemies = [
       new SmallEnemy(this, 1500, 100),
@@ -175,7 +177,12 @@ export default class Game {
     ];
     // this.enemyStatus = new EnemyStatus(this);
 
-    this.elements = [this.playerStatus, this.player, ...this.enemies];
+    this.elements = [
+      this.playerStatus,
+      this.player,
+      this.coffee,
+      ...this.enemies,
+    ];
     this.gameState = 5;
     // this.introBossBattle();
   }
@@ -248,11 +255,13 @@ export default class Game {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.background, 0, 0, 1600, 800);
+    ctx.drawImage(this.background, 0, 0, 1600, 900);
     ctx.drawImage(this.topDash, 0, 0, 1600, 94);
-    ctx.drawImage(this.bottomDash, 0, this.gameHeight - 240, 1600, 240);
+    ctx.drawImage(this.bottomDash, 0, this.gameHeight - 340, 1600, 340);
     ctx.drawImage(this.topScreen, 200, 0, 300, 100);
     ctx.drawImage(this.topScreen, 1100, 0, 300, 100);
+    // card terminal
+    ctx.drawImage(this.energyScreen, 470, 680, 700, 165);
     ctx.drawImage(this.energyScreen, 675, 10, 250, 80);
     switch (this.gameState) {
       case 0: // start screen

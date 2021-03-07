@@ -32,18 +32,30 @@
 }
 
 @keyframes playCard {
+  // 0% {
+  //   opacity: 1;
+  // }
+
+  // 50% {
+  //   opacity: 1;
+  //   transform: translateY(-150px);
+  // }
+
+  // 100% {
+  //   opacity: 0;
+  //   transform: translateY(-150px);
+  // }
   0% {
     opacity: 1;
   }
 
   50% {
     opacity: 1;
-    transform: translateY(-150px);
+    filter: brightness(200%);
   }
 
   100% {
     opacity: 0;
-    transform: translateY(-150px);
   }
 }
 
