@@ -84,6 +84,12 @@ export default class PlayerStatus {
       this.position.x + 10,
       this.position.y + 50
     );
+    ctx.fillText(`Draw Pile: ${this.game.hand.playerCards.length}`, 1085, 780);
+    ctx.fillText(
+      `Discard Pile: ${this.game.hand.discardPile.length}`,
+      1085,
+      820
+    );
     ctx.fillStyle = "#ffbb00";
     ctx.fillText(`Energy`, 765, 40);
 

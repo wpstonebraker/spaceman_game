@@ -102,7 +102,8 @@
         id="btn-illustration"
         src="assets/buttons/illustration.png"
       />
-      <img class="canvas-image" id="img_linkedIn" src="assets/linkedin.jpg" />
+      <img class="canvas-image" id="img_linkedIn" src="assets/linkedin.png" />
+      <img class="canvas-image" id="img_angelList" src="assets/angellist.png" />
       <img
         class="canvas-image"
         id="img_topTerminal"
@@ -118,7 +119,6 @@
         id="img_energyBall"
         src="assets/energyBall.png"
       />
-      <img class="canvas-image" id="img_coffeeMug" src="assets/coffeeMug.png" />
     </div>
     <!-- <div id="information-box">
       <div id="information"> -->
@@ -143,9 +143,6 @@
 
             <div id="dash-bottom-box">
               <div id="game-controls">
-                <div>
-                  <img src="assets/energyTerminal.png" alt="" />
-                </div>
                 <div id="player-hand-box">
                   <ul id="player-hand">
                     <li id="nc-0" class="no-card"></li>
@@ -153,6 +150,7 @@
                     <li id="nc-2" class="no-card"></li>
                     <li id="nc-3" class="no-card"></li>
                     <li id="nc-4" class="no-card"></li>
+                    <img src="assets/back.png" id="player-deck" alt="" />
                   </ul>
                   <!-- <div id="card-buttons">
                     <button id="cb-0" class="card-button">
@@ -168,7 +166,7 @@
                   <!-- </div> -->
                 </div>
 
-                <div id="deck-display">
+                <div>
                   <div id="end-turn-button" class="status-display">
                     End Turn
                   </div>
@@ -215,6 +213,40 @@
     </div>
   </body>
 
+  <div class="popup hidden" id="post-battle-1-div">
+    <div id="post-battle-1">
+      <p>VICTORY!</p>
+      <p>Choose Your Reward:</p>
+      <div class="powerups-outer">
+        <div class="powerups-box">
+          <div id="powerup-1">
+            <img
+              src="assets/powerup1.png"
+              class="powerup"
+              alt=""
+              title="Upgrade Lasers"
+            />
+          </div>
+          <div id="powerup-2">
+            <img
+              src="assets/powerup2.png"
+              class="powerup"
+              alt=""
+              title="Upgrade Energy"
+            />
+          </div>
+          <div id="powerup-3">
+            <img
+              src="assets/powerup3.png"
+              class="powerup"
+              alt=""
+              title="Upgrade Missles"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="rules-pic hidden" id="rules-pic-box">
     <div id="rules-pic">
       <img src="assets/rulesPic.png" />

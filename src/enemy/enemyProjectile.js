@@ -3,7 +3,6 @@ import Explosion from "../util/explosion";
 
 export default class EnemyProjectile {
   constructor(x, y, sprite, width, height, speed, game, atkType, velocity) {
-    debugger;
     this.position = {
       x: x,
       y: y,

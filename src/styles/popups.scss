@@ -7,3 +7,29 @@
 #rules-div {
   width: 600px;
 }
+
+#post-battle-1 {
+  @include absCenter;
+  width: 400px;
+  background-color: white;
+  height: 200px;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.powerups-outer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.powerups-box {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.powerup {
+  height: 20px;
+}

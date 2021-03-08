@@ -26,7 +26,7 @@ export default class Button {
     let laserRight = laser.position.x + laser.width;
     let laserY = laser.position.y;
     let topLeft = this.y;
-    let bottomLeft = this.y + 64;
+    let bottomLeft = this.y + this.height;
 
     if (laserRight >= this.x && laserY >= topLeft && laserY <= bottomLeft) {
       const laserIdx = this.game.projectiles.indexOf(laser);
@@ -63,6 +63,10 @@ export default class Button {
             "https://www.linkedin.com/in/paul-stonebraker-a8b034207/",
             "_blank"
           );
+          break;
+        case "angel list":
+          window.open("https://angel.co/u/paul-stonebraker", "_blank");
+          break;
         default:
           break;
       }

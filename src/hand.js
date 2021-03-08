@@ -55,6 +55,10 @@ export default class Hand {
   // playerCards
   resetDeck() {
     this.cardPile = this.deck.slice();
+    this.currentHand.forEach((card) => {
+      let idx = this.cardPile.indexOf(card);
+      this.cardPile.splice(idx, 1);
+    });
     while (this.cardPile.length) {
       const rando = ~~(Math.random() * this.cardPile.length);
       this.playerCards.push(...this.cardPile.splice(rando, rando + 1));
@@ -67,7 +71,10 @@ export default class Hand {
     this.disabled = false;
     this.game.player.initializeEnergy();
     for (let i = 0; i < 5; i++) {
-      if (!this.playerCards.length) this.resetDeck();
+      if (!this.playerCards.length) {
+        this.resetDeck();
+        this.discardPile = [];
+      }
       this.currentHand.push(this.playerCards.shift());
     }
     this.render();
@@ -83,6 +90,8 @@ export default class Hand {
         card.action();
         this.discardPile.push(card);
         document.getElementById(`card-${i}`).classList.add("playCard");
+        let idx = this.currentHand.indexOf(this);
+        this.currentHand.splice(idx, 1);
 
         setTimeout(() => {
           document.getElementById(`card-${i}`).remove();
@@ -137,7 +146,6 @@ export default class Hand {
       this.discardPile.push(this.currentHand.pop());
     }
     let discards = Array.from(document.getElementsByClassName("no-card"));
-    debugger;
     discards.forEach((card) => {
       setTimeout(() => {
         card.innerHTML = "";

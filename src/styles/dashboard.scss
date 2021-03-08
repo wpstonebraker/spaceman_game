@@ -13,8 +13,7 @@
 }
 
 #dash-bottom-box {
-  display: flex;
-  justify-content: space-evenly;
+  right: 0px;
 }
 
 #center-panel {
@@ -56,10 +55,11 @@
 }
 
 #end-turn-button {
+  margin-top: 20px;
   align-self: center;
   background-color: red;
   border: 3px solid black;
-  border-radius: 50%;
+  border-radius: 5px;
   height: 65px;
   width: 65px;
 }
@@ -69,21 +69,24 @@
 }
 
 #game-controls {
-  width: 1200px;
+  width: 1000px;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  float: right;
+  margin-right: 200px;
 }
 
 #player-hand-box {
   height: 180px;
   width: 700px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 #player-hand {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
@@ -107,6 +110,13 @@
 
 #player-deck {
   position: relative;
+  max-height: 120px;
+  max-width: 80px;
+}
+
+#deck-display {
+  margin-top: 20px;
+  width: 150px;
 }
 
 #deck-size {

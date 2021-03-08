@@ -20,6 +20,7 @@ export default class SmallEnemy {
     this.lasers = 5;
     this.name = "Alien Scout";
     this.destroyed = false;
+    this.nextAction = "Laser Attack";
   }
 
   draw(ctx) {
@@ -37,6 +38,7 @@ export default class SmallEnemy {
         playerPosY <= this.position.y + this.size
       ) {
         this.renderStats(ctx);
+        this.renderTarget(ctx);
       }
     }
   }
@@ -44,29 +46,17 @@ export default class SmallEnemy {
   renderStats(ctx) {
     ctx.beginPath();
     ctx.moveTo(this.position.x + 50, this.position.y + 70);
-    ctx.lineTo(this.position.x + 120, this.position.y + 90);
+    ctx.lineTo(1400, 400);
     ctx.lineWidth = 5;
     ctx.strokeStyle = "hsla(0, 100%, 50%, 0.25)";
     ctx.stroke();
     ctx.fillStyle = "hsla(0, 100%, 50%, 0.25)";
-    ctx.fillRect(this.position.x + 120, this.position.y + 50, 130, 80);
+    ctx.fillRect(1400, 400, 130, 70);
     ctx.fillStyle = "white";
-    ctx.fillText(this.name, 970, 20);
-    ctx.fillText(
-      `Shields: ${this.shields}`,
-      this.position.x + 125,
-      this.position.y + 75
-    );
-    ctx.fillText(
-      `Lasers: ${this.lasers}`,
-      this.position.x + 125,
-      this.position.y + 95
-    );
-    ctx.fillText(
-      `Armor: ${this.armor}`,
-      this.position.x + 125,
-      this.position.y + 115
-    );
+    ctx.fillText(`Shields: ${this.shields}`, 1405, 420);
+    ctx.fillText(`Armor: ${this.armor}`, 1405, 440);
+    ctx.fillText(`Lasers: ${this.lasers}`, 1405, 460);
+
     // ctx.fillStyle = "white";
     // ctx.fillText(this.name, 970, 20);
     // ctx.fillText(
@@ -75,6 +65,16 @@ export default class SmallEnemy {
     //   55
     // );
     // ctx.fillText(`Armor: ${this.armor}`, 1120, 80);
+  }
+
+  renderTarget(ctx) {
+    ctx.fillStyle = "hsla(0, 100%, 50%, 1)";
+    ctx.textAlign = "center";
+    ctx.fillText(this.name, 1250, 30);
+    ctx.fillStyle = "white";
+    ctx.fillText("Next Turn:", 1250, 55);
+
+    ctx.fillText(this.nextAction, 1250, 80);
   }
 
   update(dt) {
@@ -174,6 +174,10 @@ export default class SmallEnemy {
   }
 
   action() {
+    document.getElementById("card-description").classList.remove("hidden");
+    document.getElementById(
+      "card-description-span"
+    ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
     const angle = Math.atan2(
       this.position.y + 80 - (this.game.player.position.y + 100),
       this.position.x - (this.game.player.position.x + 50)

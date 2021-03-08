@@ -20,7 +20,7 @@ export default class InputHandler {
           e.preventDefault();
           if (player.game.gameState === 0) player.fire();
           if (player.game.gameState === 1) player.fire();
-          if (player.game.gameState === 7) player.fire();
+          if (player.game.gameState === 8) player.fire();
 
           break;
         default:

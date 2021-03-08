@@ -56,41 +56,30 @@ export default class Enemy {
   }
 
   renderTarget(ctx) {
-    ctx.fillText(this.name, 1110, 40);
-    ctx.fillText(this.nextAction, 1110, 60);
+    ctx.fillStyle = "hsla(0, 100%, 50%, 1)";
+    ctx.textAlign = "center";
+    ctx.fillText(this.name, 1250, 30);
+    ctx.fillStyle = "white";
+    ctx.fillText("Next Turn:", 1250, 60);
+
+    ctx.fillText(this.nextAction, 1250, 90);
   }
 
   renderStats(ctx) {
     ctx.beginPath();
     ctx.moveTo(this.position.x + 180, this.position.y + 190);
-    ctx.lineTo(this.position.x + 250, this.position.y + 220);
+    ctx.lineTo(1400, 400);
     ctx.lineWidth = 5;
     ctx.strokeStyle = "hsla(0, 100%, 50%, 0.25)";
     ctx.stroke();
     ctx.fillStyle = "hsla(0, 100%, 50%, 0.25)";
-    ctx.fillRect(this.position.x + 250, this.position.y + 220, 130, 100);
+    ctx.fillRect(1400, 400, 130, 100);
     ctx.fillStyle = "white";
     ctx.fillText(this.name, 970, 20);
-    ctx.fillText(
-      `Shields: ${this.shields}`,
-      this.position.x + 255,
-      this.position.y + 245
-    );
-    ctx.fillText(
-      `Armor: ${this.armor}`,
-      this.position.x + 255,
-      this.position.y + 265
-    );
-    ctx.fillText(
-      `Lasers: ${this.lasers}`,
-      this.position.x + 255,
-      this.position.y + 285
-    );
-    ctx.fillText(
-      `Missles: ${this.missles}`,
-      this.position.x + 255,
-      this.position.y + 305
-    );
+    ctx.fillText(`Shields: ${this.shields}`, 1405, 420);
+    ctx.fillText(`Armor: ${this.armor}`, 1405, 440);
+    ctx.fillText(`Lasers: ${this.lasers}`, 1405, 460);
+    ctx.fillText(`Missles: ${this.missles}`, 1405, 480);
     // ctx.fillStyle = "white";
     // ctx.fillText(this.name, 970, 20);
     // ctx.fillText(
@@ -181,26 +170,26 @@ export default class Enemy {
     this.game.elements.push(
       new Animation(this.dudSprite, 50, 0, 64, 64, 12, 6, this.game)
     );
-    document.getElementById("enemy-display-span").innerText =
+    document.getElementById("card-description").classList.remove("hidden");
+
+    document.getElementById("card-description-span").innerText =
       "3 Malware cards uploaded to player's deck.";
   }
 
   rechargeShields() {
     this.shieldCharge = 2;
-    document.getElementById("enemy-display-span").innerText =
+    document.getElementById("card-description").classList.remove("hidden");
+
+    document.getElementById("card-description-span").innerText =
       "Recharging shield core...";
-    setTimeout(() => {
-      document.getElementById("enemy-display-span").innerText = "";
-    }, 3000);
   }
 
   heal() {
     this.shieldCharge--;
-    document.getElementById("enemy-display-span").innerText =
+    document.getElementById("card-description").classList.remove("hidden");
+
+    document.getElementById("card-description-span").innerText =
       "Enemy boosts shields by 20";
-    setTimeout(() => {
-      document.getElementById("enemy-display-span").innerText = "";
-    }, 3000);
     this.shields += 20;
     this.game.target = this;
     this.game.elements.push(
@@ -215,9 +204,11 @@ export default class Enemy {
   }
 
   attackLasers() {
-    // document.getElementById(
-    //   "enemy-display-span"
-    // ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
+    document.getElementById("card-description").classList.remove("hidden");
+
+    document.getElementById(
+      "card-description-span"
+    ).innerText = `Enemy attacks for ${this.lasers} laser damage`;
     // setTimeout(() => {
     //   document.getElementById("enemy-display-span").innerText = "";
     // }, 3000);
@@ -245,12 +236,11 @@ export default class Enemy {
   }
 
   attackMissles() {
+    document.getElementById("card-description").classList.remove("hidden");
+
     document.getElementById(
-      "enemy-display-span"
+      "card-description-span"
     ).innerText = `Enemy attacks for ${this.missles} projectile damage`;
-    setTimeout(() => {
-      document.getElementById("enemy-display-span").innerText = "";
-    }, 3000);
     const angle = Math.atan2(
       this.position.y + 80 - (this.game.player.position.y + 100),
       this.position.x - (this.game.player.position.x + 50)

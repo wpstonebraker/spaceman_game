@@ -14,7 +14,6 @@ import Salvo from "./cards/salvo";
 import TuneUp from "./cards/tuneUp";
 import Button from "./buttons/button";
 import SmallEnemy from "./enemy/smallEnemy";
-import Coffee from "./util/coffee";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -168,7 +167,6 @@ export default class Game {
     this.hand = new Hand(this, startingCards);
 
     this.enemy = new Enemy(this, 1500, 100);
-    this.coffee = new Coffee(this);
 
     this.enemies = [
       new SmallEnemy(this, 1500, 100),
@@ -177,19 +175,36 @@ export default class Game {
     ];
     // this.enemyStatus = new EnemyStatus(this);
 
-    this.elements = [
-      this.playerStatus,
-      this.player,
-      this.coffee,
-      ...this.enemies,
-    ];
+    this.elements = [this.playerStatus, this.player, ...this.enemies];
     this.gameState = 5;
     // this.introBossBattle();
   }
 
-  introBossBattle() {
-    this.hand.endTurn();
+  postBattle() {
     this.gameState = 6;
+    document.getElementById("post-battle-1-div").classList.remove("hidden");
+    document.getElementById("powerup-1").addEventListener("click", () => {
+      this.player.lasers += 5;
+      document.getElementById("post-battle-1-div").classList.add("hidden");
+      this.introBossBattle();
+    });
+    document.getElementById("powerup-2").addEventListener("click", () => {
+      this.player.maxEnergy += 1;
+      document.getElementById("post-battle-1-div").classList.add("hidden");
+      this.introBossBattle();
+    });
+    document.getElementById("powerup-3").addEventListener("click", () => {
+      this.player.missles += 5;
+      document.getElementById("post-battle-1-div").classList.add("hidden");
+      this.introBossBattle();
+    });
+  }
+
+  introBossBattle() {
+    this.playerTurn = false;
+    this.hand.disabled = true;
+    this.hand.discardHand();
+    this.gameState = 7;
 
     this.enemies = [this.enemy];
     this.elements = [this.playerStatus, this.player, ...this.enemies];
@@ -199,7 +214,7 @@ export default class Game {
   }
 
   startBossBattle() {
-    // this.hand.startTurn();
+    this.hand.startTurn();
   }
 
   computerTurn() {
@@ -248,10 +263,15 @@ export default class Game {
   }
 
   endScreen() {
-    this.gameState = 7;
+    this.gameState = 8;
     const linkedIn = document.getElementById("img_linkedIn");
+    const angelList = document.getElementById("img_angelList");
+    debugger;
 
-    this.elements.push(new Button(linkedIn, 1000, 75, "linked in", this));
+    this.elements.push(
+      new Button(linkedIn, 1000, 100, "linked in", this, 128, 128),
+      new Button(angelList, 1000, 300, "angel list", this, 128, 128)
+    );
   }
 
   draw(ctx) {
@@ -261,7 +281,7 @@ export default class Game {
     ctx.drawImage(this.topScreen, 200, 0, 300, 100);
     ctx.drawImage(this.topScreen, 1100, 0, 300, 100);
     // card terminal
-    ctx.drawImage(this.energyScreen, 470, 680, 700, 165);
+    ctx.drawImage(this.energyScreen, 300, 715, 1000, 165);
     ctx.drawImage(this.energyScreen, 675, 10, 250, 80);
     switch (this.gameState) {
       case 0: // start screen
@@ -292,14 +312,19 @@ export default class Game {
       case 5: // battle 1
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
-        if (this.enemies.length === 0) this.introBossBattle();
+        if (this.enemies.length === 0) this.postBattle();
         break;
-      case 6: // boss battle
+      case 6:
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;
-      case 7:
-        ctx.fillText("YOU WIN!", 200, 200);
+      case 7: // boss battle
+        this.elements.forEach((element) => element.draw(ctx));
+        this.projectiles.forEach((element) => element.draw(ctx));
+        break;
+      case 8:
+        ctx.fillStyle = "yellow";
+        ctx.fillText("VICTORY!!!", 200, 200);
 
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
