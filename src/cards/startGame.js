@@ -27,8 +27,8 @@ export default class StartGame extends Card {
       this.game.elements.push(
         new Explosion(laser.position.x, laser.position.y, this.game)
       );
-      this.game.endScreen();
-      // this.game.manageIntro(this.game.startingCards);
+      // this.game.endScreen();
+      this.game.manageIntro(this.game.startingCards);
     }
   }
 }
