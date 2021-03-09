@@ -59,10 +59,7 @@ export default class Button {
         case "reset":
           break;
         case "linked in":
-          window.open(
-            "https://www.linkedin.com/in/paul-stonebraker-a8b034207/",
-            "_blank"
-          );
+          window.open("https://www.linkedin.com/in/paul-stonebraker", "_blank");
           break;
         case "angel list":
           window.open("https://angel.co/u/paul-stonebraker", "_blank");
