@@ -92,6 +92,9 @@ export default class SmallEnemy {
       this.game.elements.splice(idx, 1);
       idx = this.game.enemies.indexOf(this);
       this.game.enemies.splice(idx, 1);
+      if (this.game.enemies.length === 0) {
+        this.game.postBattle();
+      }
     } else if (this.armor <= 0) {
       this.position.x += 3;
     } else if (this.position.x > 1200) {

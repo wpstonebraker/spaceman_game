@@ -6,7 +6,10 @@ export default class SyphonEnergy extends Card {
     this.cost = 0;
     this.image = "assets/syphonEnergy.png";
     this.description = "Double laser damage at cost of -1 max energy";
-    this.y = 320;
+    this.ssX = 1200;
+    this.ssY = 320;
+    this.ssWidth = 40;
+    this.ssHeight = 60;
     this.cardImg = document.getElementById("img_syphonCard");
   }
 

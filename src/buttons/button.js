@@ -37,7 +37,7 @@ export default class Button {
       this.hideAll();
       switch (this.type) {
         case "start":
-          this.game.selectCards();
+          this.game.initSelectCards();
           break;
         case "instructions":
           document.getElementById("ss-instructions").classList.remove("hidden");

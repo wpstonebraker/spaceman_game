@@ -91,9 +91,10 @@ export default class Enemy {
 
   update(dt) {
     if (this.destroyed) {
-      this.position.y -= 5;
+      this.position.x += 5;
       setTimeout(() => {
         this.game.endScreen();
+        this.game.hand.endGame();
       }, 2500);
     }
     if (this.position.x > 1100) this.position.x -= 1;

@@ -11,9 +11,10 @@ export default class InstallUpdate extends Card {
     this.sprite = document.getElementById("img_updateAni");
     this.description =
       "Install the latest AI update, max energy + 1. Requires restart to take effect.";
-    this.y = 160;
-    this.width = 40;
-    this.height = 60;
+    this.ssX = 1200;
+    this.ssY = 160;
+    this.ssWidth = 40;
+    this.ssHeight = 60;
   }
 
   action() {

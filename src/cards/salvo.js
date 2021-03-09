@@ -14,7 +14,10 @@ export default class Salvo extends Card {
     this.sprite = document.getElementById("img_missle");
     this.game = game;
     this.atkType = "missle";
-    this.y = 480;
+    this.ssX = 1200;
+    this.ssY = 480;
+    this.ssWidth = 40;
+    this.ssHeight = 60;
     this.cardImg = document.getElementById("img_salvoCard");
     this.type = "salvo";
   }
@@ -28,7 +31,7 @@ export default class Salvo extends Card {
         this.sprite,
         20,
         20,
-        10,
+        20,
         this.game,
         this.atkType
       )
@@ -41,7 +44,7 @@ export default class Salvo extends Card {
           this.sprite,
           20,
           20,
-          10,
+          20,
           this.game,
           this.atkType
         )
@@ -55,7 +58,7 @@ export default class Salvo extends Card {
           this.sprite,
           20,
           20,
-          10,
+          20,
           this.game,
           this.atkType
         )

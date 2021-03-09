@@ -13,7 +13,10 @@ export default class Overcharge extends Card {
       x: this.game.player.laserPos.x,
       y: this.game.player.laserPos.y,
     };
-    this.y = 240;
+    this.ssX = 1200;
+    this.ssY = 240;
+    this.ssWidth = 40;
+    this.ssHeight = 60;
     this.sprite = document.getElementById("img_laser");
     this.cardImg = document.getElementById("img_overchargeCard");
     this.atkType = "overcharge";

@@ -103,7 +103,6 @@ export default class Hand {
   }
 
   endTurn() {
-    debugger;
     let discards = Array.from(document.getElementsByClassName("card"));
     // let discards = document.getElementById("player-hand").childNodes;
     // for (card of discards) {
@@ -154,8 +153,11 @@ export default class Hand {
   }
 
   endGame() {
-    this.deck = null;
-    this.currentHand = null;
+    debugger;
+    this.playerCards = [];
+    this.disabled = true;
+    this.deck = [];
+    this.currentHand = [];
   }
 
   render() {

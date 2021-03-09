@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const GAME_WIDTH = 1600;
   const GAME_HEIGHT = 900;
   let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-  game.pregame();
+  game.init();
 
   const startingCards = [];
 

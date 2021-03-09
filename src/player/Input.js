@@ -18,10 +18,10 @@ export default class InputHandler {
           break;
         case " ":
           e.preventDefault();
-          if (player.game.gameState === 0) player.fire();
-          if (player.game.gameState === 1) player.fire();
-          if (player.game.gameState === 8) player.fire();
-
+          // if (player.game.gameState === 0) player.fire();
+          // if (player.game.gameState === 1) player.fire();
+          // if (player.game.gameState === 8) player.fire();
+          player.fire();
           break;
         default:
           break;
