@@ -77,7 +77,7 @@ export default class Game {
     ctx.font = "25px VT323";
     ctx.fillStyle = "white";
     ctx.textAlign = "left";
-    ctx.fillText("Shoot to select your starting cards", 150, 200);
+    ctx.fillText("Shoot to select your starting cards", 200, 600);
   }
 
   selectCards() {
@@ -96,6 +96,18 @@ export default class Game {
       new Salvo(this),
       new StartGame(this),
     ];
+  }
+
+  drawStartingCards(ctx) {
+    this.startingChoices.forEach((card, i) => {
+      if (i !== this.startingChoices.length - 1) {
+        card.draw(ctx, 1200, card.y, 40, 60);
+        card.checkPos(ctx);
+      } else {
+        card.draw(ctx, 1155, card.y, 128, 64);
+        card.checkPos(ctx);
+      }
+    });
   }
 
   // drawStartingCards(ctx) {
@@ -295,10 +307,7 @@ export default class Game {
         break;
       case 1: // select Power Cards screen
         this.drawSelectInstructions(ctx);
-        this.startingChoices.forEach((card, i) => {
-          card.draw(ctx, 1200, card.y, 40, 60);
-          card.checkPos(ctx);
-        });
+        this.drawStartingCards(ctx);
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
         break;

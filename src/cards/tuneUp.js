@@ -8,7 +8,7 @@ export default class TuneUp extends Card {
     this.power = 5;
     this.description = `Calibrate your laser to permanently increase damage by ${this.power}`;
     this.game = game;
-    this.y = 320;
+    this.y = 400;
     this.cardImg = document.getElementById("img_tuneUpCard");
   }
 

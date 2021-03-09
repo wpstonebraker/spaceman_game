@@ -4,12 +4,12 @@ import Card from "./card";
 export default class StartGame extends Card {
   constructor(game) {
     super(game);
-    this.y = 480;
+    this.y = 560;
     this.game = game;
     this.description = "Start game";
 
     this.image = "assets/dud.png";
-    this.cardImg = document.getElementById("img_startGame");
+    this.cardImg = document.getElementById("btn-start");
   }
 
   collision(laser, card) {

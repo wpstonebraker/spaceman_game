@@ -24,7 +24,7 @@ export default class Card {
       ctx.font = "25px VT323";
       ctx.fillStyle = "white";
       ctx.textAlign = "right";
-      ctx.fillText(this.description, 1185, this.y + 35);
+      ctx.fillText(this.description, 1150, this.y + 35);
     }
   }
 

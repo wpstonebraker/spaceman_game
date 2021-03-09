@@ -6,6 +6,7 @@ export default class SmallEnemy {
   constructor(game, x, y) {
     this.game = game;
     this.image = document.getElementById("img_smallEnemy");
+    this.targetImage = document.getElementById("img_smallEnemyHighlight");
     this.position = {
       x: x,
       y: y,
@@ -25,13 +26,6 @@ export default class SmallEnemy {
 
   draw(ctx) {
     if (!this.destroyed) {
-      ctx.drawImage(
-        this.image,
-        this.position.x,
-        this.position.y,
-        this.size,
-        this.size
-      );
       let playerPosY = this.game.player.position.y + 100;
       if (
         playerPosY >= this.position.y &&
@@ -39,17 +33,32 @@ export default class SmallEnemy {
       ) {
         this.renderStats(ctx);
         this.renderTarget(ctx);
+        ctx.drawImage(
+          this.targetImage,
+          this.position.x,
+          this.position.y,
+          this.size,
+          this.size
+        );
+      } else {
+        ctx.drawImage(
+          this.image,
+          this.position.x,
+          this.position.y,
+          this.size,
+          this.size
+        );
       }
     }
   }
 
   renderStats(ctx) {
-    ctx.beginPath();
-    ctx.moveTo(this.position.x + 50, this.position.y + 70);
-    ctx.lineTo(1400, 400);
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = "hsla(0, 100%, 50%, 0.25)";
-    ctx.stroke();
+    // ctx.beginPath();
+    // ctx.moveTo(this.position.x + 50, this.position.y + 70);
+    // ctx.lineTo(1400, 400);
+    // ctx.lineWidth = 5;
+    // ctx.strokeStyle = "hsla(0, 100%, 50%, 0.25)";
+    // ctx.stroke();
     ctx.fillStyle = "hsla(0, 100%, 50%, 0.25)";
     ctx.fillRect(1400, 400, 130, 70);
     ctx.fillStyle = "white";
