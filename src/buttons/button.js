@@ -67,6 +67,9 @@ export default class Button {
         case "angel list":
           window.open("https://angel.co/u/paul-stonebraker", "_blank");
           break;
+        case "github":
+          window.open("https://github.com/wpstonebraker", "_blank");
+          break;
         default:
           break;
       }

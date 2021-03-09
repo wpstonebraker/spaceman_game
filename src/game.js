@@ -45,11 +45,14 @@ export default class Game {
   }
 
   drawSelectScreenWords(ctx) {
+    ctx.font = "150px VT323";
+    ctx.fillStyle = "yellow";
+    ctx.fillText("SPACE DAD", 150, 200);
     ctx.font = "25px VT323";
     ctx.fillStyle = "white";
-    ctx.fillText("Move Up and Down with W and S", 200, 200);
-    ctx.fillText("Move Left and Right with A and D", 200, 220);
-    ctx.fillText("Use space to shoot a selection", 200, 500);
+    ctx.fillText("Move Up and Down with W and S", 200, 500);
+    ctx.fillText("Move Left and Right with A and D", 200, 520);
+    ctx.fillText("Use space to shoot a selection", 200, 600);
   }
 
   initializeStartScreenButtons() {
@@ -61,12 +64,12 @@ export default class Game {
     const credits = document.getElementById("btn-credits");
     const reset = document.getElementById("btn-reset");
     this.elements.push(
-      new Button(story, btnX, 75, "story", this, 128, 64),
-      new Button(instructions, btnX, 175, "instructions", this, 128, 64),
-      new Button(illustration, btnX, 275, "illustration", this, 128, 64),
-      new Button(startGame, btnX, 375, "start", this, 128, 64),
-      new Button(credits, btnX, 475, "credits", this, 128, 64),
-      new Button(reset, btnX, 575, "reset", this, 128, 64)
+      new Button(story, btnX, 150, "story", this, 128, 64),
+      new Button(instructions, btnX, 250, "instructions", this, 128, 64),
+      new Button(illustration, btnX, 350, "illustration", this, 128, 64),
+      new Button(startGame, btnX, 450, "start", this, 128, 64),
+      new Button(credits, btnX, 550, "credits", this, 128, 64)
+      // new Button(reset, btnX, 575, "reset", this, 128, 64)
     );
   }
 
@@ -266,23 +269,24 @@ export default class Game {
     this.gameState = 8;
     const linkedIn = document.getElementById("img_linkedIn");
     const angelList = document.getElementById("img_angelList");
-    debugger;
+    const github = document.getElementById("img_github");
 
     this.elements.push(
       new Button(linkedIn, 1000, 100, "linked in", this, 128, 128),
-      new Button(angelList, 1000, 300, "angel list", this, 128, 128)
+      new Button(angelList, 1000, 300, "angel list", this, 128, 128),
+      new Button(github, 1000, 500, "github", this, 128, 128)
     );
   }
 
   draw(ctx) {
     ctx.drawImage(this.background, 0, 0, 1600, 900);
-    ctx.drawImage(this.topDash, 0, 0, 1600, 94);
-    ctx.drawImage(this.bottomDash, 0, this.gameHeight - 340, 1600, 340);
-    ctx.drawImage(this.topScreen, 200, 0, 300, 100);
-    ctx.drawImage(this.topScreen, 1100, 0, 300, 100);
-    // card terminal
-    ctx.drawImage(this.energyScreen, 300, 715, 1000, 165);
-    ctx.drawImage(this.energyScreen, 675, 10, 250, 80);
+    ctx.drawImage(this.topDash, 0, 0, 1600, 200);
+    ctx.drawImage(this.bottomDash, 0, this.gameHeight - 333, 1600, 340);
+    // ctx.drawImage(this.topScreen, 200, 0, 300, 100);
+    // ctx.drawImage(this.topScreen, 1100, 0, 300, 100);
+    // // card terminal
+    // ctx.drawImage(this.energyScreen, 300, 715, 1000, 165);
+    // ctx.drawImage(this.energyScreen, 675, 10, 250, 80);
     switch (this.gameState) {
       case 0: // start screen
         this.drawSelectScreenWords(ctx);
@@ -325,6 +329,8 @@ export default class Game {
       case 8:
         ctx.fillStyle = "yellow";
         ctx.fillText("VICTORY!!!", 200, 200);
+        ctx.fillRect(1000, 300, 128, 128);
+        ctx.fillRect(1000, 500, 128, 128);
 
         this.elements.forEach((element) => element.draw(ctx));
         this.projectiles.forEach((element) => element.draw(ctx));
@@ -333,5 +339,7 @@ export default class Game {
       default:
         break;
     }
+    // ctx.drawImage(this.topDash, 0, 0, 1600, 200);
+    // ctx.drawImage(this.bottomDash, 0, this.gameHeight - 340, 1600, 340);
   }
 }

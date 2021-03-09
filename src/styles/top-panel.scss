@@ -36,3 +36,16 @@
   font-size: 40px;
   position: absolute;
 }
+
+#online-presence-links {
+  top: 13px;
+  right: 505px;
+  width: 170px;
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+}
+
+.op-icon {
+  width: 40px;
+}

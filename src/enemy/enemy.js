@@ -75,7 +75,6 @@ export default class Enemy {
     ctx.fillStyle = "hsla(0, 100%, 50%, 0.25)";
     ctx.fillRect(1400, 400, 130, 100);
     ctx.fillStyle = "white";
-    ctx.fillText(this.name, 970, 20);
     ctx.fillText(`Shields: ${this.shields}`, 1405, 420);
     ctx.fillText(`Armor: ${this.armor}`, 1405, 440);
     ctx.fillText(`Lasers: ${this.lasers}`, 1405, 460);
