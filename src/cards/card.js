@@ -73,7 +73,6 @@ export default class Card {
   }
 
   update(dt) {
-    debugger;
     if (this.game.projectiles.length >= 1) {
       this.game.projectiles.forEach((projectile) => {
         this.collision(projectile, this);

@@ -16,7 +16,6 @@ export default class NewShields {
   // fX (nth frame x cord starts here (top left))
   // fX (nth frame y cord starts here (top left))
   drawFrame(fX, fY, ctx) {
-    debugger;
     ctx.drawImage(
       this.image,
       fX * this.width,

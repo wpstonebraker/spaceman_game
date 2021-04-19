@@ -18,8 +18,8 @@ export default class Player {
     this.armor = 50;
     this.maxEnergy = 3;
     this.energy = [];
-    this.lasers = 50;
-    this.missles = 50;
+    this.lasers = 20;
+    this.missles = 20;
     this.laserPos = {
       x: 115,
       y: 100,
@@ -41,6 +41,7 @@ export default class Player {
     this.loopIndex = 0;
     this.frames = 0;
     this.disableLaser = false;
+    this.destroyed = false;
     this.initializeEnergy();
   }
 
@@ -113,6 +114,7 @@ export default class Player {
       default:
         break;
     }
+    if (this.armor <= 0) this.destroyed = true;
   }
 
   drawFrame(fX, fY, ctx) {
@@ -148,6 +150,10 @@ export default class Player {
   }
 
   update(dt) {
+    if (this.destroyed === true) {
+      this.game.lossScreen();
+      this.game.hand.endGame();
+    }
     // this.position.x += this.speedX;
     this.position.x += this.speedX;
     this.position.y += this.speedY;

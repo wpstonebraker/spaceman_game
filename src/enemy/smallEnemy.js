@@ -16,7 +16,7 @@ export default class SmallEnemy {
     this.receiveAttackBottom = this.position.y + this.size;
     this.receiveAttackX = 1200;
     this.shields = 10;
-    this.armor = 10;
+    this.armor = 5;
     this.laserSprite = document.getElementById("img_npc1a1");
     this.lasers = 5;
     this.name = "Alien Scout";
@@ -149,9 +149,9 @@ export default class SmallEnemy {
           type = "armor";
         } else if (
           this.shields !== 0 &&
-          this.shields <= this.game.player.missles
+          this.shields <= this.game.player.missles / 2
         ) {
-          dmg = this.shields;
+          dmg = this.game.player.missles / 2 - this.shields;
           this.armor -= dmg;
           this.shields = 0;
           type = "armor";

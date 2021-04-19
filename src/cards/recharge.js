@@ -13,6 +13,7 @@ export default class Recharge extends Card {
 
   action() {
     this.game.player.shields += this.power;
+    if (this.game.player.shields > 30) this.game.player.shields = 30;
     this.game.player.energy.pop();
     this.game.elements.push(
       new Shields(

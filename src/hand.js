@@ -152,8 +152,14 @@ export default class Hand {
     });
   }
 
+  playerLoss() {
+    this.playerCards = [];
+    this.disabled = true;
+    this.deck = [];
+    this.currentHand = [];
+  }
+
   endGame() {
-    debugger;
     this.playerCards = [];
     this.disabled = true;
     this.deck = [];

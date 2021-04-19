@@ -44,7 +44,6 @@ export default class Enemy {
       this.width,
       this.height
     );
-    debugger;
     let playerPosY = this.game.player.position.y + 100;
     if (
       playerPosY >= this.position.y &&
@@ -98,13 +97,13 @@ export default class Enemy {
       }, 2500);
     }
     if (this.position.x > 1100) this.position.x -= 1;
-    if (this.position.y < 120) {
+    if (this.position.y < 220) {
       this.position.y += this.speed;
     } else {
       this.speed = -this.speed;
       this.position.y += this.speed;
     }
-    if (this.position.y > 80) {
+    if (this.position.y > 180) {
       this.position.y += this.speed;
     } else {
       this.speed = -this.speed;
@@ -213,7 +212,7 @@ export default class Enemy {
     //   document.getElementById("enemy-display-span").innerText = "";
     // }, 3000);
     const angle = Math.atan2(
-      this.position.y + 80 - (this.game.player.position.y + 100),
+      this.position.y + 180 - (this.game.player.position.y + 100),
       this.position.x - (this.game.player.position.x + 50)
     );
     const velocity = {
@@ -223,7 +222,7 @@ export default class Enemy {
     this.game.projectiles.push(
       new EnemyProjectile(
         this.position.x,
-        this.position.y + 80,
+        this.position.y + 180,
         this.laserSprite,
         32,
         16,
@@ -269,7 +268,6 @@ export default class Enemy {
   receiveDamage(atkType) {
     let dmg;
     let type;
-    debugger;
     switch (atkType) {
       case "laser":
         if (this.shields >= this.game.player.lasers) {
@@ -277,7 +275,6 @@ export default class Enemy {
           type = "shields";
           this.shields -= dmg;
         } else if (this.shields === 0) {
-          debugger;
           dmg = this.game.player.lasers / 2;
           this.armor -= dmg;
           type = "armor";
@@ -337,7 +334,6 @@ export default class Enemy {
   }
 
   renderShields() {
-    debugger;
     this.game.elements.push(
       new EnemyShields(this.position.x, this.position.y, 256, this.game)
     );

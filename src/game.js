@@ -204,7 +204,7 @@ export default class Game {
 
     this.hand = new Hand(this, startingCards);
 
-    this.enemy = new Enemy(this, 1500, 100);
+    this.enemy = new Enemy(this, 1500, 200);
 
     this.enemies = [
       new SmallEnemy(this, 1500, 100),
@@ -294,6 +294,31 @@ export default class Game {
     // }
   }
 
+  lossScreen() {
+    document.getElementById("card-description-span").innerText = "";
+    document.getElementById("card-description").classList.add("hidden");
+    const linkedIn = document.getElementById("img_linkedIn");
+    const angelList = document.getElementById("img_angelList");
+    const github = document.getElementById("img_github");
+
+    this.texts = [this.lossScreenText];
+    this.elements = [this.player];
+    this.elements.push(
+      new Button(linkedIn, 1000, 100, "linked in", this, 128, 128),
+      new Button(angelList, 1000, 300, "angel list", this, 128, 128),
+      new Button(github, 1000, 500, "github", this, 128, 128)
+    );
+  }
+
+  lossScreenText(ctx) {
+    ctx.fillStyle = "yellow";
+    ctx.fillText("OH NO!!! Space Dad never made it home...", 200, 200);
+    ctx.fillText("Thanks for playing :)", 200, 220);
+    ctx.fillText("Made with love by Paul Stonebraker", 200, 240);
+    ctx.fillRect(1000, 300, 128, 128);
+    ctx.fillRect(1000, 500, 128, 128);
+  }
+
   endScreen() {
     document.getElementById("card-description-span").innerText = "";
     document.getElementById("card-description").classList.add("hidden");
@@ -325,7 +350,6 @@ export default class Game {
   }
 
   draw(ctx) {
-    debugger;
     ctx.drawImage(this.background, 0, 0, 1600, 900);
     ctx.drawImage(this.topDash, 0, 0, 1600, 200);
     ctx.drawImage(this.bottomDash, 0, this.gameHeight - 333, 1600, 340);
