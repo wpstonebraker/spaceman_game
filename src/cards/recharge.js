@@ -7,7 +7,7 @@ export default class Recharge extends Card {
     this.cost = 1;
     this.image = "assets/recharge.png";
     this.power = 10;
-    this.description = `Charge your shields by ${this.power}`;
+    this.description = `Charge your shields by ${this.power}, up to a max of 30`;
     this.game = game;
   }
 
